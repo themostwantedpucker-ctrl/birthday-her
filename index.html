@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Happy Birthday — A Cinematic Celebration</title>
+    <title>Happy Birthday — A Gift of Tulips & Butterflies</title>
     <script src="https://cdn.tailwindcss.com">
     </script>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
     <style>
         /* ── Reset & Base ── */
         * {
@@ -17,55 +17,44 @@
 
         body {
             font-family: 'Inter', sans-serif;
-            background: #1a0f0f;
+            background: #1a1110;
             color: #f5ece6;
             overflow-x: hidden;
             scroll-behavior: smooth;
         }
 
-        /* ── Typography ── */
         .font-display {
             font-family: 'Playfair Display', serif;
         }
 
-        /* ── Cinematic Overlay ── */
+        /* ── Cinematic Overlays ── */
         .cinematic-overlay {
             position: fixed;
             inset: 0;
             pointer-events: none;
             z-index: 0;
             background:
-                radial-gradient(ellipse at 30% 20%, rgba(139, 58, 58, 0.25) 0%, transparent 60%),
-                radial-gradient(ellipse at 70% 80%, rgba(212, 165, 116, 0.12) 0%, transparent 50%),
-                radial-gradient(ellipse at 50% 50%, rgba(26, 15, 15, 0.6) 0%, #1a0f0f 100%);
+                radial-gradient(ellipse at 30% 20%, rgba(180, 100, 120, 0.20) 0%, transparent 60%),
+                radial-gradient(ellipse at 70% 80%, rgba(200, 160, 180, 0.10) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 50%, rgba(26, 17, 16, 0.6) 0%, #1a1110 100%);
         }
 
-        /* ── Film Grain ── */
         .film-grain {
             position: fixed;
             inset: 0;
             pointer-events: none;
             z-index: 1;
-            opacity: 0.035;
+            opacity: 0.030;
             background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
             background-size: 256px 256px;
         }
 
-        /* ── Vignette ── */
         .vignette {
             position: fixed;
             inset: 0;
             pointer-events: none;
             z-index: 1;
-            background: radial-gradient(ellipse at center, transparent 50%, rgba(0, 0, 0, 0.6) 100%);
-        }
-
-        /* ── Canvas ── */
-        #particle-canvas {
-            position: fixed;
-            inset: 0;
-            z-index: 0;
-            pointer-events: none;
+            background: radial-gradient(ellipse at center, transparent 50%, rgba(0, 0, 0, 0.5) 100%);
         }
 
         /* ── Scroll Container ── */
@@ -85,7 +74,7 @@
             overflow: hidden;
         }
 
-        /* ── Hero ── */
+        /* ── HERO ── */
         #hero {
             min-height: 100vh;
             display: flex;
@@ -98,25 +87,25 @@
         }
 
         .hero-title {
-            font-size: clamp(3rem, 12vw, 8rem);
+            font-size: clamp(3.2rem, 13vw, 8rem);
             font-weight: 700;
             letter-spacing: 0.04em;
             line-height: 1.05;
-            background: linear-gradient(180deg, #f5ece6 30%, #d4a574 70%, #8b3a3a 100%);
+            background: linear-gradient(180deg, #f5ece6 25%, #e8c4c8 55%, #d4a0b0 80%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
             opacity: 0;
-            transform: scale(0.92) translateY(40px);
-            animation: heroReveal 2.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-            animation-delay: 0.6s;
-            filter: drop-shadow(0 4px 40px rgba(139, 58, 58, 0.3));
+            transform: scale(0.94) translateY(30px);
+            animation: heroReveal 2.0s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+            animation-delay: 0.4s;
+            filter: drop-shadow(0 4px 50px rgba(180, 100, 120, 0.25));
         }
 
         @keyframes heroReveal {
             0% {
                 opacity: 0;
-                transform: scale(0.92) translateY(40px);
+                transform: scale(0.94) translateY(30px);
             }
             100% {
                 opacity: 1;
@@ -128,31 +117,31 @@
             font-family: 'Playfair Display', serif;
             font-weight: 400;
             font-style: italic;
-            font-size: clamp(1rem, 2.5vw, 1.8rem);
-            color: #d4a574;
-            letter-spacing: 0.3em;
+            font-size: clamp(0.95rem, 2.2vw, 1.6rem);
+            color: #e8c4c8;
+            letter-spacing: 0.2em;
             opacity: 0;
-            transform: translateY(20px);
-            animation: fadeUp 1.8s ease forwards;
-            animation-delay: 1.6s;
+            transform: translateY(18px);
+            animation: fadeUp 1.6s ease forwards;
+            animation-delay: 1.4s;
             margin-top: 0.5rem;
-            text-shadow: 0 2px 30px rgba(212, 165, 116, 0.15);
+            text-shadow: 0 2px 30px rgba(200, 160, 180, 0.15);
         }
 
         .hero-line {
-            width: clamp(60px, 10vw, 120px);
+            width: clamp(50px, 8vw, 100px);
             height: 1.5px;
-            background: linear-gradient(90deg, transparent, #d4a574, transparent);
+            background: linear-gradient(90deg, transparent, #e8c4c8, transparent);
             margin: 1.5rem auto 0;
             opacity: 0;
-            animation: fadeUp 1.4s ease forwards;
-            animation-delay: 2.2s;
+            animation: fadeUp 1.2s ease forwards;
+            animation-delay: 2.0s;
         }
 
         @keyframes fadeUp {
             0% {
                 opacity: 0;
-                transform: translateY(20px);
+                transform: translateY(18px);
             }
             100% {
                 opacity: 1;
@@ -160,7 +149,6 @@
             }
         }
 
-        /* ── Scroll Indicator ── */
         .scroll-indicator {
             position: absolute;
             bottom: 2.5rem;
@@ -169,12 +157,12 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 0.5rem;
+            gap: 0.4rem;
             opacity: 0;
-            animation: fadeUp 1.6s ease forwards;
-            animation-delay: 2.8s;
-            color: rgba(245, 236, 230, 0.4);
-            font-size: 0.7rem;
+            animation: fadeUp 1.4s ease forwards;
+            animation-delay: 2.6s;
+            color: rgba(245, 236, 230, 0.3);
+            font-size: 0.65rem;
             letter-spacing: 0.2em;
             text-transform: uppercase;
             cursor: pointer;
@@ -182,25 +170,25 @@
             z-index: 5;
         }
         .scroll-indicator:hover {
-            color: #d4a574;
+            color: #e8c4c8;
         }
         .scroll-indicator .mouse {
-            width: 22px;
-            height: 34px;
-            border: 1.5px solid rgba(245, 236, 230, 0.25);
-            border-radius: 12px;
+            width: 20px;
+            height: 32px;
+            border: 1.5px solid rgba(245, 236, 230, 0.2);
+            border-radius: 10px;
             display: flex;
             justify-content: center;
-            padding-top: 6px;
+            padding-top: 5px;
             transition: border-color 0.4s ease;
         }
         .scroll-indicator:hover .mouse {
-            border-color: #d4a574;
+            border-color: #e8c4c8;
         }
         .scroll-indicator .dot {
             width: 3px;
-            height: 8px;
-            background: #d4a574;
+            height: 7px;
+            background: #e8c4c8;
             border-radius: 4px;
             animation: scrollBounce 2.4s ease-in-out infinite;
         }
@@ -211,7 +199,7 @@
                 opacity: 0.6;
             }
             50% {
-                transform: translateY(8px);
+                transform: translateY(7px);
                 opacity: 1;
             }
         }
@@ -228,7 +216,7 @@
         .float-item {
             position: absolute;
             opacity: 0;
-            animation: floatIn 3s ease forwards;
+            animation: floatIn 2.8s ease forwards;
             pointer-events: none;
             will-change: transform;
         }
@@ -236,29 +224,26 @@
         @keyframes floatIn {
             0% {
                 opacity: 0;
-                transform: scale(0.6) translateY(30px);
+                transform: scale(0.5) translateY(30px) rotate(-10deg);
             }
             100% {
                 opacity: 1;
-                transform: scale(1) translateY(0);
+                transform: scale(1) translateY(0) rotate(0deg);
             }
         }
 
         /* ── Butterfly SVG ── */
         .butterfly {
-            filter: drop-shadow(0 4px 20px rgba(232, 160, 180, 0.15));
+            filter: drop-shadow(0 4px 25px rgba(200, 160, 180, 0.12));
             transition: filter 0.8s ease;
-        }
-        .butterfly:hover {
-            filter: drop-shadow(0 4px 40px rgba(232, 160, 180, 0.35));
         }
 
         .butterfly .wing {
             transform-origin: 50% 50%;
-            animation: wingFlap 2.4s ease-in-out infinite alternate;
+            animation: wingFlap 2.2s ease-in-out infinite alternate;
         }
         .butterfly .wing-right {
-            animation-delay: 0.05s;
+            animation-delay: 0.06s;
         }
 
         @keyframes wingFlap {
@@ -266,19 +251,16 @@
                 transform: scaleX(1) rotate(0deg);
             }
             100% {
-                transform: scaleX(0.6) rotate(6deg);
+                transform: scaleX(0.55) rotate(6deg);
             }
         }
 
-        .butterfly .wing-right {
-            animation-name: wingFlapRight;
-        }
         @keyframes wingFlapRight {
             0% {
                 transform: scaleX(1) rotate(0deg);
             }
             100% {
-                transform: scaleX(0.6) rotate(-6deg);
+                transform: scaleX(0.55) rotate(-6deg);
             }
         }
 
@@ -287,10 +269,10 @@
         }
         @keyframes sway {
             0% {
-                transform: translate(0, 0) rotate(-2deg);
+                transform: translate(0, 0) rotate(-3deg);
             }
             100% {
-                transform: translate(8px, -12px) rotate(3deg);
+                transform: translate(10px, -14px) rotate(4deg);
             }
         }
 
@@ -302,7 +284,7 @@
                 transform: translate(0, 0) rotate(3deg);
             }
             100% {
-                transform: translate(-10px, -8px) rotate(-4deg);
+                transform: translate(-12px, -10px) rotate(-5deg);
             }
         }
 
@@ -311,20 +293,17 @@
         }
         @keyframes sway3 {
             0% {
-                transform: translate(0, 0) rotate(-1deg);
+                transform: translate(0, 0) rotate(-2deg);
             }
             100% {
-                transform: translate(12px, -6px) rotate(2deg);
+                transform: translate(14px, -8px) rotate(3deg);
             }
         }
 
         /* ── Tulip SVG ── */
         .tulip {
-            filter: drop-shadow(0 4px 25px rgba(212, 165, 116, 0.12));
+            filter: drop-shadow(0 4px 30px rgba(200, 160, 180, 0.10));
             transition: filter 0.8s ease;
-        }
-        .tulip:hover {
-            filter: drop-shadow(0 4px 45px rgba(212, 165, 116, 0.25));
         }
 
         .tulip-sway {
@@ -332,10 +311,10 @@
         }
         @keyframes tulipSway {
             0% {
-                transform: rotate(-3deg) translateY(0);
+                transform: rotate(-4deg) translateY(0);
             }
             100% {
-                transform: rotate(4deg) translateY(-6px);
+                transform: rotate(5deg) translateY(-8px);
             }
         }
 
@@ -344,33 +323,242 @@
         }
         @keyframes tulipSway2 {
             0% {
-                transform: rotate(2deg) translateY(0);
+                transform: rotate(3deg) translateY(0);
             }
             100% {
-                transform: rotate(-5deg) translateY(-8px);
+                transform: rotate(-6deg) translateY(-10px);
             }
         }
 
-        /* ── Message Section ── */
-        #message {
-            min-height: 100vh;
+        /* ── Horizontal Gallery ── */
+        .gallery-wrapper {
+            width: 100%;
+            max-width: 100vw;
+            overflow: hidden;
+            position: relative;
+            padding: 1rem 0;
+        }
+
+        .gallery-track {
+            display: flex;
+            gap: 1.5rem;
+            padding: 0.5rem 4vw;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+            scroll-behavior: smooth;
+            cursor: grab;
+            scrollbar-width: thin;
+            scrollbar-color: rgba(200, 160, 180, 0.2) transparent;
+            padding-bottom: 1.5rem;
+        }
+
+        .gallery-track::-webkit-scrollbar {
+            height: 4px;
+        }
+        .gallery-track::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .gallery-track::-webkit-scrollbar-thumb {
+            background: rgba(200, 160, 180, 0.25);
+            border-radius: 8px;
+        }
+        .gallery-track::-webkit-scrollbar-thumb:hover {
+            background: rgba(200, 160, 180, 0.4);
+        }
+
+        .gallery-card {
+            flex: 0 0 280px;
+            scroll-snap-align: start;
+            background: rgba(26, 17, 16, 0.55);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(200, 160, 180, 0.08);
+            border-radius: 1.8rem;
+            overflow: hidden;
+            transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            transform: scale(0.96);
+            opacity: 0.7;
+            min-height: 360px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .gallery-card:hover {
+            transform: scale(1.02) translateY(-6px);
+            opacity: 1;
+            border-color: rgba(200, 160, 180, 0.2);
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
+        }
+
+        .gallery-card .card-image {
+            height: 200px;
+            background: linear-gradient(135deg, rgba(180, 100, 120, 0.15), rgba(200, 160, 180, 0.08));
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 4rem 2rem;
+            font-size: 4rem;
             position: relative;
+            overflow: hidden;
         }
 
+        .gallery-card .card-image .tulip-bg {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0.3;
+            font-size: 6rem;
+        }
+
+        .gallery-card .card-body {
+            padding: 1.5rem 1.5rem 1.8rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .gallery-card .card-body h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            color: #f5ece6;
+            margin-bottom: 0.3rem;
+            font-weight: 600;
+        }
+
+        .gallery-card .card-body p {
+            font-size: 0.85rem;
+            color: rgba(245, 236, 230, 0.5);
+            font-weight: 300;
+            letter-spacing: 0.02em;
+        }
+
+        .gallery-card .card-body .caption {
+            margin-top: 0.4rem;
+            font-size: 0.75rem;
+            color: rgba(200, 160, 180, 0.5);
+            font-style: italic;
+            letter-spacing: 0.05em;
+        }
+
+        /* ── Gift Reveal ── */
+        .gift-container {
+            perspective: 1200px;
+        }
+
+        .gift-box {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto;
+            position: relative;
+            cursor: pointer;
+            transform-style: preserve-3d;
+            transition: transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .gift-box:hover {
+            transform: scale(1.04);
+        }
+
+        .gift-box.opened {
+            transform: rotateY(180deg) scale(1.02);
+        }
+
+        .gift-box .gift-front,
+        .gift-box .gift-back {
+            position: absolute;
+            inset: 0;
+            border-radius: 2rem;
+            backface-visibility: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .gift-box .gift-front {
+            background: linear-gradient(145deg, rgba(180, 100, 120, 0.25), rgba(200, 160, 180, 0.10));
+            border: 1px solid rgba(200, 160, 180, 0.15);
+            backdrop-filter: blur(12px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(245, 236, 230, 0.05);
+        }
+
+        .gift-box .gift-front .ribbon {
+            font-size: 3.5rem;
+            margin-bottom: 0.2rem;
+            animation: pulseGift 2.4s ease-in-out infinite;
+        }
+
+        @keyframes pulseGift {
+            0%,
+            100% {
+                transform: scale(1) rotate(0deg);
+            }
+            50% {
+                transform: scale(1.06) rotate(3deg);
+            }
+        }
+
+        .gift-box .gift-front .label {
+            font-size: 0.8rem;
+            color: rgba(245, 236, 230, 0.4);
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            margin-top: 0.2rem;
+        }
+
+        .gift-box .gift-back {
+            background: linear-gradient(145deg, rgba(26, 17, 16, 0.85), rgba(40, 25, 25, 0.90));
+            border: 1px solid rgba(200, 160, 180, 0.12);
+            transform: rotateY(180deg);
+            backdrop-filter: blur(12px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+        }
+
+        .gift-box .gift-back .reveal-icon {
+            font-size: 2.8rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .gift-box .gift-back .reveal-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            color: #f5ece6;
+            font-weight: 400;
+            line-height: 1.5;
+        }
+
+        .gift-box .gift-back .reveal-text em {
+            color: #e8c4c8;
+            font-style: italic;
+        }
+
+        /* ── Confetti Canvas ── */
+        #confetti-canvas {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 10;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* ── Message Section ── */
         .message-card {
-            max-width: 720px;
+            max-width: 680px;
             width: 100%;
             padding: 3.5rem 2.5rem;
-            background: rgba(26, 15, 15, 0.65);
+            background: rgba(26, 17, 16, 0.60);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(212, 165, 116, 0.12);
-            border-radius: 2rem;
-            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(245, 236, 230, 0.04);
+            border: 1px solid rgba(200, 160, 180, 0.08);
+            border-radius: 2.4rem;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(245, 236, 230, 0.03);
             opacity: 0;
             transform: translateY(50px) scale(0.97);
             transition: opacity 1.2s cubic-bezier(0.22, 1, 0.36, 1),
@@ -385,134 +573,121 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 1rem;
+            gap: 0.8rem;
             margin-bottom: 1.5rem;
-            color: #d4a574;
-            font-size: 0.8rem;
+            color: rgba(200, 160, 180, 0.4);
+            font-size: 0.7rem;
             letter-spacing: 0.3em;
             text-transform: uppercase;
-            opacity: 0.5;
         }
         .message-card .ornament span {
-            font-size: 1.4rem;
-            opacity: 0.6;
+            font-size: 1.2rem;
+            opacity: 0.5;
         }
 
         .message-card h2 {
             font-family: 'Playfair Display', serif;
-            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            font-size: clamp(1.6rem, 3.6vw, 2.6rem);
             font-weight: 600;
             color: #f5ece6;
-            margin-bottom: 1.2rem;
-            line-height: 1.2;
+            margin-bottom: 1rem;
+            line-height: 1.25;
         }
         .message-card h2 em {
-            color: #d4a574;
+            color: #e8c4c8;
             font-style: italic;
             font-weight: 400;
         }
 
         .message-card p {
-            font-size: clamp(1rem, 1.4vw, 1.15rem);
-            line-height: 1.8;
-            color: rgba(245, 236, 230, 0.75);
+            font-size: clamp(0.95rem, 1.3vw, 1.1rem);
+            line-height: 1.9;
+            color: rgba(245, 236, 230, 0.7);
             font-weight: 300;
             letter-spacing: 0.01em;
         }
-        .message-card p + p {
+        .message-card p+p {
             margin-top: 1.2rem;
         }
         .message-card .signature {
             margin-top: 2rem;
             font-family: 'Playfair Display', serif;
             font-style: italic;
-            font-size: 1.3rem;
-            color: #d4a574;
+            font-size: 1.2rem;
+            color: #e8c4c8;
             text-align: right;
-            opacity: 0.7;
+            opacity: 0.6;
         }
 
-        /* ── Wishes Section ── */
-        #wishes {
+        /* ── Final Wish ── */
+        #final {
             min-height: 100vh;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 4rem 2rem;
+            text-align: center;
+            padding: 3rem 2rem;
             position: relative;
         }
 
-        .wishes-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.5rem;
-            max-width: 800px;
-            width: 100%;
+        .final-content {
             opacity: 0;
-            transform: translateY(40px);
-            transition: opacity 1.2s cubic-bezier(0.22, 1, 0.36, 1),
-                transform 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+            transform: translateY(30px);
+            transition: opacity 1.4s cubic-bezier(0.22, 1, 0.36, 1),
+                transform 1.4s cubic-bezier(0.22, 1, 0.36, 1);
         }
-        .wishes-grid.visible {
+        .final-content.visible {
             opacity: 1;
             transform: translateY(0);
         }
 
-        .wish-item {
-            background: rgba(26, 15, 15, 0.5);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(212, 165, 116, 0.08);
-            border-radius: 1.2rem;
-            padding: 1.8rem 1.2rem;
-            text-align: center;
-            transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-            cursor: default;
+        .final-content h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 5vw, 3.8rem);
+            font-weight: 600;
+            color: #f5ece6;
+            line-height: 1.2;
         }
-        .wish-item:hover {
-            transform: translateY(-6px);
-            border-color: rgba(212, 165, 116, 0.25);
-            background: rgba(26, 15, 15, 0.7);
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+        .final-content h2 em {
+            color: #e8c4c8;
+            font-style: italic;
+            font-weight: 400;
         }
-        .wish-item .icon {
-            font-size: 2.2rem;
-            margin-bottom: 0.6rem;
-            display: block;
-            opacity: 0.7;
-        }
-        .wish-item .label {
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            letter-spacing: 0.15em;
-            color: rgba(212, 165, 116, 0.5);
-            margin-bottom: 0.3rem;
-        }
-        .wish-item .text {
-            font-size: 0.95rem;
-            color: rgba(245, 236, 230, 0.8);
+
+        .final-content .final-sub {
+            font-size: clamp(0.9rem, 1.4vw, 1.2rem);
+            color: rgba(245, 236, 230, 0.4);
+            margin-top: 0.8rem;
             font-weight: 300;
-            line-height: 1.5;
+            letter-spacing: 0.05em;
+        }
+
+        .final-content .final-line {
+            width: 60px;
+            height: 1.5px;
+            background: linear-gradient(90deg, transparent, #e8c4c8, transparent);
+            margin: 1.5rem auto 0;
         }
 
         /* ── Footer ── */
         #footer {
-            padding: 2.5rem 2rem;
+            padding: 2rem 2rem;
             text-align: center;
-            border-top: 1px solid rgba(212, 165, 116, 0.06);
+            border-top: 1px solid rgba(200, 160, 180, 0.04);
             position: relative;
             z-index: 2;
-            background: rgba(26, 15, 15, 0.5);
+            background: rgba(26, 17, 16, 0.40);
             backdrop-filter: blur(8px);
         }
         #footer p {
-            font-size: 0.75rem;
-            color: rgba(245, 236, 230, 0.25);
+            font-size: 0.7rem;
+            color: rgba(245, 236, 230, 0.15);
             letter-spacing: 0.15em;
             text-transform: uppercase;
         }
         #footer .heart {
-            color: #8b3a3a;
+            color: #d4a0b0;
             display: inline-block;
             animation: pulseHeart 2.4s ease-in-out infinite;
         }
@@ -527,25 +702,73 @@
         }
 
         /* ── Responsive ── */
-        @media (max-width: 640px) {
+        @media (max-width: 768px) {
+            .gallery-card {
+                flex: 0 0 220px;
+                min-height: 280px;
+            }
+            .gallery-card .card-image {
+                height: 150px;
+                font-size: 3rem;
+            }
+            .gallery-card .card-body h4 {
+                font-size: 0.95rem;
+            }
+            .gallery-track {
+                gap: 1rem;
+                padding: 0.5rem 3vw;
+            }
             .message-card {
-                padding: 2rem 1.2rem;
-                border-radius: 1.2rem;
+                padding: 2.2rem 1.5rem;
+                border-radius: 1.6rem;
             }
-            .wishes-grid {
-                grid-template-columns: 1fr 1fr;
-                gap: 0.8rem;
+            .gift-box {
+                width: 160px;
+                height: 160px;
             }
-            .wish-item {
-                padding: 1.2rem 0.8rem;
+            .gift-box .gift-front .ribbon {
+                font-size: 2.8rem;
             }
-            .wish-item .text {
-                font-size: 0.85rem;
+            .gift-box .gift-back .reveal-icon {
+                font-size: 2.2rem;
+            }
+            .gift-box .gift-back .reveal-text {
+                font-size: 0.95rem;
             }
         }
-        @media (max-width: 400px) {
-            .wishes-grid {
-                grid-template-columns: 1fr;
+
+        @media (max-width: 480px) {
+            .gallery-card {
+                flex: 0 0 180px;
+                min-height: 240px;
+                border-radius: 1.2rem;
+            }
+            .gallery-card .card-image {
+                height: 120px;
+                font-size: 2.4rem;
+            }
+            .gallery-card .card-body {
+                padding: 1rem 1rem 1.2rem;
+            }
+            .gallery-card .card-body h4 {
+                font-size: 0.85rem;
+            }
+            .gallery-card .card-body p {
+                font-size: 0.75rem;
+            }
+            .gallery-track {
+                gap: 0.8rem;
+                padding: 0.5rem 2vw;
+            }
+            .message-card {
+                padding: 1.8rem 1.2rem;
+            }
+            .gift-box {
+                width: 140px;
+                height: 140px;
+            }
+            .gift-box .gift-front .ribbon {
+                font-size: 2.4rem;
             }
         }
 
@@ -554,23 +777,63 @@
             width: 4px;
         }
         ::-webkit-scrollbar-track {
-            background: #1a0f0f;
+            background: #1a1110;
         }
         ::-webkit-scrollbar-thumb {
-            background: #8b3a3a;
+            background: rgba(180, 100, 120, 0.3);
             border-radius: 4px;
         }
         ::-webkit-scrollbar-thumb:hover {
-            background: #d4a574;
+            background: rgba(200, 160, 180, 0.4);
         }
 
-        /* ── Selection ── */
         ::selection {
-            background: #8b3a3a;
+            background: rgba(180, 100, 120, 0.3);
             color: #f5ece6;
         }
 
-        /* ── Smooth Load ── */
+        /* ── Glassmorphism helpers ── */
+        .glass {
+            background: rgba(26, 17, 16, 0.50);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(200, 160, 180, 0.06);
+        }
+
+        /* ── Gallery section title ── */
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.4rem, 3vw, 2.2rem);
+            font-weight: 600;
+            color: #f5ece6;
+            text-align: center;
+            margin-bottom: 1.2rem;
+            letter-spacing: 0.02em;
+        }
+        .section-title em {
+            color: #e8c4c8;
+            font-style: italic;
+            font-weight: 400;
+        }
+
+        .section-sub {
+            text-align: center;
+            color: rgba(245, 236, 230, 0.3);
+            font-size: 0.8rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            margin-bottom: 0.8rem;
+        }
+
+        /* ── Butterfly in final section ── */
+        .final-butterflies {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        /* ── smooth load ── */
         .no-transition {
             transition: none !important;
         }
@@ -582,97 +845,100 @@
     <div class="cinematic-overlay"></div>
     <div class="film-grain"></div>
     <div class="vignette"></div>
-    <canvas id="particle-canvas"></canvas>
+
+    <!-- ─── Confetti Canvas ─── -->
+    <canvas id="confetti-canvas"></canvas>
 
     <!-- ─── Floating Decorations ─── -->
     <div class="float-group" aria-hidden="true">
 
         <!-- Butterfly 1 -->
-        <div class="float-item butterfly-sway" style="top:8%; left:5%; animation-delay:0.2s; opacity:0;">
-            <svg class="butterfly" width="48" height="44" viewBox="0 0 100 92" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <div class="float-item butterfly-sway" style="top:6%; left:4%; animation-delay:0.2s;">
+            <svg class="butterfly" width="44" height="40" viewBox="0 0 100 92" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <g class="wing" style="transform-origin:50% 50%;">
-                    <path d="M50 46 C38 28 12 18 8 34 C4 50 22 58 50 46Z" fill="#e8a0b4" opacity="0.7"/>
-                    <path d="M50 46 C44 32 18 26 14 38 C10 50 28 54 50 46Z" fill="#d4849a" opacity="0.5"/>
-                    <circle cx="32" cy="34" r="4" fill="#f5ece6" opacity="0.15"/>
+                    <path d="M50 46 C36 26 10 16 6 32 C2 48 22 56 50 46Z" fill="#e8c4c8" opacity="0.55"/>
+                    <path d="M50 46 C44 30 16 24 12 36 C8 48 28 52 50 46Z" fill="#d4a0b0" opacity="0.35"/>
+                    <circle cx="30" cy="32" r="4" fill="#f5ece6" opacity="0.10"/>
                 </g>
                 <g class="wing wing-right" style="transform-origin:50% 50%;">
-                    <path d="M50 46 C62 28 88 18 92 34 C96 50 78 58 50 46Z" fill="#e8a0b4" opacity="0.7"/>
-                    <path d="M50 46 C56 32 82 26 86 38 C90 50 72 54 50 46Z" fill="#d4849a" opacity="0.5"/>
-                    <circle cx="68" cy="34" r="4" fill="#f5ece6" opacity="0.15"/>
+                    <path d="M50 46 C64 26 90 16 94 32 C98 48 78 56 50 46Z" fill="#e8c4c8" opacity="0.55"/>
+                    <path d="M50 46 C56 30 84 24 88 36 C92 48 72 52 50 46Z" fill="#d4a0b0" opacity="0.35"/>
+                    <circle cx="70" cy="32" r="4" fill="#f5ece6" opacity="0.10"/>
                 </g>
-                <ellipse cx="50" cy="46" rx="4" ry="18" fill="#2d1b1b" opacity="0.6"/>
-                <line x1="46" y1="28" x2="38" y2="16" stroke="#2d1b1b" stroke-width="1.5" opacity="0.4"/>
-                <line x1="54" y1="28" x2="62" y2="16" stroke="#2d1b1b" stroke-width="1.5" opacity="0.4"/>
-                <circle cx="38" cy="14" r="1.5" fill="#d4a574" opacity="0.4"/>
-                <circle cx="62" cy="14" r="1.5" fill="#d4a574" opacity="0.4"/>
+                <ellipse cx="50" cy="46" rx="4" ry="18" fill="#2d1b1b" opacity="0.5"/>
+                <line x1="46" y1="28" x2="38" y2="16" stroke="#2d1b1b" stroke-width="1.5" opacity="0.3"/>
+                <line x1="54" y1="28" x2="62" y2="16" stroke="#2d1b1b" stroke-width="1.5" opacity="0.3"/>
+                <circle cx="38" cy="14" r="1.5" fill="#e8c4c8" opacity="0.3"/>
+                <circle cx="62" cy="14" r="1.5" fill="#e8c4c8" opacity="0.3"/>
             </svg>
         </div>
 
         <!-- Butterfly 2 -->
-        <div class="float-item butterfly-sway-2" style="bottom:12%; right:4%; animation-delay:0.9s; opacity:0;">
-            <svg class="butterfly" width="36" height="33" viewBox="0 0 100 92" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <div class="float-item butterfly-sway-2" style="bottom:10%; right:3%; animation-delay:0.8s;">
+            <svg class="butterfly" width="34" height="30" viewBox="0 0 100 92" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <g class="wing" style="transform-origin:50% 50%;">
-                    <path d="M50 46 C38 28 12 18 8 34 C4 50 22 58 50 46Z" fill="#d4a574" opacity="0.5"/>
-                    <path d="M50 46 C44 32 18 26 14 38 C10 50 28 54 50 46Z" fill="#c4956a" opacity="0.35"/>
+                    <path d="M50 46 C38 28 12 18 8 34 C4 50 22 58 50 46Z" fill="#d4c5d9" opacity="0.45"/>
+                    <path d="M50 46 C44 32 18 26 14 38 C10 50 28 54 50 46Z" fill="#c5b5d0" opacity="0.30"/>
                 </g>
                 <g class="wing wing-right" style="transform-origin:50% 50%;">
-                    <path d="M50 46 C62 28 88 18 92 34 C96 50 78 58 50 46Z" fill="#d4a574" opacity="0.5"/>
-                    <path d="M50 46 C56 32 82 26 86 38 C90 50 72 54 50 46Z" fill="#c4956a" opacity="0.35"/>
+                    <path d="M50 46 C62 28 88 18 92 34 C96 50 78 58 50 46Z" fill="#d4c5d9" opacity="0.45"/>
+                    <path d="M50 46 C56 32 82 26 86 38 C90 50 72 54 50 46Z" fill="#c5b5d0" opacity="0.30"/>
                 </g>
-                <ellipse cx="50" cy="46" rx="3.5" ry="15" fill="#2d1b1b" opacity="0.5"/>
-                <line x1="46" y1="30" x2="40" y2="20" stroke="#2d1b1b" stroke-width="1.2" opacity="0.3"/>
-                <line x1="54" y1="30" x2="60" y2="20" stroke="#2d1b1b" stroke-width="1.2" opacity="0.3"/>
+                <ellipse cx="50" cy="46" rx="3.5" ry="14" fill="#2d1b1b" opacity="0.4"/>
+                <line x1="46" y1="30" x2="40" y2="20" stroke="#2d1b1b" stroke-width="1.2" opacity="0.25"/>
+                <line x1="54" y1="30" x2="60" y2="20" stroke="#2d1b1b" stroke-width="1.2" opacity="0.25"/>
             </svg>
         </div>
 
         <!-- Butterfly 3 -->
-        <div class="float-item butterfly-sway-3" style="top:50%; left:2%; animation-delay:1.6s; opacity:0;">
-            <svg class="butterfly" width="30" height="28" viewBox="0 0 100 92" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <div class="float-item butterfly-sway-3" style="top:45%; left:1%; animation-delay:1.4s;">
+            <svg class="butterfly" width="28" height="26" viewBox="0 0 100 92" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <g class="wing" style="transform-origin:50% 50%;">
-                    <path d="M50 46 C38 28 12 18 8 34 C4 50 22 58 50 46Z" fill="#bda0b0" opacity="0.4"/>
-                    <path d="M50 46 C44 32 18 26 14 38 C10 50 28 54 50 46Z" fill="#a88a9a" opacity="0.25"/>
+                    <path d="M50 46 C38 28 12 18 8 34 C4 50 22 58 50 46Z" fill="#c5d5c5" opacity="0.35"/>
+                    <path d="M50 46 C44 32 18 26 14 38 C10 50 28 54 50 46Z" fill="#b0c8b0" opacity="0.25"/>
                 </g>
                 <g class="wing wing-right" style="transform-origin:50% 50%;">
-                    <path d="M50 46 C62 28 88 18 92 34 C96 50 78 58 50 46Z" fill="#bda0b0" opacity="0.4"/>
-                    <path d="M50 46 C56 32 82 26 86 38 C90 50 72 54 50 46Z" fill="#a88a9a" opacity="0.25"/>
+                    <path d="M50 46 C62 28 88 18 92 34 C96 50 78 58 50 46Z" fill="#c5d5c5" opacity="0.35"/>
+                    <path d="M50 46 C56 32 82 26 86 38 C90 50 72 54 50 46Z" fill="#b0c8b0" opacity="0.25"/>
                 </g>
-                <ellipse cx="50" cy="46" rx="3" ry="12" fill="#2d1b1b" opacity="0.4"/>
+                <ellipse cx="50" cy="46" rx="3" ry="12" fill="#2d1b1b" opacity="0.35"/>
             </svg>
         </div>
 
         <!-- Tulip 1 -->
-        <div class="float-item tulip-sway" style="bottom:15%; left:8%; animation-delay:0.4s; opacity:0;">
-            <svg class="tulip" width="40" height="56" viewBox="0 0 60 84" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M30 84 L30 48" stroke="#4a7c59" stroke-width="2.5" opacity="0.4"/>
-                <path d="M30 64 Q22 56 18 60 Q14 64 18 68 Q22 72 30 68Z" fill="#4a7c59" opacity="0.25"/>
-                <path d="M30 48 C26 36 18 32 14 38 C10 44 12 52 20 54 C28 56 32 50 30 48Z" fill="#8b3a3a" opacity="0.7"/>
-                <path d="M30 48 C34 36 42 32 46 38 C50 44 48 52 40 54 C32 56 28 50 30 48Z" fill="#a04545" opacity="0.6"/>
-                <path d="M30 48 C28 40 24 38 20 42 C16 46 18 50 24 50 C30 50 32 46 30 48Z" fill="#c45a5a" opacity="0.35"/>
-                <path d="M30 48 L30 42" stroke="#6b2a2a" stroke-width="1.5" opacity="0.3"/>
+        <div class="float-item tulip-sway" style="bottom:12%; left:6%; animation-delay:0.3s;">
+            <svg class="tulip" width="36" height="50" viewBox="0 0 60 84" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M30 84 L30 48" stroke="#c5d5c5" stroke-width="2" opacity="0.3"/>
+                <path d="M30 64 Q22 56 18 60 Q14 64 18 68 Q22 72 30 68Z" fill="#c5d5c5" opacity="0.20"/>
+                <path d="M30 48 C26 36 18 32 14 38 C10 44 12 52 20 54 C28 56 32 50 30 48Z" fill="#e8c4c8" opacity="0.55"/>
+                <path d="M30 48 C34 36 42 32 46 38 C50 44 48 52 40 54 C32 56 28 50 30 48Z" fill="#d4a0b0" opacity="0.45"/>
+                <path d="M30 48 C28 40 24 38 20 42 C16 46 18 50 24 50 C30 50 32 46 30 48Z" fill="#f0d0d8" opacity="0.30"/>
+                <path d="M30 48 L30 42" stroke="#a07080" stroke-width="1.2" opacity="0.25"/>
             </svg>
         </div>
 
         <!-- Tulip 2 -->
-        <div class="float-item tulip-sway-2" style="top:25%; right:6%; animation-delay:1.0s; opacity:0;">
-            <svg class="tulip" width="32" height="46" viewBox="0 0 60 84" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M30 84 L30 52" stroke="#4a7c59" stroke-width="2" opacity="0.35"/>
-                <path d="M30 68 Q24 62 20 66 Q16 70 20 74 Q24 78 30 74Z" fill="#4a7c59" opacity="0.2"/>
-                <path d="M30 52 C26 42 18 38 14 44 C10 50 12 58 20 60 C28 62 32 56 30 52Z" fill="#bda0b0" opacity="0.6"/>
-                <path d="M30 52 C34 42 42 38 46 44 C50 50 48 58 40 60 C32 62 28 56 30 52Z" fill="#c9aebb" opacity="0.5"/>
-                <path d="M30 52 L30 46" stroke="#6b4a5a" stroke-width="1.2" opacity="0.25"/>
+        <div class="float-item tulip-sway-2" style="top:22%; right:4%; animation-delay:0.9s;">
+            <svg class="tulip" width="30" height="42" viewBox="0 0 60 84" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M30 84 L30 52" stroke="#c5d5c5" stroke-width="1.8" opacity="0.25"/>
+                <path d="M30 68 Q24 62 20 66 Q16 70 20 74 Q24 78 30 74Z" fill="#c5d5c5" opacity="0.15"/>
+                <path d="M30 52 C26 42 18 38 14 44 C10 50 12 58 20 60 C28 62 32 56 30 52Z" fill="#d4c5d9" opacity="0.50"/>
+                <path d="M30 52 C34 42 42 38 46 44 C50 50 48 58 40 60 C32 62 28 56 30 52Z" fill="#c5b5d0" opacity="0.40"/>
+                <path d="M30 52 L30 46" stroke="#8a7a90" stroke-width="1" opacity="0.20"/>
             </svg>
         </div>
 
         <!-- Tulip 3 -->
-        <div class="float-item tulip-sway" style="top:70%; right:14%; animation-delay:1.8s; opacity:0;">
-            <svg class="tulip" width="28" height="40" viewBox="0 0 60 84" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M30 84 L30 54" stroke="#4a7c59" stroke-width="1.8" opacity="0.3"/>
-                <path d="M30 54 C26 44 18 40 14 46 C10 52 12 60 20 62 C28 64 32 58 30 54Z" fill="#d4a574" opacity="0.55"/>
-                <path d="M30 54 C34 44 42 40 46 46 C50 52 48 60 40 62 C32 64 28 58 30 54Z" fill="#e0b88a" opacity="0.45"/>
-                <path d="M30 54 L30 48" stroke="#8b6b4a" stroke-width="1" opacity="0.2"/>
+        <div class="float-item tulip-sway" style="top:60%; right:12%; animation-delay:1.6s;">
+            <svg class="tulip" width="26" height="36" viewBox="0 0 60 84" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M30 84 L30 54" stroke="#c5d5c5" stroke-width="1.6" opacity="0.2"/>
+                <path d="M30 54 C26 44 18 40 14 46 C10 52 12 60 20 62 C28 64 32 58 30 54Z" fill="#f0d0d8" opacity="0.45"/>
+                <path d="M30 54 C34 44 42 40 46 46 C50 52 48 60 40 62 C32 64 28 58 30 54Z" fill="#e8c4c8" opacity="0.35"/>
+                <path d="M30 54 L30 48" stroke="#a07080" stroke-width="0.8" opacity="0.15"/>
             </svg>
         </div>
 
+        <!-- Extra butterfly for final section (hidden, will be shown in final) -->
     </div>
 
     <!-- ─── Scroll Container ─── -->
@@ -682,32 +948,148 @@
         <section id="hero" class="section">
             <div class="relative z-10 max-w-4xl mx-auto">
                 <h1 class="hero-title">Happy<br />Birthday</h1>
-                <p class="hero-sub">— a celebration of you —</p>
+                <p class="hero-sub">— a gift of tulips &amp; butterflies —</p>
                 <div class="hero-line"></div>
             </div>
 
-            <!-- Scroll Indicator -->
-            <div class="scroll-indicator" onclick="document.getElementById('message').scrollIntoView({behavior:'smooth'})">
-                <div class="mouse">
-                    <div class="dot"></div>
-                </div>
-                <span>Scroll</span>
+            <div class="scroll-indicator" onclick="document.getElementById('gallery').scrollIntoView({behavior:'smooth'})">
+                <div class="mouse"><div class="dot"></div></div>
+                <span>Explore</span>
             </div>
+        </section>
+
+        <!-- ─── GALLERY (Horizontal Scroll) ─── -->
+        <section id="gallery" class="section" style="min-height:auto; padding:4rem 0 3rem; flex-direction:column;">
+            <div class="section-sub">— memories in bloom —</div>
+            <h2 class="section-title">A <em>garden</em> of moments</h2>
+
+            <div class="gallery-wrapper">
+                <div class="gallery-track" id="galleryTrack">
+                    <!-- Card 1 -->
+                    <div class="gallery-card">
+                        <div class="card-image">
+                            <span class="tulip-bg">🌷</span>
+                            <span style="font-size:3.2rem; position:relative; z-index:1;">🌅</span>
+                        </div>
+                        <div class="card-body">
+                            <h4>First Light</h4>
+                            <p>Morning sun through tulip petals</p>
+                            <div class="caption">— a new beginning</div>
+                        </div>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div class="gallery-card">
+                        <div class="card-image">
+                            <span class="tulip-bg">🦋</span>
+                            <span style="font-size:3.2rem; position:relative; z-index:1;">🌸</span>
+                        </div>
+                        <div class="card-body">
+                            <h4>Butterfly Kiss</h4>
+                            <p>Soft wings brushing the breeze</p>
+                            <div class="caption">— gentle &amp; free</div>
+                        </div>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="gallery-card">
+                        <div class="card-image">
+                            <span class="tulip-bg">🌷</span>
+                            <span style="font-size:3.2rem; position:relative; z-index:1;">💐</span>
+                        </div>
+                        <div class="card-body">
+                            <h4>Bouquet of Joy</h4>
+                            <p>Colors that speak without words</p>
+                            <div class="caption">— happiness in bloom</div>
+                        </div>
+                    </div>
+
+                    <!-- Card 4 -->
+                    <div class="gallery-card">
+                        <div class="card-image">
+                            <span class="tulip-bg">🦋</span>
+                            <span style="font-size:3.2rem; position:relative; z-index:1;">✨</span>
+                        </div>
+                        <div class="card-body">
+                            <h4>Golden Hour</h4>
+                            <p>Light dancing through the garden</p>
+                            <div class="caption">— warmth &amp; wonder</div>
+                        </div>
+                    </div>
+
+                    <!-- Card 5 -->
+                    <div class="gallery-card">
+                        <div class="card-image">
+                            <span class="tulip-bg">🌷</span>
+                            <span style="font-size:3.2rem; position:relative; z-index:1;">🌙</span>
+                        </div>
+                        <div class="card-body">
+                            <h4>Moonlit Tulips</h4>
+                            <p>Silent beauty under the stars</p>
+                            <div class="caption">— calm &amp; serene</div>
+                        </div>
+                    </div>
+
+                    <!-- Card 6 -->
+                    <div class="gallery-card">
+                        <div class="card-image">
+                            <span class="tulip-bg">🦋</span>
+                            <span style="font-size:3.2rem; position:relative; z-index:1;">🌺</span>
+                        </div>
+                        <div class="card-body">
+                            <h4>Wings of Love</h4>
+                            <p>Butterflies carrying whispers</p>
+                            <div class="caption">— tender &amp; true</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Gallery hint -->
+            <div style="text-align:center; margin-top:0.5rem; font-size:0.7rem; color:rgba(245,236,230,0.15); letter-spacing:0.1em; user-select:none;">
+                ← scroll to explore →
+            </div>
+        </section>
+
+        <!-- ─── GIFT REVEAL ─── -->
+        <section id="gift" class="section" style="min-height:80vh; flex-direction:column; gap:1.5rem;">
+            <div class="section-sub">— a little surprise —</div>
+            <h2 class="section-title" style="margin-bottom:0.2rem;">Open your <em>gift</em></h2>
+
+            <div class="gift-container" style="margin-top:0.5rem;">
+                <div class="gift-box" id="giftBox">
+                    <div class="gift-front">
+                        <div class="ribbon">🎁</div>
+                        <div class="label">tap to open</div>
+                    </div>
+                    <div class="gift-back">
+                        <div class="reveal-icon">💌</div>
+                        <div class="reveal-text">
+                            You are <em>loved</em> <br />
+                            more than you know.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <p style="font-size:0.8rem; color:rgba(245,236,230,0.25); margin-top:0.8rem; max-width:360px; text-align:center; font-weight:300; letter-spacing:0.02em;">
+                A little flower of love, blooming just for you.
+            </p>
         </section>
 
         <!-- ─── MESSAGE ─── -->
         <section id="message" class="section">
             <div class="message-card" id="messageCard">
                 <div class="ornament">
-                    <span>✧</span> &nbsp; May your day be filled with light &nbsp; <span>✧</span>
+                    <span>✧</span> &nbsp; from the heart &nbsp; <span>✧</span>
                 </div>
                 <h2>
-                    A little note for<br />
-                    <em>you</em>
+                    For the one who<br />
+                    <em>makes the world bloom</em>
                 </h2>
                 <p>
                     Like tulips that turn their faces toward the sun,<br />
-                    may you always find warmth and beauty in every moment.
+                    may you always find warmth in every moment.
                 </p>
                 <p>
                     Like butterflies that dance on the gentlest breeze,<br />
@@ -715,35 +1097,63 @@
                 </p>
                 <p>
                     Today, the world pauses to celebrate the unique<br />
-                    light that only you can bring. Happy birthday.
+                    light that only you can bring.
                 </p>
                 <div class="signature">— with love, always</div>
             </div>
         </section>
 
-        <!-- ─── WISHES ─── -->
-        <section id="wishes" class="section">
-            <div class="wishes-grid" id="wishesGrid">
-                <div class="wish-item">
-                    <span class="icon">🦋</span>
-                    <div class="label">Grace</div>
-                    <div class="text">May you move through life with the ease of a butterfly.</div>
+        <!-- ─── FINAL WISH ─── -->
+        <section id="final" class="section">
+            <div class="final-butterflies">
+                <div class="float-item butterfly-sway" style="top:15%; left:8%; animation-delay:0.2s;">
+                    <svg class="butterfly" width="40" height="36" viewBox="0 0 100 92" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g class="wing" style="transform-origin:50% 50%;">
+                            <path d="M50 46 C38 28 12 18 8 34 C4 50 22 58 50 46Z" fill="#e8c4c8" opacity="0.40"/>
+                            <path d="M50 46 C44 32 18 26 14 38 C10 50 28 54 50 46Z" fill="#d4a0b0" opacity="0.25"/>
+                        </g>
+                        <g class="wing wing-right" style="transform-origin:50% 50%;">
+                            <path d="M50 46 C62 28 88 18 92 34 C96 50 78 58 50 46Z" fill="#e8c4c8" opacity="0.40"/>
+                            <path d="M50 46 C56 32 82 26 86 38 C90 50 72 54 50 46Z" fill="#d4a0b0" opacity="0.25"/>
+                        </g>
+                        <ellipse cx="50" cy="46" rx="3.5" ry="14" fill="#2d1b1b" opacity="0.4"/>
+                    </svg>
                 </div>
-                <div class="wish-item">
-                    <span class="icon">🌷</span>
-                    <div class="label">Beauty</div>
-                    <div class="text">Like a tulip in bloom, may your beauty shine from within.</div>
+                <div class="float-item butterfly-sway-2" style="bottom:20%; right:6%; animation-delay:0.8s;">
+                    <svg class="butterfly" width="32" height="28" viewBox="0 0 100 92" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g class="wing" style="transform-origin:50% 50%;">
+                            <path d="M50 46 C38 28 12 18 8 34 C4 50 22 58 50 46Z" fill="#d4c5d9" opacity="0.35"/>
+                            <path d="M50 46 C44 32 18 26 14 38 C10 50 28 54 50 46Z" fill="#c5b5d0" opacity="0.20"/>
+                        </g>
+                        <g class="wing wing-right" style="transform-origin:50% 50%;">
+                            <path d="M50 46 C62 28 88 18 92 34 C96 50 78 58 50 46Z" fill="#d4c5d9" opacity="0.35"/>
+                            <path d="M50 46 C56 32 82 26 86 38 C90 50 72 54 50 46Z" fill="#c5b5d0" opacity="0.20"/>
+                        </g>
+                        <ellipse cx="50" cy="46" rx="3" ry="12" fill="#2d1b1b" opacity="0.35"/>
+                    </svg>
                 </div>
-                <div class="wish-item">
-                    <span class="icon">✨</span>
-                    <div class="label">Light</div>
-                    <div class="text">May your path always be lit by love and kindness.</div>
+                <div class="float-item butterfly-sway-3" style="top:50%; left:4%; animation-delay:1.4s;">
+                    <svg class="butterfly" width="26" height="24" viewBox="0 0 100 92" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g class="wing" style="transform-origin:50% 50%;">
+                            <path d="M50 46 C38 28 12 18 8 34 C4 50 22 58 50 46Z" fill="#c5d5c5" opacity="0.30"/>
+                            <path d="M50 46 C44 32 18 26 14 38 C10 50 28 54 50 46Z" fill="#b0c8b0" opacity="0.20"/>
+                        </g>
+                        <g class="wing wing-right" style="transform-origin:50% 50%;">
+                            <path d="M50 46 C62 28 88 18 92 34 C96 50 78 58 50 46Z" fill="#c5d5c5" opacity="0.30"/>
+                            <path d="M50 46 C56 32 82 26 86 38 C90 50 72 54 50 46Z" fill="#b0c8b0" opacity="0.20"/>
+                        </g>
+                        <ellipse cx="50" cy="46" rx="2.5" ry="10" fill="#2d1b1b" opacity="0.3"/>
+                    </svg>
                 </div>
-                <div class="wish-item">
-                    <span class="icon">🌅</span>
-                    <div class="label">Joy</div>
-                    <div class="text">May each sunrise bring you a new reason to smile.</div>
-                </div>
+            </div>
+
+            <div class="final-content" id="finalContent">
+                <h2>
+                    Wish you <em>happiness</em><br />
+                    forever
+                </h2>
+                <p class="final-sub">— may your days be filled with light and love —</p>
+                <div class="final-line"></div>
             </div>
         </section>
 
@@ -761,77 +1171,171 @@
         (function() {
             'use strict';
 
-            // ── Particle Canvas ──
-            const canvas = document.getElementById('particle-canvas');
-            const ctx = canvas.getContext('2d');
-            let w, h;
-            let particles = [];
-            const PARTICLE_COUNT = 80;
+            // ── Gallery: mouse wheel horizontal scroll ──
+            const track = document.getElementById('galleryTrack');
+            if (track) {
+                track.addEventListener('wheel', (e) => {
+                    e.preventDefault();
+                    track.scrollLeft += e.deltaY;
+                }, { passive: false });
 
-            function resize() {
-                w = canvas.width = window.innerWidth;
-                h = canvas.height = window.innerHeight;
+                // Drag to scroll
+                let isDown = false;
+                let startX;
+                let scrollLeft;
+
+                track.addEventListener('mousedown', (e) => {
+                    isDown = true;
+                    track.style.cursor = 'grabbing';
+                    startX = e.pageX - track.offsetLeft;
+                    scrollLeft = track.scrollLeft;
+                });
+
+                track.addEventListener('mouseleave', () => {
+                    isDown = false;
+                    track.style.cursor = 'grab';
+                });
+
+                track.addEventListener('mouseup', () => {
+                    isDown = false;
+                    track.style.cursor = 'grab';
+                });
+
+                track.addEventListener('mousemove', (e) => {
+                    if (!isDown) return;
+                    e.preventDefault();
+                    const x = e.pageX - track.offsetLeft;
+                    const walk = (x - startX) * 1.2;
+                    track.scrollLeft = scrollLeft - walk;
+                });
+
+                // Touch support
+                let touchStartX = 0;
+                let touchScrollLeft = 0;
+                track.addEventListener('touchstart', (e) => {
+                    touchStartX = e.touches[0].pageX - track.offsetLeft;
+                    touchScrollLeft = track.scrollLeft;
+                }, { passive: true });
+
+                track.addEventListener('touchmove', (e) => {
+                    const x = e.touches[0].pageX - track.offsetLeft;
+                    const walk = (x - touchStartX) * 1.2;
+                    track.scrollLeft = touchScrollLeft - walk;
+                }, { passive: true });
             }
-            window.addEventListener('resize', resize);
-            resize();
 
-            class Particle {
-                constructor() {
-                    this.reset();
+            // ── Gift Reveal ──
+            const giftBox = document.getElementById('giftBox');
+            let giftOpened = false;
+
+            giftBox.addEventListener('click', function(e) {
+                if (giftOpened) return;
+                giftOpened = true;
+                this.classList.add('opened');
+
+                // Launch confetti / flower bloom
+                launchConfetti();
+
+                // Small delay then show a subtle pulse
+                setTimeout(() => {
+                    this.style.animation = 'none';
+                }, 100);
+            });
+
+            // ── Confetti (flower petals + sparkles) ──
+            function launchConfetti() {
+                const canvas = document.getElementById('confetti-canvas');
+                const ctx = canvas.getContext('2d');
+                let w = window.innerWidth;
+                let h = window.innerHeight;
+                canvas.width = w;
+                canvas.height = h;
+
+                const particles = [];
+                const colors = ['#e8c4c8', '#d4a0b0', '#f0d0d8', '#d4c5d9', '#c5d5c5', '#f5ece6', '#f0d8c0'];
+                const shapes = ['🌸', '🦋', '🌷', '✨', '💮', '🌺'];
+
+                for (let i = 0; i < 60; i++) {
+                    particles.push({
+                        x: w / 2 + (Math.random() - 0.5) * 120,
+                        y: h / 2 + (Math.random() - 0.5) * 80,
+                        size: 12 + Math.random() * 18,
+                        speedX: (Math.random() - 0.5) * 8,
+                        speedY: -4 - Math.random() * 10,
+                        gravity: 0.08 + Math.random() * 0.06,
+                        rotation: Math.random() * Math.PI * 2,
+                        rotSpeed: (Math.random() - 0.5) * 0.06,
+                        shape: shapes[Math.floor(Math.random() * shapes.length)],
+                        color: colors[Math.floor(Math.random() * colors.length)],
+                        life: 1,
+                        decay: 0.004 + Math.random() * 0.006,
+                        drift: (Math.random() - 0.5) * 0.4,
+                    });
                 }
-                reset() {
-                    this.x = Math.random() * w;
-                    this.y = Math.random() * h;
-                    this.size = Math.random() * 2.5 + 0.8;
-                    this.speedX = (Math.random() - 0.5) * 0.15;
-                    this.speedY = (Math.random() - 0.5) * 0.12 - 0.04;
-                    this.opacity = Math.random() * 0.25 + 0.05;
-                    this.pulse = Math.random() * Math.PI * 2;
-                    this.pulseSpeed = 0.008 + Math.random() * 0.012;
-                }
-                update() {
-                    this.x += this.speedX;
-                    this.y += this.speedY;
-                    this.pulse += this.pulseSpeed;
-                    // wrap
-                    if (this.x < -10) this.x = w + 10;
-                    if (this.x > w + 10) this.x = -10;
-                    if (this.y < -10) this.y = h + 10;
-                    if (this.y > h + 10) this.y = -10;
-                }
-                draw() {
-                    const alpha = this.opacity * (0.7 + 0.3 * Math.sin(this.pulse));
-                    ctx.beginPath();
-                    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                    ctx.fillStyle = `rgba(245, 236, 230, ${alpha})`;
-                    ctx.fill();
-                    // soft glow
-                    if (this.size > 1.8) {
-                        ctx.beginPath();
-                        ctx.arc(this.x, this.y, this.size * 2.5, 0, Math.PI * 2);
-                        ctx.fillStyle = `rgba(212, 165, 116, ${alpha * 0.12})`;
-                        ctx.fill();
+
+                let frame = 0;
+                let active = true;
+
+                function drawConfetti() {
+                    if (!active) return;
+                    ctx.clearRect(0, 0, w, h);
+
+                    let allDead = true;
+                    for (const p of particles) {
+                        if (p.life <= 0) continue;
+                        allDead = false;
+
+                        p.x += p.speedX + p.drift * Math.sin(frame * 0.02 + p.rotation);
+                        p.y += p.speedY;
+                        p.speedY += p.gravity;
+                        p.speedX *= 0.995;
+                        p.rotation += p.rotSpeed;
+                        p.life -= p.decay;
+
+                        const alpha = Math.max(0, p.life);
+                        ctx.globalAlpha = alpha * 0.85;
+                        ctx.font = `${p.size}px sans-serif`;
+                        ctx.textAlign = 'center';
+                        ctx.textBaseline = 'middle';
+                        ctx.save();
+                        ctx.translate(p.x, p.y);
+                        ctx.rotate(p.rotation);
+                        ctx.fillStyle = p.color;
+                        ctx.fillText(p.shape, 0, 0);
+                        ctx.restore();
+
+                        // glow
+                        ctx.globalAlpha = alpha * 0.08;
+                        ctx.shadowColor = p.color;
+                        ctx.shadowBlur = 30;
+                        ctx.font = `${p.size * 1.8}px sans-serif`;
+                        ctx.fillText(p.shape, p.x, p.y);
+                        ctx.shadowBlur = 0;
+                    }
+
+                    ctx.globalAlpha = 1;
+
+                    if (!allDead) {
+                        frame++;
+                        requestAnimationFrame(drawConfetti);
+                    } else {
+                        active = false;
+                        ctx.clearRect(0, 0, w, h);
                     }
                 }
+
+                drawConfetti();
+
+                // Fade out after a few seconds
+                setTimeout(() => {
+                    active = false;
+                    ctx.clearRect(0, 0, w, h);
+                }, 5000);
             }
 
-            for (let i = 0; i < PARTICLE_COUNT; i++) {
-                particles.push(new Particle());
-            }
-
-            function drawParticles() {
-                ctx.clearRect(0, 0, w, h);
-                for (const p of particles) {
-                    p.update();
-                    p.draw();
-                }
-                requestAnimationFrame(drawParticles);
-            }
-            drawParticles();
-
-            // ── Scroll Reveal: Message ──
+            // ── Scroll Reveal: Message & Final ──
             const messageCard = document.getElementById('messageCard');
-            const wishesGrid = document.getElementById('wishesGrid');
+            const finalContent = document.getElementById('finalContent');
 
             const revealObserver = new IntersectionObserver((entries) => {
                 for (const entry of entries) {
@@ -840,14 +1344,14 @@
                     }
                 }
             }, {
-                threshold: 0.25,
+                threshold: 0.20,
                 rootMargin: '0px 0px -40px 0px'
             });
 
             if (messageCard) revealObserver.observe(messageCard);
-            if (wishesGrid) revealObserver.observe(wishesGrid);
+            if (finalContent) revealObserver.observe(finalContent);
 
-            // ── Parallax on floating items ──
+            // ── Parallax on float items ──
             const floatItems = document.querySelectorAll('.float-item');
             let mouseX = 0,
                 mouseY = 0;
@@ -864,40 +1368,41 @@
                 targetY += (mouseY - targetY) * 0.03;
 
                 floatItems.forEach((el, i) => {
-                    const speed = 0.6 + (i % 3) * 0.2;
-                    const dx = targetX * 20 * speed;
-                    const dy = targetY * 12 * speed;
-                    el.style.transform = `translate(${dx}px, ${dy}px)`;
+                    const speed = 0.5 + (i % 3) * 0.2;
+                    const dx = targetX * 18 * speed;
+                    const dy = targetY * 10 * speed;
+                    // Only apply if not in final section (they have their own animation)
+                    if (!el.closest('#final')) {
+                        el.style.transform = `translate(${dx}px, ${dy}px)`;
+                    }
                 });
 
                 requestAnimationFrame(animateParallax);
             }
             animateParallax();
 
-            // ── Cinematic entrance for float items ──
-            // They already have animation via CSS, just ensure they show
+            // ── Smooth scroll for indicator ──
+            document.querySelectorAll('.scroll-indicator').forEach((el) => {
+                el.addEventListener('click', function() {
+                    const target = document.querySelector(this.getAttribute('onclick')?.match(/'([^']+)'/)?.[1]) ||
+                        document.getElementById('gallery');
+                    if (target) target.scrollIntoView({ behavior: 'smooth' });
+                });
+            });
+
+            // ── Ensure all float items are visible ──
             document.querySelectorAll('.float-item').forEach((el) => {
                 el.style.opacity = '1';
             });
 
-            // ── Smooth anchor scroll ──
-            document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-                anchor.addEventListener('click', function(e) {
-                    const target = document.querySelector(this.getAttribute('href'));
-                    if (target) {
-                        e.preventDefault();
-                        target.scrollIntoView({ behavior: 'smooth' });
-                    }
-                });
+            // ── Resize confetti canvas ──
+            window.addEventListener('resize', () => {
+                const canvas = document.getElementById('confetti-canvas');
+                if (canvas) {
+                    canvas.width = window.innerWidth;
+                    canvas.height = window.innerHeight;
+                }
             });
-
-            // ── Keyboard scroll hint ──
-            let scrollHint = document.querySelector('.scroll-indicator');
-            if (scrollHint) {
-                scrollHint.addEventListener('click', () => {
-                    document.getElementById('message').scrollIntoView({ behavior: 'smooth' });
-                });
-            }
 
             console.log('🌸 A cinematic birthday celebration — made with love.');
         })();
