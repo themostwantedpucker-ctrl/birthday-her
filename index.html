@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Happy Birthday — A Cinematic Celebration</title>
+    <script src="https://cdn.tailwindcss.com">
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+    <style>
+        /* ── Reset & Base ── */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #1a0f0f;
+            color: #f5ece6;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        /* ── Typography ── */
+        .font-display {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* ── Cinematic Overlay ── */
+        .cinematic-overlay {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 0;
+            background:
+                radial-gradient(ellipse at 30% 20%, rgba(139, 58, 58, 0.25) 0%, transparent 60%),
+                radial-gradient(ellipse at 70% 80%, rgba(212, 165, 116, 0.12) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 50%, rgba(26, 15, 15, 0.6) 0%, #1a0f0f 100%);
+        }
+
+        /* ── Film Grain ── */
+        .film-grain {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 1;
+            opacity: 0.035;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+            background-size: 256px 256px;
+        }
+
+        /* ── Vignette ── */
+        .vignette {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 1;
+            background: radial-gradient(ellipse at center, transparent 50%, rgba(0, 0, 0, 0.6) 100%);
+        }
+
+        /* ── Canvas ── */
+        #particle-canvas {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        /* ── Scroll Container ── */
+        .scroll-container {
+            position: relative;
+            z-index: 2;
+        }
+
+        /* ── Section Base ── */
+        .section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* ── Hero ── */
+        #hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem;
+            position: relative;
+        }
+
+        .hero-title {
+            font-size: clamp(3rem, 12vw, 8rem);
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            line-height: 1.05;
+            background: linear-gradient(180deg, #f5ece6 30%, #d4a574 70%, #8b3a3a 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            opacity: 0;
+            transform: scale(0.92) translateY(40px);
+            animation: heroReveal 2.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+            animation-delay: 0.6s;
+            filter: drop-shadow(0 4px 40px rgba(139, 58, 58, 0.3));
+        }
+
+        @keyframes heroReveal {
+            0% {
+                opacity: 0;
+                transform: scale(0.92) translateY(40px);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        .hero-sub {
+            font-family: 'Playfair Display', serif;
+            font-weight: 400;
+            font-style: italic;
+            font-size: clamp(1rem, 2.5vw, 1.8rem);
+            color: #d4a574;
+            letter-spacing: 0.3em;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeUp 1.8s ease forwards;
+            animation-delay: 1.6s;
+            margin-top: 0.5rem;
+            text-shadow: 0 2px 30px rgba(212, 165, 116, 0.15);
+        }
+
+        .hero-line {
+            width: clamp(60px, 10vw, 120px);
+            height: 1.5px;
+            background: linear-gradient(90deg, transparent, #d4a574, transparent);
+            margin: 1.5rem auto 0;
+            opacity: 0;
+            animation: fadeUp 1.4s ease forwards;
+            animation-delay: 2.2s;
+        }
+
+        @keyframes fadeUp {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ── Scroll Indicator ── */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            opacity: 0;
+            animation: fadeUp 1.6s ease forwards;
+            animation-delay: 2.8s;
+            color: rgba(245, 236, 230, 0.4);
+            font-size: 0.7rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: color 0.4s ease;
+            z-index: 5;
+        }
+        .scroll-indicator:hover {
+            color: #d4a574;
+        }
+        .scroll-indicator .mouse {
+            width: 22px;
+            height: 34px;
+            border: 1.5px solid rgba(245, 236, 230, 0.25);
+            border-radius: 12px;
+            display: flex;
+            justify-content: center;
+            padding-top: 6px;
+            transition: border-color 0.4s ease;
+        }
+        .scroll-indicator:hover .mouse {
+            border-color: #d4a574;
+        }
+        .scroll-indicator .dot {
+            width: 3px;
+            height: 8px;
+            background: #d4a574;
+            border-radius: 4px;
+            animation: scrollBounce 2.4s ease-in-out infinite;
+        }
+        @keyframes scrollBounce {
+            0%,
+            100% {
+                transform: translateY(0);
+                opacity: 0.6;
+            }
+            50% {
+                transform: translateY(8px);
+                opacity: 1;
+            }
+        }
+
+        /* ── Floating Decorations ── */
+        .float-group {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 0;
+        }
+
+        .float-item {
+            position: absolute;
+            opacity: 0;
+            animation: floatIn 3s ease forwards;
+            pointer-events: none;
+            will-change: transform;
+        }
+
+        @keyframes floatIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.6) translateY(30px);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        /* ── Butterfly SVG ── */
+        .butterfly {
+            filter: drop-shadow(0 4px 20px rgba(232, 160, 180, 0.15));
+            transition: filter 0.8s ease;
+        }
+        .butterfly:hover {
+            filter: drop-shadow(0 4px 40px rgba(232, 160, 180, 0.35));
+        }
+
+        .butterfly .wing {
+            transform-origin: 50% 50%;
+            animation: wingFlap 2.4s ease-in-out infinite alternate;
+        }
+        .butterfly .wing-right {
+            animation-delay: 0.05s;
+        }
+
+        @keyframes wingFlap {
+            0% {
+                transform: scaleX(1) rotate(0deg);
+            }
+            100% {
+                transform: scaleX(0.6) rotate(6deg);
+            }
+        }
+
+        .butterfly .wing-right {
+            animation-name: wingFlapRight;
+        }
+        @keyframes wingFlapRight {
+            0% {
+                transform: scaleX(1) rotate(0deg);
+            }
+            100% {
+                transform: scaleX(0.6) rotate(-6deg);
+            }
+        }
+
+        .butterfly-sway {
+            animation: sway 6s ease-in-out infinite alternate;
+        }
+        @keyframes sway {
+            0% {
+                transform: translate(0, 0) rotate(-2deg);
+            }
+            100% {
+                transform: translate(8px, -12px) rotate(3deg);
+            }
+        }
+
+        .butterfly-sway-2 {
+            animation: sway2 7s ease-in-out infinite alternate;
+        }
+        @keyframes sway2 {
+            0% {
+                transform: translate(0, 0) rotate(3deg);
+            }
+            100% {
+                transform: translate(-10px, -8px) rotate(-4deg);
+            }
+        }
+
+        .butterfly-sway-3 {
+            animation: sway3 8s ease-in-out infinite alternate;
+        }
+        @keyframes sway3 {
+            0% {
+                transform: translate(0, 0) rotate(-1deg);
+            }
+            100% {
+                transform: translate(12px, -6px) rotate(2deg);
+            }
+        }
+
+        /* ── Tulip SVG ── */
+        .tulip {
+            filter: drop-shadow(0 4px 25px rgba(212, 165, 116, 0.12));
+            transition: filter 0.8s ease;
+        }
+        .tulip:hover {
+            filter: drop-shadow(0 4px 45px rgba(212, 165, 116, 0.25));
+        }
+
+        .tulip-sway {
+            animation: tulipSway 5s ease-in-out infinite alternate;
+        }
+        @keyframes tulipSway {
+            0% {
+                transform: rotate(-3deg) translateY(0);
+            }
+            100% {
+                transform: rotate(4deg) translateY(-6px);
+            }
+        }
+
+        .tulip-sway-2 {
+            animation: tulipSway2 6s ease-in-out infinite alternate;
+        }
+        @keyframes tulipSway2 {
+            0% {
+                transform: rotate(2deg) translateY(0);
+            }
+            100% {
+                transform: rotate(-5deg) translateY(-8px);
+            }
+        }
+
+        /* ── Message Section ── */
+        #message {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 4rem 2rem;
+            position: relative;
+        }
+
+        .message-card {
+            max-width: 720px;
+            width: 100%;
+            padding: 3.5rem 2.5rem;
+            background: rgba(26, 15, 15, 0.65);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(212, 165, 116, 0.12);
+            border-radius: 2rem;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(245, 236, 230, 0.04);
+            opacity: 0;
+            transform: translateY(50px) scale(0.97);
+            transition: opacity 1.2s cubic-bezier(0.22, 1, 0.36, 1),
+                transform 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .message-card.visible {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        .message-card .ornament {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            color: #d4a574;
+            font-size: 0.8rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            opacity: 0.5;
+        }
+        .message-card .ornament span {
+            font-size: 1.4rem;
+            opacity: 0.6;
+        }
+
+        .message-card h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            font-weight: 600;
+            color: #f5ece6;
+            margin-bottom: 1.2rem;
+            line-height: 1.2;
+        }
+        .message-card h2 em {
+            color: #d4a574;
+            font-style: italic;
+            font-weight: 400;
+        }
+
+        .message-card p {
+            font-size: clamp(1rem, 1.4vw, 1.15rem);
+            line-height: 1.8;
+            color: rgba(245, 236, 230, 0.75);
+            font-weight: 300;
+            letter-spacing: 0.01em;
+        }
+        .message-card p + p {
+            margin-top: 1.2rem;
+        }
+        .message-card .signature {
+            margin-top: 2rem;
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 1.3rem;
+            color: #d4a574;
+            text-align: right;
+            opacity: 0.7;
+        }
+
+        /* ── Wishes Section ── */
+        #wishes {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 4rem 2rem;
+            position: relative;
+        }
+
+        .wishes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            max-width: 800px;
+            width: 100%;
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 1.2s cubic-bezier(0.22, 1, 0.36, 1),
+                transform 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .wishes-grid.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .wish-item {
+            background: rgba(26, 15, 15, 0.5);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(212, 165, 116, 0.08);
+            border-radius: 1.2rem;
+            padding: 1.8rem 1.2rem;
+            text-align: center;
+            transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+            cursor: default;
+        }
+        .wish-item:hover {
+            transform: translateY(-6px);
+            border-color: rgba(212, 165, 116, 0.25);
+            background: rgba(26, 15, 15, 0.7);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+        }
+        .wish-item .icon {
+            font-size: 2.2rem;
+            margin-bottom: 0.6rem;
+            display: block;
+            opacity: 0.7;
+        }
+        .wish-item .label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: rgba(212, 165, 116, 0.5);
+            margin-bottom: 0.3rem;
+        }
+        .wish-item .text {
+            font-size: 0.95rem;
+            color: rgba(245, 236, 230, 0.8);
+            font-weight: 300;
+            line-height: 1.5;
+        }
+
+        /* ── Footer ── */
+        #footer {
+            padding: 2.5rem 2rem;
+            text-align: center;
+            border-top: 1px solid rgba(212, 165, 116, 0.06);
+            position: relative;
+            z-index: 2;
+            background: rgba(26, 15, 15, 0.5);
+            backdrop-filter: blur(8px);
+        }
+        #footer p {
+            font-size: 0.75rem;
+            color: rgba(245, 236, 230, 0.25);
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+        }
+        #footer .heart {
+            color: #8b3a3a;
+            display: inline-block;
+            animation: pulseHeart 2.4s ease-in-out infinite;
+        }
+        @keyframes pulseHeart {
+            0%,
+            100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.2);
+            }
+        }
+
+        /* ── Responsive ── */
+        @media (max-width: 640px) {
+            .message-card {
+                padding: 2rem 1.2rem;
+                border-radius: 1.2rem;
+            }
+            .wishes-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 0.8rem;
+            }
+            .wish-item {
+                padding: 1.2rem 0.8rem;
+            }
+            .wish-item .text {
+                font-size: 0.85rem;
+            }
+        }
+        @media (max-width: 400px) {
+            .wishes-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ── Scrollbar ── */
+        ::-webkit-scrollbar {
+            width: 4px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #1a0f0f;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #8b3a3a;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #d4a574;
+        }
+
+        /* ── Selection ── */
+        ::selection {
+            background: #8b3a3a;
+            color: #f5ece6;
+        }
+
+        /* ── Smooth Load ── */
+        .no-transition {
+            transition: none !important;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ─── Cinematic Layers ─── -->
+    <div class="cinematic-overlay"></div>
+    <div class="film-grain"></div>
+    <div class="vignette"></div>
+    <canvas id="particle-canvas"></canvas>
+
+    <!-- ─── Floating Decorations ─── -->
+    <div class="float-group" aria-hidden="true">
+
+        <!-- Butterfly 1 -->
+        <div class="float-item butterfly-sway" style="top:8%; left:5%; animation-delay:0.2s; opacity:0;">
+            <svg class="butterfly" width="48" height="44" viewBox="0 0 100 92" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g class="wing" style="transform-origin:50% 50%;">
+                    <path d="M50 46 C38 28 12 18 8 34 C4 50 22 58 50 46Z" fill="#e8a0b4" opacity="0.7"/>
+                    <path d="M50 46 C44 32 18 26 14 38 C10 50 28 54 50 46Z" fill="#d4849a" opacity="0.5"/>
+                    <circle cx="32" cy="34" r="4" fill="#f5ece6" opacity="0.15"/>
+                </g>
+                <g class="wing wing-right" style="transform-origin:50% 50%;">
+                    <path d="M50 46 C62 28 88 18 92 34 C96 50 78 58 50 46Z" fill="#e8a0b4" opacity="0.7"/>
+                    <path d="M50 46 C56 32 82 26 86 38 C90 50 72 54 50 46Z" fill="#d4849a" opacity="0.5"/>
+                    <circle cx="68" cy="34" r="4" fill="#f5ece6" opacity="0.15"/>
+                </g>
+                <ellipse cx="50" cy="46" rx="4" ry="18" fill="#2d1b1b" opacity="0.6"/>
+                <line x1="46" y1="28" x2="38" y2="16" stroke="#2d1b1b" stroke-width="1.5" opacity="0.4"/>
+                <line x1="54" y1="28" x2="62" y2="16" stroke="#2d1b1b" stroke-width="1.5" opacity="0.4"/>
+                <circle cx="38" cy="14" r="1.5" fill="#d4a574" opacity="0.4"/>
+                <circle cx="62" cy="14" r="1.5" fill="#d4a574" opacity="0.4"/>
+            </svg>
+        </div>
+
+        <!-- Butterfly 2 -->
+        <div class="float-item butterfly-sway-2" style="bottom:12%; right:4%; animation-delay:0.9s; opacity:0;">
+            <svg class="butterfly" width="36" height="33" viewBox="0 0 100 92" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g class="wing" style="transform-origin:50% 50%;">
+                    <path d="M50 46 C38 28 12 18 8 34 C4 50 22 58 50 46Z" fill="#d4a574" opacity="0.5"/>
+                    <path d="M50 46 C44 32 18 26 14 38 C10 50 28 54 50 46Z" fill="#c4956a" opacity="0.35"/>
+                </g>
+                <g class="wing wing-right" style="transform-origin:50% 50%;">
+                    <path d="M50 46 C62 28 88 18 92 34 C96 50 78 58 50 46Z" fill="#d4a574" opacity="0.5"/>
+                    <path d="M50 46 C56 32 82 26 86 38 C90 50 72 54 50 46Z" fill="#c4956a" opacity="0.35"/>
+                </g>
+                <ellipse cx="50" cy="46" rx="3.5" ry="15" fill="#2d1b1b" opacity="0.5"/>
+                <line x1="46" y1="30" x2="40" y2="20" stroke="#2d1b1b" stroke-width="1.2" opacity="0.3"/>
+                <line x1="54" y1="30" x2="60" y2="20" stroke="#2d1b1b" stroke-width="1.2" opacity="0.3"/>
+            </svg>
+        </div>
+
+        <!-- Butterfly 3 -->
+        <div class="float-item butterfly-sway-3" style="top:50%; left:2%; animation-delay:1.6s; opacity:0;">
+            <svg class="butterfly" width="30" height="28" viewBox="0 0 100 92" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g class="wing" style="transform-origin:50% 50%;">
+                    <path d="M50 46 C38 28 12 18 8 34 C4 50 22 58 50 46Z" fill="#bda0b0" opacity="0.4"/>
+                    <path d="M50 46 C44 32 18 26 14 38 C10 50 28 54 50 46Z" fill="#a88a9a" opacity="0.25"/>
+                </g>
+                <g class="wing wing-right" style="transform-origin:50% 50%;">
+                    <path d="M50 46 C62 28 88 18 92 34 C96 50 78 58 50 46Z" fill="#bda0b0" opacity="0.4"/>
+                    <path d="M50 46 C56 32 82 26 86 38 C90 50 72 54 50 46Z" fill="#a88a9a" opacity="0.25"/>
+                </g>
+                <ellipse cx="50" cy="46" rx="3" ry="12" fill="#2d1b1b" opacity="0.4"/>
+            </svg>
+        </div>
+
+        <!-- Tulip 1 -->
+        <div class="float-item tulip-sway" style="bottom:15%; left:8%; animation-delay:0.4s; opacity:0;">
+            <svg class="tulip" width="40" height="56" viewBox="0 0 60 84" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M30 84 L30 48" stroke="#4a7c59" stroke-width="2.5" opacity="0.4"/>
+                <path d="M30 64 Q22 56 18 60 Q14 64 18 68 Q22 72 30 68Z" fill="#4a7c59" opacity="0.25"/>
+                <path d="M30 48 C26 36 18 32 14 38 C10 44 12 52 20 54 C28 56 32 50 30 48Z" fill="#8b3a3a" opacity="0.7"/>
+                <path d="M30 48 C34 36 42 32 46 38 C50 44 48 52 40 54 C32 56 28 50 30 48Z" fill="#a04545" opacity="0.6"/>
+                <path d="M30 48 C28 40 24 38 20 42 C16 46 18 50 24 50 C30 50 32 46 30 48Z" fill="#c45a5a" opacity="0.35"/>
+                <path d="M30 48 L30 42" stroke="#6b2a2a" stroke-width="1.5" opacity="0.3"/>
+            </svg>
+        </div>
+
+        <!-- Tulip 2 -->
+        <div class="float-item tulip-sway-2" style="top:25%; right:6%; animation-delay:1.0s; opacity:0;">
+            <svg class="tulip" width="32" height="46" viewBox="0 0 60 84" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M30 84 L30 52" stroke="#4a7c59" stroke-width="2" opacity="0.35"/>
+                <path d="M30 68 Q24 62 20 66 Q16 70 20 74 Q24 78 30 74Z" fill="#4a7c59" opacity="0.2"/>
+                <path d="M30 52 C26 42 18 38 14 44 C10 50 12 58 20 60 C28 62 32 56 30 52Z" fill="#bda0b0" opacity="0.6"/>
+                <path d="M30 52 C34 42 42 38 46 44 C50 50 48 58 40 60 C32 62 28 56 30 52Z" fill="#c9aebb" opacity="0.5"/>
+                <path d="M30 52 L30 46" stroke="#6b4a5a" stroke-width="1.2" opacity="0.25"/>
+            </svg>
+        </div>
+
+        <!-- Tulip 3 -->
+        <div class="float-item tulip-sway" style="top:70%; right:14%; animation-delay:1.8s; opacity:0;">
+            <svg class="tulip" width="28" height="40" viewBox="0 0 60 84" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M30 84 L30 54" stroke="#4a7c59" stroke-width="1.8" opacity="0.3"/>
+                <path d="M30 54 C26 44 18 40 14 46 C10 52 12 60 20 62 C28 64 32 58 30 54Z" fill="#d4a574" opacity="0.55"/>
+                <path d="M30 54 C34 44 42 40 46 46 C50 52 48 60 40 62 C32 64 28 58 30 54Z" fill="#e0b88a" opacity="0.45"/>
+                <path d="M30 54 L30 48" stroke="#8b6b4a" stroke-width="1" opacity="0.2"/>
+            </svg>
+        </div>
+
+    </div>
+
+    <!-- ─── Scroll Container ─── -->
+    <div class="scroll-container">
+
+        <!-- ─── HERO ─── -->
+        <section id="hero" class="section">
+            <div class="relative z-10 max-w-4xl mx-auto">
+                <h1 class="hero-title">Happy<br />Birthday</h1>
+                <p class="hero-sub">— a celebration of you —</p>
+                <div class="hero-line"></div>
+            </div>
+
+            <!-- Scroll Indicator -->
+            <div class="scroll-indicator" onclick="document.getElementById('message').scrollIntoView({behavior:'smooth'})">
+                <div class="mouse">
+                    <div class="dot"></div>
+                </div>
+                <span>Scroll</span>
+            </div>
+        </section>
+
+        <!-- ─── MESSAGE ─── -->
+        <section id="message" class="section">
+            <div class="message-card" id="messageCard">
+                <div class="ornament">
+                    <span>✧</span> &nbsp; May your day be filled with light &nbsp; <span>✧</span>
+                </div>
+                <h2>
+                    A little note for<br />
+                    <em>you</em>
+                </h2>
+                <p>
+                    Like tulips that turn their faces toward the sun,<br />
+                    may you always find warmth and beauty in every moment.
+                </p>
+                <p>
+                    Like butterflies that dance on the gentlest breeze,<br />
+                    may your spirit remain light, free, and full of grace.
+                </p>
+                <p>
+                    Today, the world pauses to celebrate the unique<br />
+                    light that only you can bring. Happy birthday.
+                </p>
+                <div class="signature">— with love, always</div>
+            </div>
+        </section>
+
+        <!-- ─── WISHES ─── -->
+        <section id="wishes" class="section">
+            <div class="wishes-grid" id="wishesGrid">
+                <div class="wish-item">
+                    <span class="icon">🦋</span>
+                    <div class="label">Grace</div>
+                    <div class="text">May you move through life with the ease of a butterfly.</div>
+                </div>
+                <div class="wish-item">
+                    <span class="icon">🌷</span>
+                    <div class="label">Beauty</div>
+                    <div class="text">Like a tulip in bloom, may your beauty shine from within.</div>
+                </div>
+                <div class="wish-item">
+                    <span class="icon">✨</span>
+                    <div class="label">Light</div>
+                    <div class="text">May your path always be lit by love and kindness.</div>
+                </div>
+                <div class="wish-item">
+                    <span class="icon">🌅</span>
+                    <div class="label">Joy</div>
+                    <div class="text">May each sunrise bring you a new reason to smile.</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ─── FOOTER ─── -->
+        <footer id="footer">
+            <p>
+                made with <span class="heart">♥</span> &nbsp;·&nbsp; for you
+            </p>
+        </footer>
+
+    </div>
+
+    <!-- ─── JavaScript ─── -->
+    <script>
+        (function() {
+            'use strict';
+
+            // ── Particle Canvas ──
+            const canvas = document.getElementById('particle-canvas');
+            const ctx = canvas.getContext('2d');
+            let w, h;
+            let particles = [];
+            const PARTICLE_COUNT = 80;
+
+            function resize() {
+                w = canvas.width = window.innerWidth;
+                h = canvas.height = window.innerHeight;
+            }
+            window.addEventListener('resize', resize);
+            resize();
+
+            class Particle {
+                constructor() {
+                    this.reset();
+                }
+                reset() {
+                    this.x = Math.random() * w;
+                    this.y = Math.random() * h;
+                    this.size = Math.random() * 2.5 + 0.8;
+                    this.speedX = (Math.random() - 0.5) * 0.15;
+                    this.speedY = (Math.random() - 0.5) * 0.12 - 0.04;
+                    this.opacity = Math.random() * 0.25 + 0.05;
+                    this.pulse = Math.random() * Math.PI * 2;
+                    this.pulseSpeed = 0.008 + Math.random() * 0.012;
+                }
+                update() {
+                    this.x += this.speedX;
+                    this.y += this.speedY;
+                    this.pulse += this.pulseSpeed;
+                    // wrap
+                    if (this.x < -10) this.x = w + 10;
+                    if (this.x > w + 10) this.x = -10;
+                    if (this.y < -10) this.y = h + 10;
+                    if (this.y > h + 10) this.y = -10;
+                }
+                draw() {
+                    const alpha = this.opacity * (0.7 + 0.3 * Math.sin(this.pulse));
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                    ctx.fillStyle = `rgba(245, 236, 230, ${alpha})`;
+                    ctx.fill();
+                    // soft glow
+                    if (this.size > 1.8) {
+                        ctx.beginPath();
+                        ctx.arc(this.x, this.y, this.size * 2.5, 0, Math.PI * 2);
+                        ctx.fillStyle = `rgba(212, 165, 116, ${alpha * 0.12})`;
+                        ctx.fill();
+                    }
+                }
+            }
+
+            for (let i = 0; i < PARTICLE_COUNT; i++) {
+                particles.push(new Particle());
+            }
+
+            function drawParticles() {
+                ctx.clearRect(0, 0, w, h);
+                for (const p of particles) {
+                    p.update();
+                    p.draw();
+                }
+                requestAnimationFrame(drawParticles);
+            }
+            drawParticles();
+
+            // ── Scroll Reveal: Message ──
+            const messageCard = document.getElementById('messageCard');
+            const wishesGrid = document.getElementById('wishesGrid');
+
+            const revealObserver = new IntersectionObserver((entries) => {
+                for (const entry of entries) {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                }
+            }, {
+                threshold: 0.25,
+                rootMargin: '0px 0px -40px 0px'
+            });
+
+            if (messageCard) revealObserver.observe(messageCard);
+            if (wishesGrid) revealObserver.observe(wishesGrid);
+
+            // ── Parallax on floating items ──
+            const floatItems = document.querySelectorAll('.float-item');
+            let mouseX = 0,
+                mouseY = 0;
+            let targetX = 0,
+                targetY = 0;
+
+            document.addEventListener('mousemove', (e) => {
+                mouseX = (e.clientX / window.innerWidth - 0.5) * 2;
+                mouseY = (e.clientY / window.innerHeight - 0.5) * 2;
+            });
+
+            function animateParallax() {
+                targetX += (mouseX - targetX) * 0.03;
+                targetY += (mouseY - targetY) * 0.03;
+
+                floatItems.forEach((el, i) => {
+                    const speed = 0.6 + (i % 3) * 0.2;
+                    const dx = targetX * 20 * speed;
+                    const dy = targetY * 12 * speed;
+                    el.style.transform = `translate(${dx}px, ${dy}px)`;
+                });
+
+                requestAnimationFrame(animateParallax);
+            }
+            animateParallax();
+
+            // ── Cinematic entrance for float items ──
+            // They already have animation via CSS, just ensure they show
+            document.querySelectorAll('.float-item').forEach((el) => {
+                el.style.opacity = '1';
+            });
+
+            // ── Smooth anchor scroll ──
+            document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+                anchor.addEventListener('click', function(e) {
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        e.preventDefault();
+                        target.scrollIntoView({ behavior: 'smooth' });
+                    }
+                });
+            });
+
+            // ── Keyboard scroll hint ──
+            let scrollHint = document.querySelector('.scroll-indicator');
+            if (scrollHint) {
+                scrollHint.addEventListener('click', () => {
+                    document.getElementById('message').scrollIntoView({ behavior: 'smooth' });
+                });
+            }
+
+            console.log('🌸 A cinematic birthday celebration — made with love.');
+        })();
+    </script>
+
+</body>
+</html>
