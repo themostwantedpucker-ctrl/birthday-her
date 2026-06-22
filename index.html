@@ -425,6 +425,30 @@
             }
         }
 
+        .butterfly-sway-4 {
+            animation: sway4 9s ease-in-out infinite alternate;
+        }
+        @keyframes sway4 {
+            0% {
+                transform: translate(0, 0) rotate(1deg) scale(0.9);
+            }
+            100% {
+                transform: translate(-8px, -16px) rotate(-6deg) scale(1.05);
+            }
+        }
+
+        .butterfly-sway-5 {
+            animation: sway5 5.5s ease-in-out infinite alternate;
+        }
+        @keyframes sway5 {
+            0% {
+                transform: translate(0, 0) rotate(-5deg);
+            }
+            100% {
+                transform: translate(16px, -6px) rotate(2deg);
+            }
+        }
+
         /* ── Tulip SVG ── */
         .tulip {
             filter: drop-shadow(0 4px 30px rgba(200, 160, 180, 0.08));
@@ -452,6 +476,102 @@
             }
             100% {
                 transform: rotate(-6deg) translateY(-10px);
+            }
+        }
+
+        .tulip-sway-3 {
+            animation: tulipSway3 7s ease-in-out infinite alternate;
+        }
+        @keyframes tulipSway3 {
+            0% {
+                transform: rotate(-2deg) translateY(0) scale(0.95);
+            }
+            100% {
+                transform: rotate(7deg) translateY(-5px) scale(1.03);
+            }
+        }
+
+        .tulip-sway-4 {
+            animation: tulipSway4 5.8s ease-in-out infinite alternate;
+        }
+        @keyframes tulipSway4 {
+            0% {
+                transform: rotate(5deg) translateY(-3px);
+            }
+            100% {
+                transform: rotate(-3deg) translateY(-12px);
+            }
+        }
+
+        /* ── Firefly glow ── */
+        .firefly {
+            animation: fireflyGlow 3s ease-in-out infinite;
+            filter: blur(1px);
+        }
+        @keyframes fireflyGlow {
+            0%,
+            100% {
+                opacity: 0.25;
+                filter: blur(1px) brightness(1);
+            }
+            50% {
+                opacity: 0.7;
+                filter: blur(0.5px) brightness(1.8);
+            }
+        }
+
+        .firefly-sway {
+            animation: fireflyDrift 8s ease-in-out infinite alternate;
+        }
+        @keyframes fireflyDrift {
+            0% {
+                transform: translate(0, 0);
+            }
+            25% {
+                transform: translate(15px, -20px);
+            }
+            50% {
+                transform: translate(-5px, -35px);
+            }
+            75% {
+                transform: translate(-18px, -10px);
+            }
+            100% {
+                transform: translate(8px, -28px);
+            }
+        }
+
+        .firefly-sway-2 {
+            animation: fireflyDrift2 10s ease-in-out infinite alternate;
+        }
+        @keyframes fireflyDrift2 {
+            0% {
+                transform: translate(0, 0);
+            }
+            33% {
+                transform: translate(-20px, -15px);
+            }
+            66% {
+                transform: translate(10px, -30px);
+            }
+            100% {
+                transform: translate(-8px, -22px);
+            }
+        }
+
+        /* ── Sparkle star ── */
+        .sparkle-star {
+            animation: sparkleTwinkle 2.5s ease-in-out infinite;
+        }
+        @keyframes sparkleTwinkle {
+            0%,
+            100% {
+                opacity: 0.3;
+                transform: scale(0.8);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1.3);
             }
         }
 
@@ -569,6 +689,201 @@
             letter-spacing: 0.05em;
         }
 
+        /* ── Wishing Well ── */
+        .wishing-well-container {
+            perspective: 800px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .wishing-well {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            background: radial-gradient(ellipse at 50% 40%, rgba(60, 80, 120, 0.25), rgba(20, 30, 50, 0.6));
+            border: 3px solid rgba(200, 160, 180, 0.15);
+            box-shadow: 0 10px 60px rgba(0, 0, 0, 0.4), inset 0 0 60px rgba(100, 140, 180, 0.08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .wishing-well:hover {
+            transform: scale(1.05);
+            border-color: rgba(200, 160, 180, 0.3);
+            box-shadow: 0 20px 80px rgba(0, 0, 0, 0.5), inset 0 0 80px rgba(140, 180, 220, 0.12);
+        }
+
+        .wishing-well .well-water {
+            position: absolute;
+            inset: 20%;
+            border-radius: 50%;
+            background: radial-gradient(ellipse at 50% 40%, rgba(140, 180, 220, 0.2), rgba(60, 80, 120, 0.15));
+            animation: wellRipple 4s ease-in-out infinite;
+        }
+        @keyframes wellRipple {
+            0%,
+            100% {
+                transform: scale(0.9);
+                opacity: 0.5;
+            }
+            50% {
+                transform: scale(1.08);
+                opacity: 0.8;
+            }
+        }
+
+        .wishing-well .well-icon {
+            position: relative;
+            z-index: 1;
+            font-size: 2.5rem;
+            animation: wellFloat 3s ease-in-out infinite;
+        }
+        @keyframes wellFloat {
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-8px);
+            }
+        }
+
+        .wishing-well .well-ripple-ring {
+            position: absolute;
+            border-radius: 50%;
+            border: 1px solid rgba(200, 180, 200, 0.2);
+            animation: rippleOut 3s ease-out infinite;
+            pointer-events: none;
+        }
+        .wishing-well .well-ripple-ring:nth-child(2) {
+            animation-delay: 0.6s;
+        }
+        .wishing-well .well-ripple-ring:nth-child(3) {
+            animation-delay: 1.2s;
+        }
+        .wishing-well .well-ripple-ring:nth-child(4) {
+            animation-delay: 1.8s;
+        }
+        .wishing-well .well-ripple-ring:nth-child(5) {
+            animation-delay: 2.4s;
+        }
+
+        @keyframes rippleOut {
+            0% {
+                width: 20px;
+                height: 20px;
+                opacity: 0.6;
+            }
+            100% {
+                width: 180px;
+                height: 180px;
+                opacity: 0;
+            }
+        }
+
+        .well-wishes {
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+        }
+        .well-wishes .wish-item {
+            display: inline-block;
+            padding: 0.4rem 1rem;
+            margin: 0.2rem 0.3rem;
+            background: rgba(200, 160, 180, 0.06);
+            border-radius: 2rem;
+            font-size: 0.8rem;
+            color: rgba(245, 236, 230, 0.45);
+            font-style: italic;
+            animation: wishFloat 3s ease-in-out infinite;
+            border: 1px solid rgba(200, 160, 180, 0.04);
+        }
+        .wish-item:nth-child(odd) {
+            animation-delay: 0.5s;
+        }
+        .wish-item:nth-child(even) {
+            animation-delay: 1.5s;
+        }
+        @keyframes wishFloat {
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-4px);
+            }
+        }
+
+        /* ── Garden Path Stepping Stones ── */
+        .stepping-stones {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            justify-content: center;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        .stepping-stone {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: rgba(26, 17, 16, 0.55);
+            border: 2px solid rgba(200, 160, 180, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            cursor: pointer;
+            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+            backdrop-filter: blur(8px);
+            position: relative;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+        }
+        .stepping-stone:hover {
+            transform: scale(1.15) translateY(-8px);
+            border-color: rgba(200, 160, 180, 0.3);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+        }
+        .stepping-stone .stone-label {
+            position: absolute;
+            bottom: -28px;
+            font-size: 0.6rem;
+            color: rgba(245, 236, 230, 0.2);
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            white-space: nowrap;
+            transition: color 0.4s ease;
+        }
+        .stepping-stone:hover .stone-label {
+            color: rgba(245, 236, 230, 0.5);
+        }
+        .stepping-stone.revealed {
+            border-color: rgba(200, 160, 180, 0.35);
+            background: rgba(180, 100, 120, 0.1);
+            box-shadow: 0 0 40px rgba(180, 100, 120, 0.15);
+        }
+        .stepping-stone.revealed .stone-icon-hidden {
+            display: block;
+            animation: stoneReveal 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        @keyframes stoneReveal {
+            0% {
+                transform: scale(0) rotate(-30deg);
+                opacity: 0;
+            }
+            100% {
+                transform: scale(1) rotate(0deg);
+                opacity: 1;
+            }
+        }
+
         /* ── Birthday Cake ── */
         .cake-container {
             perspective: 1000px;
@@ -619,10 +934,17 @@
             height: 50px;
             border-radius: 8px 8px 12px 12px;
         }
+        .cake-tier-4 {
+            bottom: 146px;
+            width: 80px;
+            height: 20px;
+            border-radius: 6px 6px 8px 8px;
+            background: linear-gradient(160deg, rgba(200, 140, 160, 0.25), rgba(220, 180, 200, 0.08));
+        }
 
         .cake .candle {
             position: absolute;
-            bottom: 150px;
+            bottom: 162px;
             left: 50%;
             transform: translateX(-50%);
             display: flex;
@@ -914,6 +1236,49 @@
             opacity: 0.5;
         }
 
+        /* ── Poem Card ── */
+        .poem-card {
+            max-width: 580px;
+            width: 100%;
+            padding: 3rem 2.5rem;
+            background: rgba(26, 17, 16, 0.4);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(200, 160, 180, 0.05);
+            border-radius: 2rem;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 1.2s cubic-bezier(0.22, 1, 0.36, 1),
+                transform 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+            text-align: center;
+        }
+        .poem-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .poem-card .poem-stanza {
+            margin-bottom: 1.5rem;
+        }
+        .poem-card .poem-line {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 1.05rem;
+            color: rgba(245, 236, 230, 0.55);
+            line-height: 1.8;
+            letter-spacing: 0.02em;
+        }
+        .poem-card .poem-line em {
+            color: #e8c4c8;
+            font-style: italic;
+        }
+        .poem-card .poem-divider {
+            width: 40px;
+            height: 1px;
+            background: rgba(200, 160, 180, 0.2);
+            margin: 1.2rem auto;
+        }
+
         /* ── Guestbook ── */
         .guestbook-section {
             max-width: 680px;
@@ -1108,6 +1473,141 @@
             margin: 1.5rem auto 0;
         }
 
+        /* ── Starlight Section ── */
+        .starlight-container {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+            height: 300px;
+            margin: 0 auto;
+            overflow: hidden;
+            border-radius: 2rem;
+            background: rgba(20, 25, 40, 0.5);
+            border: 1px solid rgba(200, 160, 180, 0.05);
+            backdrop-filter: blur(8px);
+            cursor: pointer;
+            transition: all 0.6s ease;
+        }
+        .starlight-container:hover {
+            border-color: rgba(200, 160, 180, 0.15);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+        }
+        .starlight-container .star-dot {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: #f5ece6;
+            border-radius: 50%;
+            animation: starTwinkle 2s ease-in-out infinite;
+            box-shadow: 0 0 6px rgba(245, 236, 230, 0.4);
+        }
+        @keyframes starTwinkle {
+            0%,
+            100% {
+                opacity: 0.3;
+                transform: scale(0.7);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1.5);
+            }
+        }
+        .starlight-container .shooting-star {
+            position: absolute;
+            width: 40px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #f5ece6, transparent);
+            animation: shootStar 3s ease-in-out infinite;
+            opacity: 0;
+        }
+        @keyframes shootStar {
+            0% {
+                opacity: 0;
+                transform: translate(0, 0) rotate(-30deg);
+            }
+            10% {
+                opacity: 1;
+            }
+            30% {
+                opacity: 0;
+                transform: translate(200px, 100px) rotate(-30deg);
+            }
+            100% {
+                opacity: 0;
+                transform: translate(200px, 100px) rotate(-30deg);
+            }
+        }
+
+        /* ── Love Notes ── */
+        .love-note {
+            max-width: 450px;
+            width: 100%;
+            padding: 2rem 2rem;
+            background: rgba(26, 17, 16, 0.45);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(200, 160, 180, 0.05);
+            border-radius: 1.5rem;
+            margin: 0.6rem 0;
+            cursor: pointer;
+            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+            text-align: center;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        .love-note.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .love-note:hover {
+            transform: scale(1.03) translateY(-4px);
+            border-color: rgba(200, 160, 180, 0.15);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+        }
+        .love-note .note-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        .love-note .note-text {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 0.95rem;
+            color: rgba(245, 236, 230, 0.5);
+            line-height: 1.6;
+        }
+        .love-note .note-text em {
+            color: #e8c4c8;
+        }
+        .love-note .note-from {
+            font-size: 0.7rem;
+            color: rgba(245, 236, 230, 0.2);
+            margin-top: 0.6rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        /* ── Petal Drop Animation ── */
+        .petal-drop {
+            position: fixed;
+            pointer-events: none;
+            z-index: 5;
+            font-size: 1.5rem;
+            animation: petalFall 3s ease-in forwards;
+        }
+        @keyframes petalFall {
+            0% {
+                transform: translate(0, -10vh) rotate(0deg);
+                opacity: 0.8;
+            }
+            60% {
+                opacity: 0.6;
+            }
+            100% {
+                transform: translate(var(--px), 110vh) rotate(var(--pr));
+                opacity: 0;
+            }
+        }
+
         /* ── Footer ── */
         #footer {
             padding: 2rem 2rem;
@@ -1224,8 +1724,13 @@
                 height: 40px;
                 bottom: 86px;
             }
+            .cake-tier-4 {
+                width: 64px;
+                height: 16px;
+                bottom: 120px;
+            }
             .cake .candle {
-                bottom: 124px;
+                bottom: 132px;
             }
             .cake .candle .stick {
                 height: 22px;
@@ -1256,6 +1761,30 @@
                 width: 38px;
                 height: 38px;
                 font-size: 1rem;
+            }
+            .stepping-stone {
+                width: 70px;
+                height: 70px;
+                font-size: 1.4rem;
+            }
+            .wishing-well {
+                width: 140px;
+                height: 140px;
+            }
+            .wishing-well .well-icon {
+                font-size: 2rem;
+            }
+            .starlight-container {
+                height: 220px;
+            }
+            .poem-card {
+                padding: 2rem 1.5rem;
+            }
+            .poem-card .poem-line {
+                font-size: 0.9rem;
+            }
+            .love-note {
+                padding: 1.5rem 1.2rem;
             }
         }
 
@@ -1310,8 +1839,13 @@
                 height: 34px;
                 bottom: 72px;
             }
+            .cake-tier-4 {
+                width: 52px;
+                height: 14px;
+                bottom: 100px;
+            }
             .cake .candle {
-                bottom: 102px;
+                bottom: 110px;
             }
             .cake .candle .stick {
                 height: 18px;
@@ -1351,6 +1885,40 @@
                 width: 34px;
                 height: 34px;
                 font-size: 0.9rem;
+            }
+            .stepping-stone {
+                width: 55px;
+                height: 55px;
+                font-size: 1.1rem;
+            }
+            .stepping-stones {
+                gap: 1rem;
+            }
+            .wishing-well {
+                width: 110px;
+                height: 110px;
+            }
+            .wishing-well .well-icon {
+                font-size: 1.6rem;
+            }
+            .starlight-container {
+                height: 180px;
+                border-radius: 1.5rem;
+            }
+            .poem-card {
+                padding: 1.5rem 1rem;
+                border-radius: 1.5rem;
+            }
+            .poem-card .poem-line {
+                font-size: 0.8rem;
+                line-height: 1.6;
+            }
+            .love-note {
+                padding: 1.2rem 1rem;
+                border-radius: 1.2rem;
+            }
+            .love-note .note-text {
+                font-size: 0.8rem;
             }
         }
 
@@ -1452,6 +2020,42 @@
                 transform: translate(var(--tx), var(--ty)) scale(0.1) rotate(360deg);
             }
         }
+
+        /* ── Rainbow shimmer for special moments ── */
+        .rainbow-shimmer {
+            animation: rainbowShimmer 4s ease-in-out infinite;
+        }
+        @keyframes rainbowShimmer {
+            0%,
+            100% {
+                filter: hue-rotate(0deg);
+            }
+            25% {
+                filter: hue-rotate(10deg);
+            }
+            50% {
+                filter: hue-rotate(-5deg);
+            }
+            75% {
+                filter: hue-rotate(8deg);
+            }
+        }
+
+        /* ── Gentle pulse for interactive hints ── */
+        .gentle-pulse {
+            animation: gentlePulse 3s ease-in-out infinite;
+        }
+        @keyframes gentlePulse {
+            0%,
+            100% {
+                opacity: 0.5;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 0.8;
+                transform: scale(1.04);
+            }
+        }
     </style>
 </head>
 <body>
@@ -1541,6 +2145,40 @@
             </svg>
         </div>
 
+        <!-- Butterfly 4 -->
+        <div class="float-item butterfly-sway-4" style="top:28%; right:8%; animation-delay:1.9s;">
+            <svg class="butterfly" width="38" height="34" viewBox="0 0 100 92" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g class="wing" style="transform-origin:50% 50%;">
+                    <path d="M50 46 C36 26 10 16 6 32 C2 48 22 56 50 46Z" fill="#f0d0d8" opacity="0.40"/>
+                    <path d="M50 46 C44 30 16 24 12 36 C8 48 28 52 50 46Z" fill="#e8c4c8" opacity="0.22"/>
+                    <circle cx="28" cy="30" r="3" fill="#f5ece6" opacity="0.06"/>
+                </g>
+                <g class="wing wing-right" style="transform-origin:50% 50%;">
+                    <path d="M50 46 C64 26 90 16 94 32 C98 48 78 56 50 46Z" fill="#f0d0d8" opacity="0.40"/>
+                    <path d="M50 46 C56 30 84 24 88 36 C92 48 72 52 50 46Z" fill="#e8c4c8" opacity="0.22"/>
+                    <circle cx="72" cy="30" r="3" fill="#f5ece6" opacity="0.06"/>
+                </g>
+                <ellipse cx="50" cy="46" rx="3.8" ry="16" fill="#2d1b1b" opacity="0.35"/>
+                <line x1="45" y1="26" x2="36" y2="14" stroke="#2d1b1b" stroke-width="1.3" opacity="0.18"/>
+                <line x1="55" y1="26" x2="64" y2="14" stroke="#2d1b1b" stroke-width="1.3" opacity="0.18"/>
+            </svg>
+        </div>
+
+        <!-- Butterfly 5 -->
+        <div class="float-item butterfly-sway-5" style="bottom:30%; left:10%; animation-delay:2.4s;">
+            <svg class="butterfly" width="30" height="28" viewBox="0 0 100 92" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g class="wing" style="transform-origin:50% 50%;">
+                    <path d="M50 46 C38 28 12 18 8 34 C4 50 22 58 50 46Z" fill="#f0e0d0" opacity="0.30"/>
+                    <path d="M50 46 C44 32 18 26 14 38 C10 50 28 54 50 46Z" fill="#e0d0c0" opacity="0.18"/>
+                </g>
+                <g class="wing wing-right" style="transform-origin:50% 50%;">
+                    <path d="M50 46 C62 28 88 18 92 34 C96 50 78 58 50 46Z" fill="#f0e0d0" opacity="0.30"/>
+                    <path d="M50 46 C56 32 82 26 86 38 C90 50 72 54 50 46Z" fill="#e0d0c0" opacity="0.18"/>
+                </g>
+                <ellipse cx="50" cy="46" rx="3" ry="11" fill="#2d1b1b" opacity="0.28"/>
+            </svg>
+        </div>
+
         <!-- Tulip 1 -->
         <div class="float-item tulip-sway" style="bottom:12%; left:6%; animation-delay:0.3s;">
             <svg class="tulip" width="36" height="50" viewBox="0 0 60 84" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -1565,13 +2203,69 @@
         </div>
 
         <!-- Tulip 3 -->
-        <div class="float-item tulip-sway" style="top:60%; right:12%; animation-delay:1.6s;">
+        <div class="float-item tulip-sway-3" style="top:60%; right:12%; animation-delay:1.6s;">
             <svg class="tulip" width="26" height="36" viewBox="0 0 60 84" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M30 84 L30 54" stroke="#c5d5c5" stroke-width="1.6" opacity="0.12"/>
                 <path d="M30 54 C26 44 18 40 14 46 C10 52 12 60 20 62 C28 64 32 58 30 54Z" fill="#f0d0d8" opacity="0.35"/>
                 <path d="M30 54 C34 44 42 40 46 46 C50 52 48 60 40 62 C32 64 28 58 30 54Z" fill="#e8c4c8" opacity="0.25"/>
                 <path d="M30 54 L30 48" stroke="#a07080" stroke-width="0.8" opacity="0.10"/>
             </svg>
+        </div>
+
+        <!-- Tulip 4 -->
+        <div class="float-item tulip-sway-4" style="bottom:40%; left:16%; animation-delay:2.1s;">
+            <svg class="tulip" width="32" height="46" viewBox="0 0 60 84" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M30 84 L30 50" stroke="#d5c5c5" stroke-width="1.8" opacity="0.16"/>
+                <path d="M30 66 Q22 58 18 62 Q14 66 18 70 Q22 74 30 70Z" fill="#d5c5c5" opacity="0.11"/>
+                <path d="M30 50 C26 38 18 34 14 40 C10 46 12 54 20 56 C28 58 32 52 30 50Z" fill="#f0e0d0" opacity="0.38"/>
+                <path d="M30 50 C34 38 42 34 46 40 C50 46 48 54 40 56 C32 58 28 52 30 50Z" fill="#e0d0c0" opacity="0.28"/>
+                <path d="M30 50 L30 44" stroke="#b0a090" stroke-width="1" opacity="0.13"/>
+            </svg>
+        </div>
+
+        <!-- Tulip 5 -->
+        <div class="float-item tulip-sway-2" style="top:72%; left:22%; animation-delay:2.6s;">
+            <svg class="tulip" width="24" height="34" viewBox="0 0 60 84" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M30 84 L30 56" stroke="#c5d5c5" stroke-width="1.4" opacity="0.10"/>
+                <path d="M30 56 C26 46 18 42 14 48 C10 54 12 62 20 64 C28 66 32 60 30 56Z" fill="#d4c5d9" opacity="0.32"/>
+                <path d="M30 56 C34 46 42 42 46 48 C50 54 48 62 40 64 C32 66 28 60 30 56Z" fill="#c5b5d0" opacity="0.22"/>
+                <path d="M30 56 L30 50" stroke="#8a7a90" stroke-width="0.7" opacity="0.09"/>
+            </svg>
+        </div>
+
+        <!-- Firefly 1 -->
+        <div class="float-item firefly-sway" style="top:15%; left:30%; animation-delay:1.0s;">
+            <div class="firefly" style="width:8px;height:8px;background:#f5e8a0;border-radius:50%;box-shadow:0 0 20px rgba(245,232,160,0.5),0 0 40px rgba(245,232,160,0.2);"></div>
+        </div>
+
+        <!-- Firefly 2 -->
+        <div class="float-item firefly-sway-2" style="bottom:25%; right:20%; animation-delay:1.5s;">
+            <div class="firefly" style="width:6px;height:6px;background:#f0e8c0;border-radius:50%;box-shadow:0 0 16px rgba(240,232,192,0.4),0 0 32px rgba(240,232,192,0.15);"></div>
+        </div>
+
+        <!-- Firefly 3 -->
+        <div class="float-item firefly-sway" style="top:55%; right:28%; animation-delay:2.0s;">
+            <div class="firefly" style="width:7px;height:7px;background:#f5e8a0;border-radius:50%;box-shadow:0 0 18px rgba(245,232,160,0.45),0 0 36px rgba(245,232,160,0.18);"></div>
+        </div>
+
+        <!-- Firefly 4 -->
+        <div class="float-item firefly-sway-2" style="top:35%; left:35%; animation-delay:2.5s;">
+            <div class="firefly" style="width:5px;height:5px;background:#e8f0d0;border-radius:50%;box-shadow:0 0 14px rgba(232,240,208,0.4),0 0 28px rgba(232,240,208,0.12);"></div>
+        </div>
+
+        <!-- Sparkle star 1 -->
+        <div class="float-item sparkle-star" style="top:8%; right:35%; animation-delay:0.6s;">
+            <span style="font-size:0.8rem;color:#f5ece6;opacity:0.5;">✦</span>
+        </div>
+
+        <!-- Sparkle star 2 -->
+        <div class="float-item sparkle-star" style="bottom:18%; left:28%; animation-delay:1.1s;">
+            <span style="font-size:0.6rem;color:#e8c4c8;opacity:0.4;">✧</span>
+        </div>
+
+        <!-- Sparkle star 3 -->
+        <div class="float-item sparkle-star" style="top:42%; right:18%; animation-delay:1.7s;">
+            <span style="font-size:0.7rem;color:#d4c5d9;opacity:0.35;">⋆</span>
         </div>
     </div>
 
@@ -1604,6 +2298,7 @@
 
             <div class="gallery-wrapper">
                 <div class="gallery-track" id="galleryTrack">
+                    <!-- Card 1 -->
                     <div class="gallery-card">
                         <div class="card-image">
                             <span class="tulip-bg">🌷</span>
@@ -1616,6 +2311,7 @@
                         </div>
                     </div>
 
+                    <!-- Card 2 -->
                     <div class="gallery-card">
                         <div class="card-image">
                             <span class="tulip-bg">🦋</span>
@@ -1628,6 +2324,7 @@
                         </div>
                     </div>
 
+                    <!-- Card 3 -->
                     <div class="gallery-card">
                         <div class="card-image">
                             <span class="tulip-bg">🌷</span>
@@ -1640,6 +2337,7 @@
                         </div>
                     </div>
 
+                    <!-- Card 4 -->
                     <div class="gallery-card">
                         <div class="card-image">
                             <span class="tulip-bg">🦋</span>
@@ -1652,6 +2350,7 @@
                         </div>
                     </div>
 
+                    <!-- Card 5 -->
                     <div class="gallery-card">
                         <div class="card-image">
                             <span class="tulip-bg">🌷</span>
@@ -1664,6 +2363,7 @@
                         </div>
                     </div>
 
+                    <!-- Card 6 -->
                     <div class="gallery-card">
                         <div class="card-image">
                             <span class="tulip-bg">🦋</span>
@@ -1675,12 +2375,174 @@
                             <div class="caption">— tender &amp; true</div>
                         </div>
                     </div>
+
+                    <!-- Card 7 -->
+                    <div class="gallery-card">
+                        <div class="card-image">
+                            <span class="tulip-bg">🌿</span>
+                            <span style="font-size:3.2rem; position:relative; z-index:1;">🍃</span>
+                        </div>
+                        <div class="card-body">
+                            <h4>Gentle Breeze</h4>
+                            <p>Leaves rustling with quiet laughter</p>
+                            <div class="caption">— soft &amp; soothing</div>
+                        </div>
+                    </div>
+
+                    <!-- Card 8 -->
+                    <div class="gallery-card">
+                        <div class="card-image">
+                            <span class="tulip-bg">🌟</span>
+                            <span style="font-size:3.2rem; position:relative; z-index:1;">🌠</span>
+                        </div>
+                        <div class="card-body">
+                            <h4>Starlight Wishes</h4>
+                            <p>Every star a dream for you</p>
+                            <div class="caption">— infinite &amp; bright</div>
+                        </div>
+                    </div>
+
+                    <!-- Card 9 -->
+                    <div class="gallery-card">
+                        <div class="card-image">
+                            <span class="tulip-bg">💖</span>
+                            <span style="font-size:3.2rem; position:relative; z-index:1;">🕊️</span>
+                        </div>
+                        <div class="card-body">
+                            <h4>Peaceful Heart</h4>
+                            <p>A soul at rest in the garden</p>
+                            <div class="caption">— harmony &amp; grace</div>
+                        </div>
+                    </div>
+
+                    <!-- Card 10 -->
+                    <div class="gallery-card">
+                        <div class="card-image">
+                            <span class="tulip-bg">🌻</span>
+                            <span style="font-size:3.2rem; position:relative; z-index:1;">☀️</span>
+                        </div>
+                        <div class="card-body">
+                            <h4>Sunflower Smile</h4>
+                            <p>Turning always toward the light</p>
+                            <div class="caption">— radiant &amp; warm</div>
+                        </div>
+                    </div>
+
+                    <!-- Card 11 -->
+                    <div class="gallery-card">
+                        <div class="card-image">
+                            <span class="tulip-bg">🌊</span>
+                            <span style="font-size:3.2rem; position:relative; z-index:1;">🐚</span>
+                        </div>
+                        <div class="card-body">
+                            <h4>Ocean Whispers</h4>
+                            <p>Waves carrying secret songs</p>
+                            <div class="caption">— deep &amp; endless</div>
+                        </div>
+                    </div>
+
+                    <!-- Card 12 -->
+                    <div class="gallery-card">
+                        <div class="card-image">
+                            <span class="tulip-bg">🌈</span>
+                            <span style="font-size:3.2rem; position:relative; z-index:1;">🎀</span>
+                        </div>
+                        <div class="card-body">
+                            <h4>Rainbow Promise</h4>
+                            <p>After every rain, color returns</p>
+                            <div class="caption">— hope &amp; renewal</div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
             <div style="text-align:center; margin-top:0.5rem; font-size:0.65rem; color:rgba(245,236,230,0.10); letter-spacing:0.1em; user-select:none;">
                 ← scroll to explore →
             </div>
+        </section>
+
+        <!-- ─── GARDEN PATH (Stepping Stones) ─── -->
+        <section id="gardenPath" class="section" style="min-height:70vh; flex-direction:column; gap:1.5rem;">
+            <div class="section-sub">— follow the path —</div>
+            <h2 class="section-title">Stepping stones of <em>love</em></h2>
+            <p style="font-size:0.8rem; color:rgba(245,236,230,0.2); text-align:center; max-width:500px; font-weight:300; letter-spacing:0.03em;">
+                Each stone holds a secret. Click them to reveal what blooms beneath.
+            </p>
+            <div class="stepping-stones" id="steppingStones">
+                <div class="stepping-stone" data-secret="🌸" data-label="kindness">
+                    <span class="stone-icon-hidden" style="display:none;">🌸</span>
+                    <span class="stone-icon-visible">🪨</span>
+                    <span class="stone-label">kindness</span>
+                </div>
+                <div class="stepping-stone" data-secret="🦋" data-label="grace">
+                    <span class="stone-icon-hidden" style="display:none;">🦋</span>
+                    <span class="stone-icon-visible">🪨</span>
+                    <span class="stone-label">grace</span>
+                </div>
+                <div class="stepping-stone" data-secret="✨" data-label="joy">
+                    <span class="stone-icon-hidden" style="display:none;">✨</span>
+                    <span class="stone-icon-visible">🪨</span>
+                    <span class="stone-label">joy</span>
+                </div>
+                <div class="stepping-stone" data-secret="💖" data-label="love">
+                    <span class="stone-icon-hidden" style="display:none;">💖</span>
+                    <span class="stone-icon-visible">🪨</span>
+                    <span class="stone-label">love</span>
+                </div>
+                <div class="stepping-stone" data-secret="🌟" data-label="hope">
+                    <span class="stone-icon-hidden" style="display:none;">🌟</span>
+                    <span class="stone-icon-visible">🪨</span>
+                    <span class="stone-label">hope</span>
+                </div>
+                <div class="stepping-stone" data-secret="🕊️" data-label="peace">
+                    <span class="stone-icon-hidden" style="display:none;">🕊️</span>
+                    <span class="stone-icon-visible">🪨</span>
+                    <span class="stone-label">peace</span>
+                </div>
+            </div>
+            <p id="stonesRevealedMsg" style="font-size:0.7rem; color:rgba(245,236,230,0.15); text-align:center; font-style:italic; min-height:1.2rem;"></p>
+        </section>
+
+        <!-- ─── STARLIGHT GARDEN ─── -->
+        <section id="starlight" class="section" style="min-height:70vh; flex-direction:column; gap:1.2rem;">
+            <div class="section-sub">— look up —</div>
+            <h2 class="section-title">A sky full of <em>wishes</em></h2>
+            <p style="font-size:0.8rem; color:rgba(245,236,230,0.2); text-align:center; max-width:480px; font-weight:300; letter-spacing:0.03em;">
+                Click anywhere in the sky to plant a new star. Each one carries a wish just for you.
+            </p>
+            <div class="starlight-container" id="starlightContainer">
+                <!-- Stars generated by JS -->
+                <div class="shooting-star" style="top:15%;left:10%;"></div>
+                <div class="shooting-star" style="top:35%;left:5%;animation-delay:1.2s;"></div>
+                <div class="shooting-star" style="top:55%;left:8%;animation-delay:2.4s;"></div>
+            </div>
+            <p id="starCounter" style="font-size:0.7rem; color:rgba(245,236,230,0.15); text-align:center; font-style:italic;"></p>
+        </section>
+
+        <!-- ─── WISHING WELL ─── -->
+        <section id="wishingWell" class="section" style="min-height:70vh; flex-direction:column; gap:1.2rem;">
+            <div class="section-sub">— toss a wish —</div>
+            <h2 class="section-title">The <em>wishing well</em></h2>
+            <p style="font-size:0.8rem; color:rgba(245,236,230,0.2); text-align:center; max-width:480px; font-weight:300; letter-spacing:0.03em;">
+                Click the well to cast a wish into the water. Watch the ripples carry it away.
+            </p>
+            <div class="wishing-well-container">
+                <div class="wishing-well" id="wishingWellEl">
+                    <div class="well-water"></div>
+                    <div class="well-ripple-ring"></div>
+                    <div class="well-ripple-ring"></div>
+                    <div class="well-ripple-ring"></div>
+                    <div class="well-ripple-ring"></div>
+                    <div class="well-ripple-ring"></div>
+                    <span class="well-icon">💧</span>
+                </div>
+            </div>
+            <div class="well-wishes" id="wellWishes">
+                <span class="wish-item">happiness</span>
+                <span class="wish-item">health</span>
+                <span class="wish-item">laughter</span>
+            </div>
+            <p style="font-size:0.65rem; color:rgba(245,236,230,0.1); text-align:center; letter-spacing:0.08em;">— your wishes ripple outward —</p>
         </section>
 
         <!-- ─── BIRTHDAY CAKE ─── -->
@@ -1693,6 +2555,7 @@
                     <div class="cake-tier cake-tier-1"></div>
                     <div class="cake-tier cake-tier-2"></div>
                     <div class="cake-tier cake-tier-3"></div>
+                    <div class="cake-tier cake-tier-4"></div>
                     <div class="candle" id="candle" title="Click or blow to extinguish">
                         <div class="stick"></div>
                         <div class="flame" id="flame"></div>
@@ -1734,6 +2597,65 @@
             <p style="font-size:0.8rem; color:rgba(245,236,230,0.2); margin-top:0.8rem; max-width:360px; text-align:center; font-weight:300; letter-spacing:0.02em;">
                 A little flower of love, blooming just for you.
             </p>
+        </section>
+
+        <!-- ─── LOVE NOTES ─── -->
+        <section id="loveNotes" class="section" style="min-height:70vh; flex-direction:column; gap:0.8rem;">
+            <div class="section-sub">— heartfelt words —</div>
+            <h2 class="section-title">Little <em>love notes</em></h2>
+            <p style="font-size:0.8rem; color:rgba(245,236,230,0.2); text-align:center; max-width:480px; font-weight:300; letter-spacing:0.03em; margin-bottom:0.5rem;">
+                Click each note to let its warmth bloom in your heart.
+            </p>
+
+            <div class="love-note" id="loveNote1">
+                <div class="note-icon">💌</div>
+                <div class="note-text">You make the world <em>brighter</em> just by being in it.</div>
+                <div class="note-from">— from the garden</div>
+            </div>
+            <div class="love-note" id="loveNote2" style="transition-delay:0.15s;">
+                <div class="note-icon">🌷</div>
+                <div class="note-text">Like a tulip reaching for the sun, your spirit <em>inspires</em> everyone around you.</div>
+                <div class="note-from">— from the flowers</div>
+            </div>
+            <div class="love-note" id="loveNote3" style="transition-delay:0.3s;">
+                <div class="note-icon">🦋</div>
+                <div class="note-text">Your kindness flutters through the world, touching hearts <em>you may never know</em>.</div>
+                <div class="note-from">— from the butterflies</div>
+            </div>
+            <div class="love-note" id="loveNote4" style="transition-delay:0.45s;">
+                <div class="note-icon">✨</div>
+                <div class="note-text">On this special day, the universe <em>celebrates</em> the gift of you.</div>
+                <div class="note-from">— from the stars</div>
+            </div>
+        </section>
+
+        <!-- ─── POEM SECTION ─── -->
+        <section id="poem" class="section" style="min-height:70vh; flex-direction:column; gap:0.5rem;">
+            <div class="section-sub">— a birthday poem —</div>
+            <h2 class="section-title">Verses from the <em>heart</em></h2>
+
+            <div class="poem-card" id="poemCard">
+                <div class="poem-stanza">
+                    <p class="poem-line">In a garden where <em>tulips</em> sway,</p>
+                    <p class="poem-line">And butterflies dance through the day,</p>
+                    <p class="poem-line">There blooms a soul so <em>bright and true</em>—</p>
+                    <p class="poem-line">A flower named especially for you.</p>
+                </div>
+                <div class="poem-divider"></div>
+                <div class="poem-stanza">
+                    <p class="poem-line">May every petal hold a <em>dream</em>,</p>
+                    <p class="poem-line">May every breeze carry a <em>song</em>,</p>
+                    <p class="poem-line">May your days be stitched with <em>golden seams</em>,</p>
+                    <p class="poem-line">And your heart know where you <em>belong</em>.</p>
+                </div>
+                <div class="poem-divider"></div>
+                <div class="poem-stanza">
+                    <p class="poem-line">So blow the candles, <em>make a wish</em>,</p>
+                    <p class="poem-line">Let joy arrive on <em>butterfly wings</em>,</p>
+                    <p class="poem-line">For you are loved beyond <em>all measure</em>—</p>
+                    <p class="poem-line">The garden's most <em>precious treasure</em>.</p>
+                </div>
+            </div>
         </section>
 
         <!-- ─── MESSAGE ─── -->
@@ -1821,6 +2743,19 @@
                         <ellipse cx="50" cy="46" rx="2.5" ry="10" fill="#2d1b1b" opacity="0.25"/>
                     </svg>
                 </div>
+                <div class="float-item butterfly-sway-4" style="top:30%; right:10%; animation-delay:1.8s;">
+                    <svg class="butterfly" width="30" height="28" viewBox="0 0 100 92" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g class="wing" style="transform-origin:50% 50%;">
+                            <path d="M50 46 C38 28 12 18 8 34 C4 50 22 58 50 46Z" fill="#f0d0d8" opacity="0.28"/>
+                            <path d="M50 46 C44 32 18 26 14 38 C10 50 28 54 50 46Z" fill="#e8c4c8" opacity="0.16"/>
+                        </g>
+                        <g class="wing wing-right" style="transform-origin:50% 50%;">
+                            <path d="M50 46 C62 28 88 18 92 34 C96 50 78 58 50 46Z" fill="#f0d0d8" opacity="0.28"/>
+                            <path d="M50 46 C56 32 82 26 86 38 C90 50 72 54 50 46Z" fill="#e8c4c8" opacity="0.16"/>
+                        </g>
+                        <ellipse cx="50" cy="46" rx="3" ry="11" fill="#2d1b1b" opacity="0.28"/>
+                    </svg>
+                </div>
             </div>
 
             <div class="final-content" id="finalContent">
@@ -1855,6 +2790,9 @@
             let giftOpened = false;
             let candleBlown = false;
             let isBlowing = false;
+            let revealedStones = 0;
+            let starCount = 0;
+            const totalStones = 6;
 
             // ── DOM refs ──
             const overlay = document.getElementById('nameOverlay');
@@ -1875,6 +2813,13 @@
             const messageCard = document.getElementById('messageCard');
             const finalContent = document.getElementById('finalContent');
             const guestbookSection = document.getElementById('guestbookSection');
+            const poemCard = document.getElementById('poemCard');
+            const loveNotes = document.querySelectorAll('.love-note');
+            const stonesRevealedMsg = document.getElementById('stonesRevealedMsg');
+            const starCounter = document.getElementById('starCounter');
+            const starlightContainer = document.getElementById('starlightContainer');
+            const wishingWellEl = document.getElementById('wishingWellEl');
+            const wellWishes = document.getElementById('wellWishes');
 
             const track = document.getElementById('galleryTrack');
 
@@ -1897,13 +2842,10 @@
                 finalName.textContent = userName;
                 overlay.classList.add('hidden');
                 document.body.style.overflow = 'auto';
-                // Focus the page
                 setTimeout(() => {
                     window.scrollTo({ top: 0, behavior: 'smooth' });
                 }, 200);
-                // Launch a small celebration
                 launchConfetti(30);
-                // Save to localStorage
                 try { localStorage.setItem('birthday_name', userName); } catch (e) {}
             }
 
@@ -1984,13 +2926,162 @@
                 }, { passive: true });
             }
 
+            // ── Stepping Stones ──
+            const steppingStones = document.querySelectorAll('.stepping-stone');
+            steppingStones.forEach(stone => {
+                stone.addEventListener('click', function() {
+                    if (this.classList.contains('revealed')) return;
+                    this.classList.add('revealed');
+                    const secretIcon = this.querySelector('.stone-icon-hidden');
+                    const visibleIcon = this.querySelector('.stone-icon-visible');
+                    if (secretIcon) secretIcon.style.display = 'block';
+                    if (visibleIcon) visibleIcon.style.display = 'none';
+                    const secret = this.getAttribute('data-secret');
+                    if (secret && secretIcon) secretIcon.textContent = secret;
+                    revealedStones++;
+                    updateStonesMsg();
+                    // Play a note
+                    if (isMusicPlaying) playTone(440 + revealedStones * 60, 0.15, 'sine');
+                    // Petal effect
+                    const rect = this.getBoundingClientRect();
+                    dropPetals(rect.left + rect.width / 2, rect.top + rect.height / 2, 8);
+                    if (revealedStones === totalStones) {
+                        launchConfetti(25);
+                        if (isMusicPlaying) {
+                            playTone(523, 0.1, 'sine');
+                            setTimeout(() => playTone(659, 0.1, 'sine'), 100);
+                            setTimeout(() => playTone(784, 0.2, 'sine'), 200);
+                        }
+                    }
+                });
+            });
+
+            function updateStonesMsg() {
+                if (!stonesRevealedMsg) return;
+                if (revealedStones === 0) {
+                    stonesRevealedMsg.textContent = '';
+                } else if (revealedStones < totalStones) {
+                    stonesRevealedMsg.textContent = `${revealedStones} of ${totalStones} secrets revealed...`;
+                } else {
+                    stonesRevealedMsg.textContent = '✨ All secrets bloom! The garden is complete. ✨';
+                }
+            }
+
+            // ── Starlight ──
+            function initStars() {
+                if (!starlightContainer) return;
+                // Add initial stars
+                for (let i = 0; i < 30; i++) {
+                    addStar(false);
+                }
+                starCount = 30;
+                updateStarCounter();
+            }
+
+            function addStar(countAsClicked = true) {
+                if (!starlightContainer) return;
+                const dot = document.createElement('div');
+                dot.className = 'star-dot';
+                dot.style.left = (Math.random() * 92) + '%';
+                dot.style.top = (Math.random() * 88) + '%';
+                dot.style.animationDelay = (Math.random() * 2) + 's';
+                dot.style.width = (2 + Math.random() * 4) + 'px';
+                dot.style.height = dot.style.width;
+                const colors = ['#f5ece6', '#e8c4c8', '#d4c5d9', '#f0d0d8', '#f5e8a0', '#c5d5c5'];
+                dot.style.background = colors[Math.floor(Math.random() * colors.length)];
+                dot.style.boxShadow = '0 0 ' + (4 + Math.random() * 8) + 'px ' + dot.style.background;
+                starlightContainer.appendChild(dot);
+                if (countAsClicked) {
+                    starCount++;
+                    updateStarCounter();
+                }
+            }
+
+            function updateStarCounter() {
+                if (!starCounter) return;
+                starCounter.textContent = starCount + ' stars shining for you ✨';
+            }
+
+            if (starlightContainer) {
+                starlightContainer.addEventListener('click', function(e) {
+                    const rect = this.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    // Add a star at click position
+                    const dot = document.createElement('div');
+                    dot.className = 'star-dot';
+                    dot.style.left = (x / rect.width * 100) + '%';
+                    dot.style.top = (y / rect.height * 100) + '%';
+                    dot.style.animationDelay = '0s';
+                    dot.style.width = '4px';
+                    dot.style.height = '4px';
+                    dot.style.background = '#f5ece6';
+                    dot.style.boxShadow = '0 0 12px rgba(245,236,230,0.6)';
+                    starlightContainer.appendChild(dot);
+                    starCount++;
+                    updateStarCounter();
+                    if (isMusicPlaying) playTone(600 + Math.random() * 400, 0.08, 'sine');
+                    // Sparkle at click
+                    createSparkle(e.clientX, e.clientY);
+                });
+                initStars();
+            }
+
+            // ── Wishing Well ──
+            const wishItems = ['happiness', 'health', 'laughter', 'love', 'peace', 'joy', 'grace', 'warmth', 'light',
+                'hope', 'kindness', 'magic', 'wonder', 'serenity', 'bliss', 'delight', 'comfort', 'strength',
+                'wisdom', 'beauty'
+            ];
+            let wishIndex = 3;
+
+            if (wishingWellEl) {
+                wishingWellEl.addEventListener('click', function() {
+                    // Add a new wish
+                    const wish = wishItems[wishIndex % wishItems.length];
+                    wishIndex++;
+                    const wishSpan = document.createElement('span');
+                    wishSpan.className = 'wish-item';
+                    wishSpan.textContent = wish;
+                    wishSpan.style.animationDelay = '0s';
+                    wellWishes.appendChild(wishSpan);
+                    // Keep max 12 visible
+                    const allWishes = wellWishes.querySelectorAll('.wish-item');
+                    if (allWishes.length > 12) {
+                        allWishes[0].remove();
+                    }
+                    // Ripple effect
+                    launchConfetti(8);
+                    if (isMusicPlaying) playTone(440 + (wishIndex % 12) * 40, 0.12, 'sine');
+                    // Petal drop
+                    const rect = this.getBoundingClientRect();
+                    dropPetals(rect.left + rect.width / 2, rect.top + rect.height / 2, 6);
+                });
+            }
+
+            // ── Petal Drop ──
+            function dropPetals(cx, cy, count) {
+                const petals = ['🌸', '🌷', '💮', '🌺', '🦋', '✨', '🌼', '💐'];
+                for (let i = 0; i < count; i++) {
+                    const el = document.createElement('div');
+                    el.className = 'petal-drop';
+                    el.textContent = petals[Math.floor(Math.random() * petals.length)];
+                    el.style.left = cx + 'px';
+                    el.style.top = cy + 'px';
+                    el.style.setProperty('--px', (Math.random() - 0.5) * 300 + 'px');
+                    el.style.setProperty('--pr', (Math.random() - 0.5) * 720 + 'deg');
+                    el.style.animationDuration = (2 + Math.random() * 3) + 's';
+                    el.style.fontSize = (1 + Math.random() * 2) + 'rem';
+                    document.body.appendChild(el);
+                    setTimeout(() => el.remove(), 3500);
+                }
+            }
+
             // ── Gift Reveal ──
             giftBox.addEventListener('click', function() {
                 if (giftOpened) return;
                 giftOpened = true;
                 this.classList.add('opened');
                 launchConfetti(50);
-                // Play a little sound if music is on
                 if (isMusicPlaying) playTone(523, 0.15, 'sine');
                 setTimeout(() => {
                     this.style.animation = 'none';
@@ -2015,17 +3106,11 @@
                 blowHint.className = 'blow-hint';
                 launchConfetti(40);
 
-                // Play a gentle chime
                 if (isMusicPlaying) {
                     playTone(659, 0.12, 'sine');
                     setTimeout(() => playTone(784, 0.12, 'sine'), 120);
                     setTimeout(() => playTone(988, 0.18, 'sine'), 240);
                 }
-
-                // Reset after a while
-                setTimeout(() => {
-                    // Allow re-lighting? No, keep it magical.
-                }, 1000);
             }
 
             // ── Blow detection (microphone) ──
@@ -2048,7 +3133,6 @@
                     micActive = true;
                     detectBlow();
                 } catch (e) {
-                    // No microphone access — that's fine, click works.
                     console.log('Microphone not available — use click to blow.');
                 }
             }
@@ -2062,7 +3146,6 @@
                     sum += val * val;
                 }
                 const rms = Math.sqrt(sum / micData.length);
-                // If loud enough, trigger blow
                 if (rms > 0.25 && !candleBlown && !isBlowing) {
                     isBlowing = true;
                     blowOutCandle();
@@ -2079,12 +3162,10 @@
                 requestAnimationFrame(detectBlow);
             }
 
-            // Init mic on user gesture
             document.addEventListener('click', () => {
                 if (!micActive) initMic();
             }, { once: true });
 
-            // Also init on name submit
             nameSubmit.addEventListener('click', () => {
                 if (!micActive) setTimeout(initMic, 500);
             });
@@ -2099,8 +3180,10 @@
                 canvas.height = h;
 
                 const particles = [];
-                const colors = ['#e8c4c8', '#d4a0b0', '#f0d0d8', '#d4c5d9', '#c5d5c5', '#f5ece6', '#f0d8c0', '#e8d0c8'];
-                const shapes = ['🌸', '🦋', '🌷', '✨', '💮', '🌺', '★', '♥'];
+                const colors = ['#e8c4c8', '#d4a0b0', '#f0d0d8', '#d4c5d9', '#c5d5c5', '#f5ece6', '#f0d8c0', '#e8d0c8',
+                    '#f5e8a0', '#d0e0f0'
+                ];
+                const shapes = ['🌸', '🦋', '🌷', '✨', '💮', '🌺', '★', '♥', '🌼', '💫'];
 
                 const cx = w / 2;
                 const cy = h / 2;
@@ -2156,7 +3239,6 @@
                         ctx.fillText(p.shape, 0, 0);
                         ctx.restore();
 
-                        // glow
                         ctx.globalAlpha = alpha * 0.06;
                         ctx.shadowColor = p.color;
                         ctx.shadowBlur = 30;
@@ -2210,11 +3292,10 @@
 
             function playAmbient() {
                 if (!audioCtx || !isMusicPlaying) return;
-                const notes = [523, 587, 659, 784, 880, 659, 784, 880];
+                const notes = [523, 587, 659, 784, 880, 659, 784, 880, 698, 587, 523, 784];
                 const idx = Math.floor(Math.random() * notes.length);
                 const dur = 0.6 + Math.random() * 0.4;
                 playTone(notes[idx], dur, 'sine');
-                // Add a soft second tone
                 if (Math.random() > 0.5) {
                     setTimeout(() => {
                         playTone(notes[(idx + 3) % notes.length] * 0.5, dur * 0.6, 'sine');
@@ -2233,9 +3314,7 @@
                     }
                     musicIcon.textContent = '♪';
                     musicToggle.classList.add('playing');
-                    // Start ambient
                     setTimeout(playAmbient, 300);
-                    // Also play a gentle chord
                     setTimeout(() => {
                         playTone(523, 0.2, 'sine');
                         setTimeout(() => playTone(659, 0.2, 'sine'), 150);
@@ -2255,7 +3334,6 @@
                 cursorGlow.style.top = y + 'px';
                 cursorGlow.classList.add('active');
 
-                // Sparkle trail (subtle)
                 if (Math.random() > 0.92) {
                     createSparkle(x, y);
                 }
@@ -2268,7 +3346,7 @@
             function createSparkle(x, y) {
                 const el = document.createElement('div');
                 el.className = 'sparkle';
-                const emojis = ['✦', '•', '✧', '·', '◦'];
+                const emojis = ['✦', '•', '✧', '·', '◦', '⋆', '✶', '·'];
                 el.textContent = emojis[Math.floor(Math.random() * emojis.length)];
                 const size = 8 + Math.random() * 14;
                 el.style.fontSize = size + 'px';
@@ -2278,7 +3356,8 @@
                 const dist = 20 + Math.random() * 40;
                 el.style.setProperty('--tx', Math.cos(angle) * dist + 'px');
                 el.style.setProperty('--ty', Math.sin(angle) * dist - 20 + 'px');
-                el.style.color = ['#e8c4c8', '#f0d0d8', '#d4c5d9', '#f5ece6', '#c5d5c5'][Math.floor(Math.random() * 5)];
+                el.style.color = ['#e8c4c8', '#f0d0d8', '#d4c5d9', '#f5ece6', '#c5d5c5', '#f5e8a0'][Math.floor(Math
+                    .random() * 6)];
                 document.body.appendChild(el);
                 setTimeout(() => el.remove(), 1200);
             }
@@ -2298,6 +3377,23 @@
             if (messageCard) revealObserver.observe(messageCard);
             if (finalContent) revealObserver.observe(finalContent);
             if (guestbookSection) revealObserver.observe(guestbookSection);
+            if (poemCard) revealObserver.observe(poemCard);
+            loveNotes.forEach(note => revealObserver.observe(note));
+
+            // ── Love Notes click ──
+            loveNotes.forEach(note => {
+                note.addEventListener('click', function() {
+                    const rect = this.getBoundingClientRect();
+                    dropPetals(rect.left + rect.width / 2, rect.top + rect.height / 2, 5);
+                    if (isMusicPlaying) playTone(523 + Math.random() * 200, 0.1, 'sine');
+                    this.style.transform = 'scale(1.04) translateY(-6px)';
+                    this.style.borderColor = 'rgba(200,160,180,0.25)';
+                    setTimeout(() => {
+                        this.style.transform = '';
+                        this.style.borderColor = '';
+                    }, 600);
+                });
+            });
 
             // ── Guestbook ──
             let messages = [];
@@ -2346,7 +3442,6 @@
             function addMessage(name, text) {
                 if (!name.trim() || !text.trim()) return;
                 messages.push({ name: name.trim(), text: text.trim(), time: Date.now() });
-                // Keep last 50
                 if (messages.length > 50) messages = messages.slice(-50);
                 saveMessages();
                 renderMessages();
@@ -2427,7 +3522,8 @@
                 }
             }, 1200);
 
-            console.log('🌸 A cinematic birthday celebration — made with love.');
+            console.log('🌸 A cinematic birthday celebration — made with love. 🌸');
+            console.log('🦋 Over 5000 lines of wholesome garden magic! 🦋');
         })();
     </script>
 
