@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Happy Birthday — A Gift of Tulips & Butterflies</title>
+    <title>Happy Birthday — A Garden of Love</title>
     <script src="https://cdn.tailwindcss.com">
     </script>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
     <style>
         /* ── Reset & Base ── */
         * {
@@ -34,8 +34,8 @@
             pointer-events: none;
             z-index: 0;
             background:
-                radial-gradient(ellipse at 30% 20%, rgba(180, 100, 120, 0.20) 0%, transparent 60%),
-                radial-gradient(ellipse at 70% 80%, rgba(200, 160, 180, 0.10) 0%, transparent 50%),
+                radial-gradient(ellipse at 30% 20%, rgba(180, 100, 120, 0.18) 0%, transparent 60%),
+                radial-gradient(ellipse at 70% 80%, rgba(200, 160, 180, 0.08) 0%, transparent 50%),
                 radial-gradient(ellipse at 50% 50%, rgba(26, 17, 16, 0.6) 0%, #1a1110 100%);
         }
 
@@ -44,7 +44,7 @@
             inset: 0;
             pointer-events: none;
             z-index: 1;
-            opacity: 0.030;
+            opacity: 0.025;
             background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
             background-size: 256px 256px;
         }
@@ -54,16 +54,14 @@
             inset: 0;
             pointer-events: none;
             z-index: 1;
-            background: radial-gradient(ellipse at center, transparent 50%, rgba(0, 0, 0, 0.5) 100%);
+            background: radial-gradient(ellipse at center, transparent 50%, rgba(0, 0, 0, 0.55) 100%);
         }
 
-        /* ── Scroll Container ── */
         .scroll-container {
             position: relative;
             z-index: 2;
         }
 
-        /* ── Section Base ── */
         .section {
             min-height: 100vh;
             display: flex;
@@ -72,6 +70,132 @@
             padding: 2rem;
             position: relative;
             overflow: hidden;
+        }
+
+        /* ── NAME ENTRY OVERLAY ── */
+        #nameOverlay {
+            position: fixed;
+            inset: 0;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(26, 17, 16, 0.92);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            transition: opacity 1.4s cubic-bezier(0.22, 1, 0.36, 1), transform 1.4s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        #nameOverlay.hidden {
+            opacity: 0;
+            transform: scale(1.02);
+            pointer-events: none;
+        }
+
+        .name-card {
+            max-width: 520px;
+            width: 100%;
+            padding: 3rem 2.5rem;
+            text-align: center;
+            background: rgba(26, 17, 16, 0.70);
+            border: 1px solid rgba(200, 160, 180, 0.08);
+            border-radius: 2.4rem;
+            box-shadow: 0 40px 100px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(245, 236, 230, 0.03);
+        }
+        .name-card .icon-big {
+            font-size: 4rem;
+            margin-bottom: 0.5rem;
+            display: block;
+            animation: floatIcon 3.6s ease-in-out infinite;
+        }
+        @keyframes floatIcon {
+            0%,
+            100% {
+                transform: translateY(0) rotate(-2deg);
+            }
+            50% {
+                transform: translateY(-12px) rotate(2deg);
+            }
+        }
+        .name-card h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #f5ece6;
+            margin-bottom: 0.3rem;
+        }
+        .name-card h2 em {
+            color: #e8c4c8;
+            font-style: italic;
+            font-weight: 400;
+        }
+        .name-card p {
+            color: rgba(245, 236, 230, 0.4);
+            font-size: 0.9rem;
+            font-weight: 300;
+            letter-spacing: 0.04em;
+            margin-bottom: 1.8rem;
+        }
+        .name-card .input-wrap {
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .name-card .input-wrap input {
+            flex: 1;
+            min-width: 180px;
+            padding: 0.9rem 1.4rem;
+            border-radius: 3rem;
+            border: 1px solid rgba(200, 160, 180, 0.12);
+            background: rgba(245, 236, 230, 0.04);
+            color: #f5ece6;
+            font-size: 1rem;
+            font-family: 'Inter', sans-serif;
+            font-weight: 300;
+            letter-spacing: 0.02em;
+            outline: none;
+            transition: border-color 0.4s ease, box-shadow 0.4s ease;
+        }
+        .name-card .input-wrap input::placeholder {
+            color: rgba(245, 236, 230, 0.2);
+            font-weight: 300;
+        }
+        .name-card .input-wrap input:focus {
+            border-color: rgba(200, 160, 180, 0.3);
+            box-shadow: 0 0 30px rgba(180, 100, 120, 0.06);
+        }
+        .name-card .input-wrap button {
+            padding: 0.9rem 2rem;
+            border-radius: 3rem;
+            border: none;
+            background: linear-gradient(135deg, rgba(180, 100, 120, 0.35), rgba(200, 160, 180, 0.15));
+            color: #f5ece6;
+            font-family: 'Inter', sans-serif;
+            font-weight: 400;
+            font-size: 0.95rem;
+            letter-spacing: 0.04em;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            border: 1px solid rgba(200, 160, 180, 0.08);
+            backdrop-filter: blur(4px);
+        }
+        .name-card .input-wrap button:hover {
+            background: linear-gradient(135deg, rgba(180, 100, 120, 0.5), rgba(200, 160, 180, 0.25));
+            border-color: rgba(200, 160, 180, 0.2);
+            transform: scale(1.02);
+            box-shadow: 0 10px 40px rgba(180, 100, 120, 0.15);
+        }
+        .name-card .input-wrap button:active {
+            transform: scale(0.97);
+        }
+        .name-card .hint {
+            margin-top: 1.2rem;
+            font-size: 0.7rem;
+            color: rgba(245, 236, 230, 0.12);
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
         }
 
         /* ── HERO ── */
@@ -101,6 +225,12 @@
             animation-delay: 0.4s;
             filter: drop-shadow(0 4px 50px rgba(180, 100, 120, 0.25));
         }
+        .hero-title .name-highlight {
+            background: linear-gradient(180deg, #f5ece6 20%, #e8c4c8 50%, #d4a0b0 75%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
 
         @keyframes heroReveal {
             0% {
@@ -126,6 +256,10 @@
             animation-delay: 1.4s;
             margin-top: 0.5rem;
             text-shadow: 0 2px 30px rgba(200, 160, 180, 0.15);
+        }
+        .hero-sub .name-sub {
+            color: #f5ece6;
+            font-style: italic;
         }
 
         .hero-line {
@@ -161,7 +295,7 @@
             opacity: 0;
             animation: fadeUp 1.4s ease forwards;
             animation-delay: 2.6s;
-            color: rgba(245, 236, 230, 0.3);
+            color: rgba(245, 236, 230, 0.25);
             font-size: 0.65rem;
             letter-spacing: 0.2em;
             text-transform: uppercase;
@@ -175,7 +309,7 @@
         .scroll-indicator .mouse {
             width: 20px;
             height: 32px;
-            border: 1.5px solid rgba(245, 236, 230, 0.2);
+            border: 1.5px solid rgba(245, 236, 230, 0.15);
             border-radius: 10px;
             display: flex;
             justify-content: center;
@@ -234,7 +368,7 @@
 
         /* ── Butterfly SVG ── */
         .butterfly {
-            filter: drop-shadow(0 4px 25px rgba(200, 160, 180, 0.12));
+            filter: drop-shadow(0 4px 25px rgba(200, 160, 180, 0.10));
             transition: filter 0.8s ease;
         }
 
@@ -252,15 +386,6 @@
             }
             100% {
                 transform: scaleX(0.55) rotate(6deg);
-            }
-        }
-
-        @keyframes wingFlapRight {
-            0% {
-                transform: scaleX(1) rotate(0deg);
-            }
-            100% {
-                transform: scaleX(0.55) rotate(-6deg);
             }
         }
 
@@ -302,7 +427,7 @@
 
         /* ── Tulip SVG ── */
         .tulip {
-            filter: drop-shadow(0 4px 30px rgba(200, 160, 180, 0.10));
+            filter: drop-shadow(0 4px 30px rgba(200, 160, 180, 0.08));
             transition: filter 0.8s ease;
         }
 
@@ -330,7 +455,7 @@
             }
         }
 
-        /* ── Horizontal Gallery ── */
+        /* ── Gallery ── */
         .gallery-wrapper {
             width: 100%;
             max-width: 100vw;
@@ -349,7 +474,7 @@
             scroll-behavior: smooth;
             cursor: grab;
             scrollbar-width: thin;
-            scrollbar-color: rgba(200, 160, 180, 0.2) transparent;
+            scrollbar-color: rgba(200, 160, 180, 0.15) transparent;
             padding-bottom: 1.5rem;
         }
 
@@ -360,20 +485,20 @@
             background: transparent;
         }
         .gallery-track::-webkit-scrollbar-thumb {
-            background: rgba(200, 160, 180, 0.25);
+            background: rgba(200, 160, 180, 0.2);
             border-radius: 8px;
         }
         .gallery-track::-webkit-scrollbar-thumb:hover {
-            background: rgba(200, 160, 180, 0.4);
+            background: rgba(200, 160, 180, 0.35);
         }
 
         .gallery-card {
             flex: 0 0 280px;
             scroll-snap-align: start;
-            background: rgba(26, 17, 16, 0.55);
+            background: rgba(26, 17, 16, 0.50);
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(200, 160, 180, 0.08);
+            border: 1px solid rgba(200, 160, 180, 0.06);
             border-radius: 1.8rem;
             overflow: hidden;
             transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
@@ -388,13 +513,13 @@
         .gallery-card:hover {
             transform: scale(1.02) translateY(-6px);
             opacity: 1;
-            border-color: rgba(200, 160, 180, 0.2);
+            border-color: rgba(200, 160, 180, 0.15);
             box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
         }
 
         .gallery-card .card-image {
             height: 200px;
-            background: linear-gradient(135deg, rgba(180, 100, 120, 0.15), rgba(200, 160, 180, 0.08));
+            background: linear-gradient(135deg, rgba(180, 100, 120, 0.12), rgba(200, 160, 180, 0.06));
             display: flex;
             align-items: center;
             justify-content: center;
@@ -409,7 +534,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            opacity: 0.3;
+            opacity: 0.2;
             font-size: 6rem;
         }
 
@@ -431,7 +556,7 @@
 
         .gallery-card .card-body p {
             font-size: 0.85rem;
-            color: rgba(245, 236, 230, 0.5);
+            color: rgba(245, 236, 230, 0.45);
             font-weight: 300;
             letter-spacing: 0.02em;
         }
@@ -439,9 +564,175 @@
         .gallery-card .card-body .caption {
             margin-top: 0.4rem;
             font-size: 0.75rem;
-            color: rgba(200, 160, 180, 0.5);
+            color: rgba(200, 160, 180, 0.4);
             font-style: italic;
             letter-spacing: 0.05em;
+        }
+
+        /* ── Birthday Cake ── */
+        .cake-container {
+            perspective: 1000px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .cake {
+            position: relative;
+            width: 220px;
+            height: 180px;
+            margin: 0 auto;
+            transform-style: preserve-3d;
+            transition: transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+            cursor: default;
+        }
+        .cake:hover {
+            transform: rotateY(4deg) rotateX(2deg) scale(1.02);
+        }
+
+        .cake-tier {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 12px;
+            background: linear-gradient(160deg, rgba(180, 100, 120, 0.20), rgba(200, 160, 180, 0.06));
+            border: 1px solid rgba(200, 160, 180, 0.06);
+            backdrop-filter: blur(4px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(245, 236, 230, 0.04);
+        }
+        .cake-tier-1 {
+            bottom: 0;
+            width: 200px;
+            height: 70px;
+            border-radius: 12px 12px 18px 18px;
+        }
+        .cake-tier-2 {
+            bottom: 58px;
+            width: 160px;
+            height: 60px;
+            border-radius: 10px 10px 14px 14px;
+        }
+        .cake-tier-3 {
+            bottom: 106px;
+            width: 120px;
+            height: 50px;
+            border-radius: 8px 8px 12px 12px;
+        }
+
+        .cake .candle {
+            position: absolute;
+            bottom: 150px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: all 0.4s ease;
+            cursor: pointer;
+        }
+        .cake .candle .stick {
+            width: 4px;
+            height: 28px;
+            background: linear-gradient(180deg, #e8c4c8, rgba(180, 100, 120, 0.4));
+            border-radius: 2px;
+            position: relative;
+        }
+        .cake .candle .flame {
+            width: 14px;
+            height: 20px;
+            background: radial-gradient(ellipse at 50% 80%, #f5d080, #e8a060 40%, rgba(200, 80, 60, 0.4) 80%);
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            position: absolute;
+            top: -18px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: flicker 0.4s ease-in-out infinite alternate;
+            box-shadow: 0 0 40px rgba(200, 150, 80, 0.3), 0 0 80px rgba(200, 150, 80, 0.1);
+            transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .cake .candle .flame.extinguished {
+            opacity: 0;
+            transform: translateX(-50%) scale(0.1) translateY(10px);
+            box-shadow: none;
+        }
+        .cake .candle .flame-glow {
+            position: absolute;
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(200, 150, 80, 0.10), transparent 70%);
+            pointer-events: none;
+            transition: opacity 0.8s ease;
+        }
+        .cake .candle .flame-glow.extinguished {
+            opacity: 0;
+        }
+
+        @keyframes flicker {
+            0% {
+                transform: translateX(-50%) scale(1) rotate(-2deg);
+            }
+            100% {
+                transform: translateX(-50%) scale(1.08, 0.92) rotate(2deg);
+            }
+        }
+
+        .cake .candle .candle-label {
+            font-size: 0.6rem;
+            color: rgba(245, 236, 230, 0.2);
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-top: 4px;
+            transition: color 0.4s ease;
+        }
+        .cake .candle:hover .candle-label {
+            color: rgba(245, 236, 230, 0.5);
+        }
+
+        .cake .candle .blow-hint {
+            font-size: 0.55rem;
+            color: rgba(245, 236, 230, 0.08);
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            margin-top: 2px;
+            transition: all 0.6s ease;
+        }
+        .cake .candle:hover .blow-hint {
+            color: rgba(245, 236, 230, 0.2);
+        }
+
+        .cake .candle .blow-hint.active {
+            color: rgba(200, 160, 180, 0.3);
+            animation: pulseHint 1.2s ease-in-out infinite;
+        }
+        @keyframes pulseHint {
+            0%,
+            100% {
+                opacity: 0.3;
+            }
+            50% {
+                opacity: 0.8;
+            }
+        }
+
+        .cake-status {
+            font-family: 'Playfair Display', serif;
+            font-size: 0.9rem;
+            color: rgba(245, 236, 230, 0.3);
+            font-style: italic;
+            text-align: center;
+            margin-top: 0.2rem;
+            transition: color 0.6s ease;
+        }
+        .cake-status.lit {
+            color: rgba(200, 160, 180, 0.4);
+        }
+        .cake-status.blown {
+            color: rgba(200, 160, 180, 0.6);
         }
 
         /* ── Gift Reveal ── */
@@ -460,7 +751,7 @@
         }
 
         .gift-box:hover {
-            transform: scale(1.04);
+            transform: scale(1.04) rotateY(2deg);
         }
 
         .gift-box.opened {
@@ -482,10 +773,10 @@
         }
 
         .gift-box .gift-front {
-            background: linear-gradient(145deg, rgba(180, 100, 120, 0.25), rgba(200, 160, 180, 0.10));
-            border: 1px solid rgba(200, 160, 180, 0.15);
+            background: linear-gradient(145deg, rgba(180, 100, 120, 0.20), rgba(200, 160, 180, 0.06));
+            border: 1px solid rgba(200, 160, 180, 0.10);
             backdrop-filter: blur(12px);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(245, 236, 230, 0.05);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(245, 236, 230, 0.04);
         }
 
         .gift-box .gift-front .ribbon {
@@ -505,8 +796,8 @@
         }
 
         .gift-box .gift-front .label {
-            font-size: 0.8rem;
-            color: rgba(245, 236, 230, 0.4);
+            font-size: 0.75rem;
+            color: rgba(245, 236, 230, 0.3);
             letter-spacing: 0.15em;
             text-transform: uppercase;
             margin-top: 0.2rem;
@@ -514,7 +805,7 @@
 
         .gift-box .gift-back {
             background: linear-gradient(145deg, rgba(26, 17, 16, 0.85), rgba(40, 25, 25, 0.90));
-            border: 1px solid rgba(200, 160, 180, 0.12);
+            border: 1px solid rgba(200, 160, 180, 0.08);
             transform: rotateY(180deg);
             backdrop-filter: blur(12px);
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
@@ -553,10 +844,10 @@
             max-width: 680px;
             width: 100%;
             padding: 3.5rem 2.5rem;
-            background: rgba(26, 17, 16, 0.60);
+            background: rgba(26, 17, 16, 0.55);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(200, 160, 180, 0.08);
+            border: 1px solid rgba(200, 160, 180, 0.06);
             border-radius: 2.4rem;
             box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(245, 236, 230, 0.03);
             opacity: 0;
@@ -575,14 +866,14 @@
             justify-content: center;
             gap: 0.8rem;
             margin-bottom: 1.5rem;
-            color: rgba(200, 160, 180, 0.4);
-            font-size: 0.7rem;
+            color: rgba(200, 160, 180, 0.3);
+            font-size: 0.65rem;
             letter-spacing: 0.3em;
             text-transform: uppercase;
         }
         .message-card .ornament span {
             font-size: 1.2rem;
-            opacity: 0.5;
+            opacity: 0.4;
         }
 
         .message-card h2 {
@@ -598,11 +889,15 @@
             font-style: italic;
             font-weight: 400;
         }
+        .message-card h2 .name-msg {
+            color: #f5ece6;
+            font-style: italic;
+        }
 
         .message-card p {
             font-size: clamp(0.95rem, 1.3vw, 1.1rem);
             line-height: 1.9;
-            color: rgba(245, 236, 230, 0.7);
+            color: rgba(245, 236, 230, 0.65);
             font-weight: 300;
             letter-spacing: 0.01em;
         }
@@ -616,7 +911,146 @@
             font-size: 1.2rem;
             color: #e8c4c8;
             text-align: right;
-            opacity: 0.6;
+            opacity: 0.5;
+        }
+
+        /* ── Guestbook ── */
+        .guestbook-section {
+            max-width: 680px;
+            width: 100%;
+            padding: 2.5rem 2rem;
+            background: rgba(26, 17, 16, 0.40);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(200, 160, 180, 0.05);
+            border-radius: 2rem;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 1.2s cubic-bezier(0.22, 1, 0.36, 1),
+                transform 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .guestbook-section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .guestbook-section h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #f5ece6;
+            margin-bottom: 0.2rem;
+        }
+        .guestbook-section h3 em {
+            color: #e8c4c8;
+            font-style: italic;
+            font-weight: 400;
+        }
+        .guestbook-section .sub {
+            font-size: 0.75rem;
+            color: rgba(245, 236, 230, 0.25);
+            letter-spacing: 0.05em;
+            margin-bottom: 1.2rem;
+        }
+        .guestbook-section .gb-input-wrap {
+            display: flex;
+            gap: 0.6rem;
+            flex-wrap: wrap;
+            margin-bottom: 1rem;
+        }
+        .guestbook-section .gb-input-wrap input {
+            flex: 1;
+            min-width: 140px;
+            padding: 0.7rem 1.2rem;
+            border-radius: 2rem;
+            border: 1px solid rgba(200, 160, 180, 0.08);
+            background: rgba(245, 236, 230, 0.04);
+            color: #f5ece6;
+            font-size: 0.85rem;
+            font-family: 'Inter', sans-serif;
+            font-weight: 300;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+        .guestbook-section .gb-input-wrap input::placeholder {
+            color: rgba(245, 236, 230, 0.15);
+        }
+        .guestbook-section .gb-input-wrap input:focus {
+            border-color: rgba(200, 160, 180, 0.2);
+        }
+        .guestbook-section .gb-input-wrap button {
+            padding: 0.7rem 1.6rem;
+            border-radius: 2rem;
+            border: 1px solid rgba(200, 160, 180, 0.08);
+            background: rgba(180, 100, 120, 0.15);
+            color: #f5ece6;
+            font-size: 0.85rem;
+            font-family: 'Inter', sans-serif;
+            font-weight: 400;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+        .guestbook-section .gb-input-wrap button:hover {
+            background: rgba(180, 100, 120, 0.25);
+            border-color: rgba(200, 160, 180, 0.15);
+            transform: scale(1.02);
+        }
+
+        .guestbook-section .gb-messages {
+            max-height: 200px;
+            overflow-y: auto;
+            padding-right: 0.4rem;
+            scrollbar-width: thin;
+            scrollbar-color: rgba(200, 160, 180, 0.08) transparent;
+        }
+        .guestbook-section .gb-messages::-webkit-scrollbar {
+            width: 3px;
+        }
+        .guestbook-section .gb-messages::-webkit-scrollbar-thumb {
+            background: rgba(200, 160, 180, 0.15);
+            border-radius: 4px;
+        }
+        .guestbook-section .gb-message {
+            padding: 0.6rem 0.8rem;
+            border-bottom: 1px solid rgba(200, 160, 180, 0.04);
+            display: flex;
+            flex-direction: column;
+            gap: 0.1rem;
+            animation: messageIn 0.4s ease;
+        }
+        @keyframes messageIn {
+            0% {
+                opacity: 0;
+                transform: translateY(-6px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .guestbook-section .gb-message .gb-name {
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: #e8c4c8;
+        }
+        .guestbook-section .gb-message .gb-text {
+            font-size: 0.8rem;
+            color: rgba(245, 236, 230, 0.5);
+            font-weight: 300;
+            line-height: 1.4;
+        }
+        .guestbook-section .gb-message .gb-time {
+            font-size: 0.55rem;
+            color: rgba(245, 236, 230, 0.15);
+            margin-top: 0.1rem;
+        }
+        .guestbook-section .gb-empty {
+            font-size: 0.8rem;
+            color: rgba(245, 236, 230, 0.15);
+            font-style: italic;
+            text-align: center;
+            padding: 1rem 0;
         }
 
         /* ── Final Wish ── */
@@ -654,10 +1088,14 @@
             font-style: italic;
             font-weight: 400;
         }
+        .final-content h2 .name-final {
+            color: #f5ece6;
+            font-style: italic;
+        }
 
         .final-content .final-sub {
             font-size: clamp(0.9rem, 1.4vw, 1.2rem);
-            color: rgba(245, 236, 230, 0.4);
+            color: rgba(245, 236, 230, 0.35);
             margin-top: 0.8rem;
             font-weight: 300;
             letter-spacing: 0.05em;
@@ -674,15 +1112,15 @@
         #footer {
             padding: 2rem 2rem;
             text-align: center;
-            border-top: 1px solid rgba(200, 160, 180, 0.04);
+            border-top: 1px solid rgba(200, 160, 180, 0.03);
             position: relative;
             z-index: 2;
-            background: rgba(26, 17, 16, 0.40);
+            background: rgba(26, 17, 16, 0.30);
             backdrop-filter: blur(8px);
         }
         #footer p {
             font-size: 0.7rem;
-            color: rgba(245, 236, 230, 0.15);
+            color: rgba(245, 236, 230, 0.10);
             letter-spacing: 0.15em;
             text-transform: uppercase;
         }
@@ -699,6 +1137,39 @@
             50% {
                 transform: scale(1.2);
             }
+        }
+
+        /* ── Music Toggle ── */
+        .music-toggle {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            z-index: 50;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            border: 1px solid rgba(200, 160, 180, 0.08);
+            background: rgba(26, 17, 16, 0.60);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            color: rgba(245, 236, 230, 0.3);
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+        }
+        .music-toggle:hover {
+            border-color: rgba(200, 160, 180, 0.2);
+            color: #f5ece6;
+            transform: scale(1.06);
+        }
+        .music-toggle.playing {
+            color: #e8c4c8;
+            border-color: rgba(200, 160, 180, 0.15);
+            box-shadow: 0 8px 40px rgba(180, 100, 120, 0.08);
         }
 
         /* ── Responsive ── */
@@ -735,6 +1206,57 @@
             .gift-box .gift-back .reveal-text {
                 font-size: 0.95rem;
             }
+            .cake {
+                width: 170px;
+                height: 150px;
+            }
+            .cake-tier-1 {
+                width: 160px;
+                height: 60px;
+            }
+            .cake-tier-2 {
+                width: 128px;
+                height: 50px;
+                bottom: 48px;
+            }
+            .cake-tier-3 {
+                width: 96px;
+                height: 40px;
+                bottom: 86px;
+            }
+            .cake .candle {
+                bottom: 124px;
+            }
+            .cake .candle .stick {
+                height: 22px;
+            }
+            .cake .candle .flame {
+                width: 12px;
+                height: 17px;
+                top: -15px;
+            }
+            .name-card {
+                padding: 2.2rem 1.5rem;
+            }
+            .name-card .input-wrap input {
+                min-width: 140px;
+                padding: 0.75rem 1.2rem;
+                font-size: 0.9rem;
+            }
+            .name-card .input-wrap button {
+                padding: 0.75rem 1.4rem;
+                font-size: 0.85rem;
+            }
+            .guestbook-section {
+                padding: 1.8rem 1.2rem;
+            }
+            .music-toggle {
+                bottom: 1.2rem;
+                right: 1.2rem;
+                width: 38px;
+                height: 38px;
+                font-size: 1rem;
+            }
         }
 
         @media (max-width: 480px) {
@@ -770,6 +1292,66 @@
             .gift-box .gift-front .ribbon {
                 font-size: 2.4rem;
             }
+            .cake {
+                width: 140px;
+                height: 130px;
+            }
+            .cake-tier-1 {
+                width: 130px;
+                height: 50px;
+            }
+            .cake-tier-2 {
+                width: 104px;
+                height: 42px;
+                bottom: 40px;
+            }
+            .cake-tier-3 {
+                width: 78px;
+                height: 34px;
+                bottom: 72px;
+            }
+            .cake .candle {
+                bottom: 102px;
+            }
+            .cake .candle .stick {
+                height: 18px;
+                width: 3px;
+            }
+            .cake .candle .flame {
+                width: 10px;
+                height: 14px;
+                top: -12px;
+            }
+            .name-card {
+                padding: 1.8rem 1.2rem;
+            }
+            .name-card .input-wrap {
+                flex-direction: column;
+            }
+            .name-card .input-wrap input {
+                width: 100%;
+                min-width: unset;
+            }
+            .name-card .input-wrap button {
+                width: 100%;
+            }
+            .guestbook-section .gb-input-wrap {
+                flex-direction: column;
+            }
+            .guestbook-section .gb-input-wrap input {
+                width: 100%;
+                min-width: unset;
+            }
+            .guestbook-section .gb-input-wrap button {
+                width: 100%;
+            }
+            .music-toggle {
+                bottom: 1rem;
+                right: 1rem;
+                width: 34px;
+                height: 34px;
+                font-size: 0.9rem;
+            }
         }
 
         /* ── Scrollbar ── */
@@ -780,27 +1362,25 @@
             background: #1a1110;
         }
         ::-webkit-scrollbar-thumb {
-            background: rgba(180, 100, 120, 0.3);
+            background: rgba(180, 100, 120, 0.25);
             border-radius: 4px;
         }
         ::-webkit-scrollbar-thumb:hover {
-            background: rgba(200, 160, 180, 0.4);
+            background: rgba(200, 160, 180, 0.35);
         }
 
         ::selection {
-            background: rgba(180, 100, 120, 0.3);
+            background: rgba(180, 100, 120, 0.25);
             color: #f5ece6;
         }
 
-        /* ── Glassmorphism helpers ── */
         .glass {
-            background: rgba(26, 17, 16, 0.50);
+            background: rgba(26, 17, 16, 0.45);
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(200, 160, 180, 0.06);
+            border: 1px solid rgba(200, 160, 180, 0.04);
         }
 
-        /* ── Gallery section title ── */
         .section-title {
             font-family: 'Playfair Display', serif;
             font-size: clamp(1.4rem, 3vw, 2.2rem);
@@ -818,14 +1398,13 @@
 
         .section-sub {
             text-align: center;
-            color: rgba(245, 236, 230, 0.3);
-            font-size: 0.8rem;
+            color: rgba(245, 236, 230, 0.2);
+            font-size: 0.75rem;
             letter-spacing: 0.15em;
             text-transform: uppercase;
-            margin-bottom: 0.8rem;
+            margin-bottom: 0.6rem;
         }
 
-        /* ── Butterfly in final section ── */
         .final-butterflies {
             position: absolute;
             inset: 0;
@@ -833,9 +1412,45 @@
             overflow: hidden;
         }
 
-        /* ── smooth load ── */
         .no-transition {
             transition: none !important;
+        }
+
+        /* ── Cursor trail glow ── */
+        .cursor-glow {
+            position: fixed;
+            pointer-events: none;
+            z-index: 3;
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(200, 160, 180, 0.04), transparent 70%);
+            transform: translate(-50%, -50%);
+            transition: opacity 0.8s ease;
+            opacity: 0;
+        }
+        .cursor-glow.active {
+            opacity: 1;
+        }
+
+        /* ── Sparkle trail ── */
+        .sparkle {
+            position: fixed;
+            pointer-events: none;
+            z-index: 4;
+            font-size: 0.6rem;
+            opacity: 0;
+            animation: sparkleFade 1.2s ease forwards;
+        }
+        @keyframes sparkleFade {
+            0% {
+                opacity: 0.8;
+                transform: translate(0, 0) scale(0.5) rotate(0deg);
+            }
+            100% {
+                opacity: 0;
+                transform: translate(var(--tx), var(--ty)) scale(0.1) rotate(360deg);
+            }
         }
     </style>
 </head>
@@ -846,30 +1461,51 @@
     <div class="film-grain"></div>
     <div class="vignette"></div>
 
+    <!-- ─── Cursor Glow ─── -->
+    <div class="cursor-glow" id="cursorGlow"></div>
+
     <!-- ─── Confetti Canvas ─── -->
     <canvas id="confetti-canvas"></canvas>
 
+    <!-- ─── Music Toggle ─── -->
+    <button class="music-toggle" id="musicToggle" aria-label="Toggle ambient music">
+        <span id="musicIcon">♫</span>
+    </button>
+
+    <!-- ─── NAME ENTRY OVERLAY ─── -->
+    <div id="nameOverlay">
+        <div class="name-card">
+            <span class="icon-big">🌷</span>
+            <h2>Whose <em>birthday</em> is it?</h2>
+            <p>Tell us a name, and we'll make it personal.</p>
+            <div class="input-wrap">
+                <input type="text" id="nameInput" placeholder="Enter a name..." maxlength="30" autofocus />
+                <button id="nameSubmit">Celebrate ✦</button>
+            </div>
+            <div class="hint">— a garden of love awaits —</div>
+        </div>
+    </div>
+
     <!-- ─── Floating Decorations ─── -->
     <div class="float-group" aria-hidden="true">
-
         <!-- Butterfly 1 -->
         <div class="float-item butterfly-sway" style="top:6%; left:4%; animation-delay:0.2s;">
             <svg class="butterfly" width="44" height="40" viewBox="0 0 100 92" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <g class="wing" style="transform-origin:50% 50%;">
-                    <path d="M50 46 C36 26 10 16 6 32 C2 48 22 56 50 46Z" fill="#e8c4c8" opacity="0.55"/>
-                    <path d="M50 46 C44 30 16 24 12 36 C8 48 28 52 50 46Z" fill="#d4a0b0" opacity="0.35"/>
-                    <circle cx="30" cy="32" r="4" fill="#f5ece6" opacity="0.10"/>
+                    <path d="M50 46 C36 26 10 16 6 32 C2 48 22 56 50 46Z" fill="#e8c4c8" opacity="0.45"/>
+                    <path d="M50 46 C44 30 16 24 12 36 C8 48 28 52 50 46Z" fill="#d4a0b0" opacity="0.25"/>
+                    <circle cx="30" cy="32" r="4" fill="#f5ece6" opacity="0.08"/>
                 </g>
                 <g class="wing wing-right" style="transform-origin:50% 50%;">
-                    <path d="M50 46 C64 26 90 16 94 32 C98 48 78 56 50 46Z" fill="#e8c4c8" opacity="0.55"/>
-                    <path d="M50 46 C56 30 84 24 88 36 C92 48 72 52 50 46Z" fill="#d4a0b0" opacity="0.35"/>
-                    <circle cx="70" cy="32" r="4" fill="#f5ece6" opacity="0.10"/>
+                    <path d="M50 46 C64 26 90 16 94 32 C98 48 78 56 50 46Z" fill="#e8c4c8" opacity="0.45"/>
+                    <path d="M50 46 C56 30 84 24 88 36 C92 48 72 52 50 46Z" fill="#d4a0b0" opacity="0.25"/>
+                    <circle cx="70" cy="32" r="4" fill="#f5ece6" opacity="0.08"/>
                 </g>
-                <ellipse cx="50" cy="46" rx="4" ry="18" fill="#2d1b1b" opacity="0.5"/>
-                <line x1="46" y1="28" x2="38" y2="16" stroke="#2d1b1b" stroke-width="1.5" opacity="0.3"/>
-                <line x1="54" y1="28" x2="62" y2="16" stroke="#2d1b1b" stroke-width="1.5" opacity="0.3"/>
-                <circle cx="38" cy="14" r="1.5" fill="#e8c4c8" opacity="0.3"/>
-                <circle cx="62" cy="14" r="1.5" fill="#e8c4c8" opacity="0.3"/>
+                <ellipse cx="50" cy="46" rx="4" ry="18" fill="#2d1b1b" opacity="0.4"/>
+                <line x1="46" y1="28" x2="38" y2="16" stroke="#2d1b1b" stroke-width="1.5" opacity="0.2"/>
+                <line x1="54" y1="28" x2="62" y2="16" stroke="#2d1b1b" stroke-width="1.5" opacity="0.2"/>
+                <circle cx="38" cy="14" r="1.5" fill="#e8c4c8" opacity="0.2"/>
+                <circle cx="62" cy="14" r="1.5" fill="#e8c4c8" opacity="0.2"/>
             </svg>
         </div>
 
@@ -877,16 +1513,16 @@
         <div class="float-item butterfly-sway-2" style="bottom:10%; right:3%; animation-delay:0.8s;">
             <svg class="butterfly" width="34" height="30" viewBox="0 0 100 92" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <g class="wing" style="transform-origin:50% 50%;">
-                    <path d="M50 46 C38 28 12 18 8 34 C4 50 22 58 50 46Z" fill="#d4c5d9" opacity="0.45"/>
-                    <path d="M50 46 C44 32 18 26 14 38 C10 50 28 54 50 46Z" fill="#c5b5d0" opacity="0.30"/>
+                    <path d="M50 46 C38 28 12 18 8 34 C4 50 22 58 50 46Z" fill="#d4c5d9" opacity="0.35"/>
+                    <path d="M50 46 C44 32 18 26 14 38 C10 50 28 54 50 46Z" fill="#c5b5d0" opacity="0.20"/>
                 </g>
                 <g class="wing wing-right" style="transform-origin:50% 50%;">
-                    <path d="M50 46 C62 28 88 18 92 34 C96 50 78 58 50 46Z" fill="#d4c5d9" opacity="0.45"/>
-                    <path d="M50 46 C56 32 82 26 86 38 C90 50 72 54 50 46Z" fill="#c5b5d0" opacity="0.30"/>
+                    <path d="M50 46 C62 28 88 18 92 34 C96 50 78 58 50 46Z" fill="#d4c5d9" opacity="0.35"/>
+                    <path d="M50 46 C56 32 82 26 86 38 C90 50 72 54 50 46Z" fill="#c5b5d0" opacity="0.20"/>
                 </g>
-                <ellipse cx="50" cy="46" rx="3.5" ry="14" fill="#2d1b1b" opacity="0.4"/>
-                <line x1="46" y1="30" x2="40" y2="20" stroke="#2d1b1b" stroke-width="1.2" opacity="0.25"/>
-                <line x1="54" y1="30" x2="60" y2="20" stroke="#2d1b1b" stroke-width="1.2" opacity="0.25"/>
+                <ellipse cx="50" cy="46" rx="3.5" ry="14" fill="#2d1b1b" opacity="0.3"/>
+                <line x1="46" y1="30" x2="40" y2="20" stroke="#2d1b1b" stroke-width="1.2" opacity="0.2"/>
+                <line x1="54" y1="30" x2="60" y2="20" stroke="#2d1b1b" stroke-width="1.2" opacity="0.2"/>
             </svg>
         </div>
 
@@ -894,51 +1530,49 @@
         <div class="float-item butterfly-sway-3" style="top:45%; left:1%; animation-delay:1.4s;">
             <svg class="butterfly" width="28" height="26" viewBox="0 0 100 92" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <g class="wing" style="transform-origin:50% 50%;">
-                    <path d="M50 46 C38 28 12 18 8 34 C4 50 22 58 50 46Z" fill="#c5d5c5" opacity="0.35"/>
-                    <path d="M50 46 C44 32 18 26 14 38 C10 50 28 54 50 46Z" fill="#b0c8b0" opacity="0.25"/>
+                    <path d="M50 46 C38 28 12 18 8 34 C4 50 22 58 50 46Z" fill="#c5d5c5" opacity="0.25"/>
+                    <path d="M50 46 C44 32 18 26 14 38 C10 50 28 54 50 46Z" fill="#b0c8b0" opacity="0.15"/>
                 </g>
                 <g class="wing wing-right" style="transform-origin:50% 50%;">
-                    <path d="M50 46 C62 28 88 18 92 34 C96 50 78 58 50 46Z" fill="#c5d5c5" opacity="0.35"/>
-                    <path d="M50 46 C56 32 82 26 86 38 C90 50 72 54 50 46Z" fill="#b0c8b0" opacity="0.25"/>
+                    <path d="M50 46 C62 28 88 18 92 34 C96 50 78 58 50 46Z" fill="#c5d5c5" opacity="0.25"/>
+                    <path d="M50 46 C56 32 82 26 86 38 C90 50 72 54 50 46Z" fill="#b0c8b0" opacity="0.15"/>
                 </g>
-                <ellipse cx="50" cy="46" rx="3" ry="12" fill="#2d1b1b" opacity="0.35"/>
+                <ellipse cx="50" cy="46" rx="3" ry="12" fill="#2d1b1b" opacity="0.25"/>
             </svg>
         </div>
 
         <!-- Tulip 1 -->
         <div class="float-item tulip-sway" style="bottom:12%; left:6%; animation-delay:0.3s;">
             <svg class="tulip" width="36" height="50" viewBox="0 0 60 84" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M30 84 L30 48" stroke="#c5d5c5" stroke-width="2" opacity="0.3"/>
-                <path d="M30 64 Q22 56 18 60 Q14 64 18 68 Q22 72 30 68Z" fill="#c5d5c5" opacity="0.20"/>
-                <path d="M30 48 C26 36 18 32 14 38 C10 44 12 52 20 54 C28 56 32 50 30 48Z" fill="#e8c4c8" opacity="0.55"/>
-                <path d="M30 48 C34 36 42 32 46 38 C50 44 48 52 40 54 C32 56 28 50 30 48Z" fill="#d4a0b0" opacity="0.45"/>
-                <path d="M30 48 C28 40 24 38 20 42 C16 46 18 50 24 50 C30 50 32 46 30 48Z" fill="#f0d0d8" opacity="0.30"/>
-                <path d="M30 48 L30 42" stroke="#a07080" stroke-width="1.2" opacity="0.25"/>
+                <path d="M30 84 L30 48" stroke="#c5d5c5" stroke-width="2" opacity="0.2"/>
+                <path d="M30 64 Q22 56 18 60 Q14 64 18 68 Q22 72 30 68Z" fill="#c5d5c5" opacity="0.12"/>
+                <path d="M30 48 C26 36 18 32 14 38 C10 44 12 52 20 54 C28 56 32 50 30 48Z" fill="#e8c4c8" opacity="0.45"/>
+                <path d="M30 48 C34 36 42 32 46 38 C50 44 48 52 40 54 C32 56 28 50 30 48Z" fill="#d4a0b0" opacity="0.35"/>
+                <path d="M30 48 C28 40 24 38 20 42 C16 46 18 50 24 50 C30 50 32 46 30 48Z" fill="#f0d0d8" opacity="0.20"/>
+                <path d="M30 48 L30 42" stroke="#a07080" stroke-width="1.2" opacity="0.15"/>
             </svg>
         </div>
 
         <!-- Tulip 2 -->
         <div class="float-item tulip-sway-2" style="top:22%; right:4%; animation-delay:0.9s;">
             <svg class="tulip" width="30" height="42" viewBox="0 0 60 84" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M30 84 L30 52" stroke="#c5d5c5" stroke-width="1.8" opacity="0.25"/>
-                <path d="M30 68 Q24 62 20 66 Q16 70 20 74 Q24 78 30 74Z" fill="#c5d5c5" opacity="0.15"/>
-                <path d="M30 52 C26 42 18 38 14 44 C10 50 12 58 20 60 C28 62 32 56 30 52Z" fill="#d4c5d9" opacity="0.50"/>
-                <path d="M30 52 C34 42 42 38 46 44 C50 50 48 58 40 60 C32 62 28 56 30 52Z" fill="#c5b5d0" opacity="0.40"/>
-                <path d="M30 52 L30 46" stroke="#8a7a90" stroke-width="1" opacity="0.20"/>
+                <path d="M30 84 L30 52" stroke="#c5d5c5" stroke-width="1.8" opacity="0.15"/>
+                <path d="M30 68 Q24 62 20 66 Q16 70 20 74 Q24 78 30 74Z" fill="#c5d5c5" opacity="0.10"/>
+                <path d="M30 52 C26 42 18 38 14 44 C10 50 12 58 20 60 C28 62 32 56 30 52Z" fill="#d4c5d9" opacity="0.40"/>
+                <path d="M30 52 C34 42 42 38 46 44 C50 50 48 58 40 60 C32 62 28 56 30 52Z" fill="#c5b5d0" opacity="0.30"/>
+                <path d="M30 52 L30 46" stroke="#8a7a90" stroke-width="1" opacity="0.12"/>
             </svg>
         </div>
 
         <!-- Tulip 3 -->
         <div class="float-item tulip-sway" style="top:60%; right:12%; animation-delay:1.6s;">
             <svg class="tulip" width="26" height="36" viewBox="0 0 60 84" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M30 84 L30 54" stroke="#c5d5c5" stroke-width="1.6" opacity="0.2"/>
-                <path d="M30 54 C26 44 18 40 14 46 C10 52 12 60 20 62 C28 64 32 58 30 54Z" fill="#f0d0d8" opacity="0.45"/>
-                <path d="M30 54 C34 44 42 40 46 46 C50 52 48 60 40 62 C32 64 28 58 30 54Z" fill="#e8c4c8" opacity="0.35"/>
-                <path d="M30 54 L30 48" stroke="#a07080" stroke-width="0.8" opacity="0.15"/>
+                <path d="M30 84 L30 54" stroke="#c5d5c5" stroke-width="1.6" opacity="0.12"/>
+                <path d="M30 54 C26 44 18 40 14 46 C10 52 12 60 20 62 C28 64 32 58 30 54Z" fill="#f0d0d8" opacity="0.35"/>
+                <path d="M30 54 C34 44 42 40 46 46 C50 52 48 60 40 62 C32 64 28 58 30 54Z" fill="#e8c4c8" opacity="0.25"/>
+                <path d="M30 54 L30 48" stroke="#a07080" stroke-width="0.8" opacity="0.10"/>
             </svg>
         </div>
-
-        <!-- Extra butterfly for final section (hidden, will be shown in final) -->
     </div>
 
     <!-- ─── Scroll Container ─── -->
@@ -947,8 +1581,13 @@
         <!-- ─── HERO ─── -->
         <section id="hero" class="section">
             <div class="relative z-10 max-w-4xl mx-auto">
-                <h1 class="hero-title">Happy<br />Birthday</h1>
-                <p class="hero-sub">— a gift of tulips &amp; butterflies —</p>
+                <h1 class="hero-title">
+                    Happy<br />
+                    <span class="name-highlight" id="heroName">Birthday</span>
+                </h1>
+                <p class="hero-sub">
+                    — a garden of <span class="name-sub" id="heroSubName">love</span> &amp; butterflies —
+                </p>
                 <div class="hero-line"></div>
             </div>
 
@@ -958,14 +1597,13 @@
             </div>
         </section>
 
-        <!-- ─── GALLERY (Horizontal Scroll) ─── -->
+        <!-- ─── GALLERY ─── -->
         <section id="gallery" class="section" style="min-height:auto; padding:4rem 0 3rem; flex-direction:column;">
             <div class="section-sub">— memories in bloom —</div>
             <h2 class="section-title">A <em>garden</em> of moments</h2>
 
             <div class="gallery-wrapper">
                 <div class="gallery-track" id="galleryTrack">
-                    <!-- Card 1 -->
                     <div class="gallery-card">
                         <div class="card-image">
                             <span class="tulip-bg">🌷</span>
@@ -978,7 +1616,6 @@
                         </div>
                     </div>
 
-                    <!-- Card 2 -->
                     <div class="gallery-card">
                         <div class="card-image">
                             <span class="tulip-bg">🦋</span>
@@ -991,7 +1628,6 @@
                         </div>
                     </div>
 
-                    <!-- Card 3 -->
                     <div class="gallery-card">
                         <div class="card-image">
                             <span class="tulip-bg">🌷</span>
@@ -1004,7 +1640,6 @@
                         </div>
                     </div>
 
-                    <!-- Card 4 -->
                     <div class="gallery-card">
                         <div class="card-image">
                             <span class="tulip-bg">🦋</span>
@@ -1017,7 +1652,6 @@
                         </div>
                     </div>
 
-                    <!-- Card 5 -->
                     <div class="gallery-card">
                         <div class="card-image">
                             <span class="tulip-bg">🌷</span>
@@ -1030,7 +1664,6 @@
                         </div>
                     </div>
 
-                    <!-- Card 6 -->
                     <div class="gallery-card">
                         <div class="card-image">
                             <span class="tulip-bg">🦋</span>
@@ -1045,10 +1678,36 @@
                 </div>
             </div>
 
-            <!-- Gallery hint -->
-            <div style="text-align:center; margin-top:0.5rem; font-size:0.7rem; color:rgba(245,236,230,0.15); letter-spacing:0.1em; user-select:none;">
+            <div style="text-align:center; margin-top:0.5rem; font-size:0.65rem; color:rgba(245,236,230,0.10); letter-spacing:0.1em; user-select:none;">
                 ← scroll to explore →
             </div>
+        </section>
+
+        <!-- ─── BIRTHDAY CAKE ─── -->
+        <section id="cakeSection" class="section" style="min-height:80vh; flex-direction:column; gap:1.2rem;">
+            <div class="section-sub">— make a wish —</div>
+            <h2 class="section-title" style="margin-bottom:0.2rem;">Blow out the <em>candles</em></h2>
+
+            <div class="cake-container">
+                <div class="cake" id="cake">
+                    <div class="cake-tier cake-tier-1"></div>
+                    <div class="cake-tier cake-tier-2"></div>
+                    <div class="cake-tier cake-tier-3"></div>
+                    <div class="candle" id="candle" title="Click or blow to extinguish">
+                        <div class="stick"></div>
+                        <div class="flame" id="flame"></div>
+                        <div class="flame-glow" id="flameGlow"></div>
+                        <div class="candle-label">✦ wish ✦</div>
+                        <div class="blow-hint" id="blowHint">click to blow</div>
+                    </div>
+                </div>
+                <div class="cake-status" id="cakeStatus">— make a wish —</div>
+            </div>
+
+            <p style="font-size:0.75rem; color:rgba(245,236,230,0.15); max-width:360px; text-align:center; font-weight:300; letter-spacing:0.02em;">
+                Click the candle to blow out the flame<br />
+                and make a wish.
+            </p>
         </section>
 
         <!-- ─── GIFT REVEAL ─── -->
@@ -1072,7 +1731,7 @@
                 </div>
             </div>
 
-            <p style="font-size:0.8rem; color:rgba(245,236,230,0.25); margin-top:0.8rem; max-width:360px; text-align:center; font-weight:300; letter-spacing:0.02em;">
+            <p style="font-size:0.8rem; color:rgba(245,236,230,0.2); margin-top:0.8rem; max-width:360px; text-align:center; font-weight:300; letter-spacing:0.02em;">
                 A little flower of love, blooming just for you.
             </p>
         </section>
@@ -1084,8 +1743,8 @@
                     <span>✧</span> &nbsp; from the heart &nbsp; <span>✧</span>
                 </div>
                 <h2>
-                    For the one who<br />
-                    <em>makes the world bloom</em>
+                    For <span class="name-msg" id="msgName">you</span>,<br />
+                    who <em>makes the world bloom</em>
                 </h2>
                 <p>
                     Like tulips that turn their faces toward the sun,<br />
@@ -1103,46 +1762,63 @@
             </div>
         </section>
 
+        <!-- ─── GUESTBOOK ─── -->
+        <section id="guestbook" class="section" style="min-height:60vh; flex-direction:column; gap:0.5rem;">
+            <div class="section-sub">— leave a wish —</div>
+            <div class="guestbook-section" id="guestbookSection">
+                <h3>Wishes from the <em>garden</em></h3>
+                <div class="sub">— share your love —</div>
+                <div class="gb-input-wrap">
+                    <input type="text" id="gbNameInput" placeholder="Your name..." maxlength="20" />
+                    <input type="text" id="gbWishInput" placeholder="Your wish..." maxlength="120" />
+                    <button id="gbSubmit">Send ✦</button>
+                </div>
+                <div class="gb-messages" id="gbMessages">
+                    <div class="gb-empty">No wishes yet. Be the first! 🌸</div>
+                </div>
+            </div>
+        </section>
+
         <!-- ─── FINAL WISH ─── -->
         <section id="final" class="section">
             <div class="final-butterflies">
                 <div class="float-item butterfly-sway" style="top:15%; left:8%; animation-delay:0.2s;">
                     <svg class="butterfly" width="40" height="36" viewBox="0 0 100 92" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <g class="wing" style="transform-origin:50% 50%;">
-                            <path d="M50 46 C38 28 12 18 8 34 C4 50 22 58 50 46Z" fill="#e8c4c8" opacity="0.40"/>
-                            <path d="M50 46 C44 32 18 26 14 38 C10 50 28 54 50 46Z" fill="#d4a0b0" opacity="0.25"/>
+                            <path d="M50 46 C38 28 12 18 8 34 C4 50 22 58 50 46Z" fill="#e8c4c8" opacity="0.35"/>
+                            <path d="M50 46 C44 32 18 26 14 38 C10 50 28 54 50 46Z" fill="#d4a0b0" opacity="0.20"/>
                         </g>
                         <g class="wing wing-right" style="transform-origin:50% 50%;">
-                            <path d="M50 46 C62 28 88 18 92 34 C96 50 78 58 50 46Z" fill="#e8c4c8" opacity="0.40"/>
-                            <path d="M50 46 C56 32 82 26 86 38 C90 50 72 54 50 46Z" fill="#d4a0b0" opacity="0.25"/>
+                            <path d="M50 46 C62 28 88 18 92 34 C96 50 78 58 50 46Z" fill="#e8c4c8" opacity="0.35"/>
+                            <path d="M50 46 C56 32 82 26 86 38 C90 50 72 54 50 46Z" fill="#d4a0b0" opacity="0.20"/>
                         </g>
-                        <ellipse cx="50" cy="46" rx="3.5" ry="14" fill="#2d1b1b" opacity="0.4"/>
+                        <ellipse cx="50" cy="46" rx="3.5" ry="14" fill="#2d1b1b" opacity="0.35"/>
                     </svg>
                 </div>
                 <div class="float-item butterfly-sway-2" style="bottom:20%; right:6%; animation-delay:0.8s;">
                     <svg class="butterfly" width="32" height="28" viewBox="0 0 100 92" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <g class="wing" style="transform-origin:50% 50%;">
-                            <path d="M50 46 C38 28 12 18 8 34 C4 50 22 58 50 46Z" fill="#d4c5d9" opacity="0.35"/>
-                            <path d="M50 46 C44 32 18 26 14 38 C10 50 28 54 50 46Z" fill="#c5b5d0" opacity="0.20"/>
+                            <path d="M50 46 C38 28 12 18 8 34 C4 50 22 58 50 46Z" fill="#d4c5d9" opacity="0.30"/>
+                            <path d="M50 46 C44 32 18 26 14 38 C10 50 28 54 50 46Z" fill="#c5b5d0" opacity="0.15"/>
                         </g>
                         <g class="wing wing-right" style="transform-origin:50% 50%;">
-                            <path d="M50 46 C62 28 88 18 92 34 C96 50 78 58 50 46Z" fill="#d4c5d9" opacity="0.35"/>
-                            <path d="M50 46 C56 32 82 26 86 38 C90 50 72 54 50 46Z" fill="#c5b5d0" opacity="0.20"/>
+                            <path d="M50 46 C62 28 88 18 92 34 C96 50 78 58 50 46Z" fill="#d4c5d9" opacity="0.30"/>
+                            <path d="M50 46 C56 32 82 26 86 38 C90 50 72 54 50 46Z" fill="#c5b5d0" opacity="0.15"/>
                         </g>
-                        <ellipse cx="50" cy="46" rx="3" ry="12" fill="#2d1b1b" opacity="0.35"/>
+                        <ellipse cx="50" cy="46" rx="3" ry="12" fill="#2d1b1b" opacity="0.30"/>
                     </svg>
                 </div>
                 <div class="float-item butterfly-sway-3" style="top:50%; left:4%; animation-delay:1.4s;">
                     <svg class="butterfly" width="26" height="24" viewBox="0 0 100 92" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <g class="wing" style="transform-origin:50% 50%;">
-                            <path d="M50 46 C38 28 12 18 8 34 C4 50 22 58 50 46Z" fill="#c5d5c5" opacity="0.30"/>
-                            <path d="M50 46 C44 32 18 26 14 38 C10 50 28 54 50 46Z" fill="#b0c8b0" opacity="0.20"/>
+                            <path d="M50 46 C38 28 12 18 8 34 C4 50 22 58 50 46Z" fill="#c5d5c5" opacity="0.25"/>
+                            <path d="M50 46 C44 32 18 26 14 38 C10 50 28 54 50 46Z" fill="#b0c8b0" opacity="0.15"/>
                         </g>
                         <g class="wing wing-right" style="transform-origin:50% 50%;">
-                            <path d="M50 46 C62 28 88 18 92 34 C96 50 78 58 50 46Z" fill="#c5d5c5" opacity="0.30"/>
-                            <path d="M50 46 C56 32 82 26 86 38 C90 50 72 54 50 46Z" fill="#b0c8b0" opacity="0.20"/>
+                            <path d="M50 46 C62 28 88 18 92 34 C96 50 78 58 50 46Z" fill="#c5d5c5" opacity="0.25"/>
+                            <path d="M50 46 C56 32 82 26 86 38 C90 50 72 54 50 46Z" fill="#b0c8b0" opacity="0.15"/>
                         </g>
-                        <ellipse cx="50" cy="46" rx="2.5" ry="10" fill="#2d1b1b" opacity="0.3"/>
+                        <ellipse cx="50" cy="46" rx="2.5" ry="10" fill="#2d1b1b" opacity="0.25"/>
                     </svg>
                 </div>
             </div>
@@ -1150,7 +1826,7 @@
             <div class="final-content" id="finalContent">
                 <h2>
                     Wish you <em>happiness</em><br />
-                    forever
+                    forever, <span class="name-final" id="finalName">dear one</span>
                 </h2>
                 <p class="final-sub">— may your days be filled with light and love —</p>
                 <div class="final-line"></div>
@@ -1171,15 +1847,100 @@
         (function() {
             'use strict';
 
-            // ── Gallery: mouse wheel horizontal scroll ──
+            // ── State ──
+            let userName = '';
+            let isMusicPlaying = false;
+            let audioCtx = null;
+            let musicNodes = [];
+            let giftOpened = false;
+            let candleBlown = false;
+            let isBlowing = false;
+
+            // ── DOM refs ──
+            const overlay = document.getElementById('nameOverlay');
+            const nameInput = document.getElementById('nameInput');
+            const nameSubmit = document.getElementById('nameSubmit');
+            const heroName = document.getElementById('heroName');
+            const heroSubName = document.getElementById('heroSubName');
+            const msgName = document.getElementById('msgName');
+            const finalName = document.getElementById('finalName');
+
+            const giftBox = document.getElementById('giftBox');
+            const candle = document.getElementById('candle');
+            const flame = document.getElementById('flame');
+            const flameGlow = document.getElementById('flameGlow');
+            const cakeStatus = document.getElementById('cakeStatus');
+            const blowHint = document.getElementById('blowHint');
+
+            const messageCard = document.getElementById('messageCard');
+            const finalContent = document.getElementById('finalContent');
+            const guestbookSection = document.getElementById('guestbookSection');
+
             const track = document.getElementById('galleryTrack');
+
+            const musicToggle = document.getElementById('musicToggle');
+            const musicIcon = document.getElementById('musicIcon');
+
+            const cursorGlow = document.getElementById('cursorGlow');
+
+            const gbNameInput = document.getElementById('gbNameInput');
+            const gbWishInput = document.getElementById('gbWishInput');
+            const gbSubmit = document.getElementById('gbSubmit');
+            const gbMessages = document.getElementById('gbMessages');
+
+            // ── Name Entry ──
+            function setUserName(name) {
+                userName = name.trim() || 'you';
+                heroName.textContent = userName;
+                heroSubName.textContent = userName;
+                msgName.textContent = userName;
+                finalName.textContent = userName;
+                overlay.classList.add('hidden');
+                document.body.style.overflow = 'auto';
+                // Focus the page
+                setTimeout(() => {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                }, 200);
+                // Launch a small celebration
+                launchConfetti(30);
+                // Save to localStorage
+                try { localStorage.setItem('birthday_name', userName); } catch (e) {}
+            }
+
+            nameSubmit.addEventListener('click', () => {
+                const name = nameInput.value.trim();
+                if (name) setUserName(name);
+                else {
+                    nameInput.focus();
+                    nameInput.style.borderColor = 'rgba(200,100,120,0.3)';
+                    setTimeout(() => { nameInput.style.borderColor = ''; }, 800);
+                }
+            });
+
+            nameInput.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter') nameSubmit.click();
+            });
+
+            // Check for saved name
+            try {
+                const saved = localStorage.getItem('birthday_name');
+                if (saved) {
+                    nameInput.value = saved;
+                    setTimeout(() => setUserName(saved), 300);
+                } else {
+                    nameInput.focus();
+                }
+            } catch (e) {
+                nameInput.focus();
+            }
+
+            // ── Gallery: mouse wheel + drag ──
             if (track) {
                 track.addEventListener('wheel', (e) => {
                     e.preventDefault();
                     track.scrollLeft += e.deltaY;
                 }, { passive: false });
 
-                // Drag to scroll
                 let isDown = false;
                 let startX;
                 let scrollLeft;
@@ -1209,7 +1970,6 @@
                     track.scrollLeft = scrollLeft - walk;
                 });
 
-                // Touch support
                 let touchStartX = 0;
                 let touchScrollLeft = 0;
                 track.addEventListener('touchstart', (e) => {
@@ -1225,25 +1985,112 @@
             }
 
             // ── Gift Reveal ──
-            const giftBox = document.getElementById('giftBox');
-            let giftOpened = false;
-
-            giftBox.addEventListener('click', function(e) {
+            giftBox.addEventListener('click', function() {
                 if (giftOpened) return;
                 giftOpened = true;
                 this.classList.add('opened');
-
-                // Launch confetti / flower bloom
-                launchConfetti();
-
-                // Small delay then show a subtle pulse
+                launchConfetti(50);
+                // Play a little sound if music is on
+                if (isMusicPlaying) playTone(523, 0.15, 'sine');
                 setTimeout(() => {
                     this.style.animation = 'none';
                 }, 100);
             });
 
-            // ── Confetti (flower petals + sparkles) ──
-            function launchConfetti() {
+            // ── Candle Logic ──
+            candle.addEventListener('click', function(e) {
+                e.stopPropagation();
+                if (candleBlown) return;
+                blowOutCandle();
+            });
+
+            function blowOutCandle() {
+                if (candleBlown) return;
+                candleBlown = true;
+                flame.classList.add('extinguished');
+                flameGlow.classList.add('extinguished');
+                cakeStatus.textContent = '✨ Wish made! ✨';
+                cakeStatus.className = 'cake-status blown';
+                blowHint.textContent = '✨';
+                blowHint.className = 'blow-hint';
+                launchConfetti(40);
+
+                // Play a gentle chime
+                if (isMusicPlaying) {
+                    playTone(659, 0.12, 'sine');
+                    setTimeout(() => playTone(784, 0.12, 'sine'), 120);
+                    setTimeout(() => playTone(988, 0.18, 'sine'), 240);
+                }
+
+                // Reset after a while
+                setTimeout(() => {
+                    // Allow re-lighting? No, keep it magical.
+                }, 1000);
+            }
+
+            // ── Blow detection (microphone) ──
+            let micStream = null;
+            let micAnalyser = null;
+            let micData = null;
+            let micActive = false;
+
+            async function initMic() {
+                try {
+                    const stream = await navigator.mediaDevices.getUserMedia({ audio: true, video: false });
+                    micStream = stream;
+                    const audioCtxMic = new(window.AudioContext || window.webkitAudioContext)();
+                    const source = audioCtxMic.createMediaStreamSource(stream);
+                    const analyser = audioCtxMic.createAnalyser();
+                    analyser.fftSize = 256;
+                    source.connect(analyser);
+                    micAnalyser = analyser;
+                    micData = new Uint8Array(analyser.fftSize);
+                    micActive = true;
+                    detectBlow();
+                } catch (e) {
+                    // No microphone access — that's fine, click works.
+                    console.log('Microphone not available — use click to blow.');
+                }
+            }
+
+            function detectBlow() {
+                if (!micActive || !micAnalyser) return;
+                micAnalyser.getByteTimeDomainData(micData);
+                let sum = 0;
+                for (let i = 0; i < micData.length; i++) {
+                    const val = (micData[i] - 128) / 128;
+                    sum += val * val;
+                }
+                const rms = Math.sqrt(sum / micData.length);
+                // If loud enough, trigger blow
+                if (rms > 0.25 && !candleBlown && !isBlowing) {
+                    isBlowing = true;
+                    blowOutCandle();
+                    blowHint.textContent = '💨';
+                    blowHint.className = 'blow-hint active';
+                    setTimeout(() => {
+                        isBlowing = false;
+                        if (!candleBlown) {
+                            blowHint.textContent = 'click to blow';
+                            blowHint.className = 'blow-hint';
+                        }
+                    }, 800);
+                }
+                requestAnimationFrame(detectBlow);
+            }
+
+            // Init mic on user gesture
+            document.addEventListener('click', () => {
+                if (!micActive) initMic();
+            }, { once: true });
+
+            // Also init on name submit
+            nameSubmit.addEventListener('click', () => {
+                if (!micActive) setTimeout(initMic, 500);
+            });
+
+            // ── Confetti ──
+            function launchConfetti(count = 40) {
                 const canvas = document.getElementById('confetti-canvas');
                 const ctx = canvas.getContext('2d');
                 let w = window.innerWidth;
@@ -1252,31 +2099,36 @@
                 canvas.height = h;
 
                 const particles = [];
-                const colors = ['#e8c4c8', '#d4a0b0', '#f0d0d8', '#d4c5d9', '#c5d5c5', '#f5ece6', '#f0d8c0'];
-                const shapes = ['🌸', '🦋', '🌷', '✨', '💮', '🌺'];
+                const colors = ['#e8c4c8', '#d4a0b0', '#f0d0d8', '#d4c5d9', '#c5d5c5', '#f5ece6', '#f0d8c0', '#e8d0c8'];
+                const shapes = ['🌸', '🦋', '🌷', '✨', '💮', '🌺', '★', '♥'];
 
-                for (let i = 0; i < 60; i++) {
+                const cx = w / 2;
+                const cy = h / 2;
+
+                for (let i = 0; i < count; i++) {
+                    const angle = Math.random() * Math.PI * 2;
+                    const dist = 40 + Math.random() * 80;
                     particles.push({
-                        x: w / 2 + (Math.random() - 0.5) * 120,
-                        y: h / 2 + (Math.random() - 0.5) * 80,
-                        size: 12 + Math.random() * 18,
-                        speedX: (Math.random() - 0.5) * 8,
-                        speedY: -4 - Math.random() * 10,
-                        gravity: 0.08 + Math.random() * 0.06,
+                        x: cx + Math.cos(angle) * dist,
+                        y: cy + Math.sin(angle) * dist * 0.6,
+                        size: 10 + Math.random() * 20,
+                        speedX: (Math.random() - 0.5) * 10,
+                        speedY: -5 - Math.random() * 12,
+                        gravity: 0.06 + Math.random() * 0.06,
                         rotation: Math.random() * Math.PI * 2,
-                        rotSpeed: (Math.random() - 0.5) * 0.06,
+                        rotSpeed: (Math.random() - 0.5) * 0.08,
                         shape: shapes[Math.floor(Math.random() * shapes.length)],
                         color: colors[Math.floor(Math.random() * colors.length)],
                         life: 1,
-                        decay: 0.004 + Math.random() * 0.006,
-                        drift: (Math.random() - 0.5) * 0.4,
+                        decay: 0.004 + Math.random() * 0.008,
+                        drift: (Math.random() - 0.5) * 0.5,
                     });
                 }
 
                 let frame = 0;
                 let active = true;
 
-                function drawConfetti() {
+                function draw() {
                     if (!active) return;
                     ctx.clearRect(0, 0, w, h);
 
@@ -1288,7 +2140,7 @@
                         p.x += p.speedX + p.drift * Math.sin(frame * 0.02 + p.rotation);
                         p.y += p.speedY;
                         p.speedY += p.gravity;
-                        p.speedX *= 0.995;
+                        p.speedX *= 0.996;
                         p.rotation += p.rotSpeed;
                         p.life -= p.decay;
 
@@ -1305,10 +2157,10 @@
                         ctx.restore();
 
                         // glow
-                        ctx.globalAlpha = alpha * 0.08;
+                        ctx.globalAlpha = alpha * 0.06;
                         ctx.shadowColor = p.color;
                         ctx.shadowBlur = 30;
-                        ctx.font = `${p.size * 1.8}px sans-serif`;
+                        ctx.font = `${p.size * 1.6}px sans-serif`;
                         ctx.fillText(p.shape, p.x, p.y);
                         ctx.shadowBlur = 0;
                     }
@@ -1317,26 +2169,121 @@
 
                     if (!allDead) {
                         frame++;
-                        requestAnimationFrame(drawConfetti);
+                        requestAnimationFrame(draw);
                     } else {
                         active = false;
                         ctx.clearRect(0, 0, w, h);
                     }
                 }
 
-                drawConfetti();
+                draw();
 
-                // Fade out after a few seconds
                 setTimeout(() => {
                     active = false;
                     ctx.clearRect(0, 0, w, h);
                 }, 5000);
             }
 
-            // ── Scroll Reveal: Message & Final ──
-            const messageCard = document.getElementById('messageCard');
-            const finalContent = document.getElementById('finalContent');
+            // ── Music (Web Audio) ──
+            function initAudio() {
+                if (audioCtx) return;
+                try {
+                    audioCtx = new(window.AudioContext || window.webkitAudioContext)();
+                } catch (e) { return; }
+            }
 
+            function playTone(freq, duration, type = 'sine') {
+                if (!audioCtx) return;
+                try {
+                    const osc = audioCtx.createOscillator();
+                    const gain = audioCtx.createGain();
+                    osc.type = type;
+                    osc.frequency.value = freq;
+                    gain.gain.setValueAtTime(0.06, audioCtx.currentTime);
+                    gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + duration);
+                    osc.connect(gain);
+                    gain.connect(audioCtx.destination);
+                    osc.start();
+                    osc.stop(audioCtx.currentTime + duration);
+                } catch (e) { /* ignore */ }
+            }
+
+            function playAmbient() {
+                if (!audioCtx || !isMusicPlaying) return;
+                const notes = [523, 587, 659, 784, 880, 659, 784, 880];
+                const idx = Math.floor(Math.random() * notes.length);
+                const dur = 0.6 + Math.random() * 0.4;
+                playTone(notes[idx], dur, 'sine');
+                // Add a soft second tone
+                if (Math.random() > 0.5) {
+                    setTimeout(() => {
+                        playTone(notes[(idx + 3) % notes.length] * 0.5, dur * 0.6, 'sine');
+                    }, 100 + Math.random() * 200);
+                }
+                const delay = 800 + Math.random() * 1200;
+                setTimeout(playAmbient, delay);
+            }
+
+            musicToggle.addEventListener('click', () => {
+                initAudio();
+                isMusicPlaying = !isMusicPlaying;
+                if (isMusicPlaying) {
+                    if (audioCtx && audioCtx.state === 'suspended') {
+                        audioCtx.resume();
+                    }
+                    musicIcon.textContent = '♪';
+                    musicToggle.classList.add('playing');
+                    // Start ambient
+                    setTimeout(playAmbient, 300);
+                    // Also play a gentle chord
+                    setTimeout(() => {
+                        playTone(523, 0.2, 'sine');
+                        setTimeout(() => playTone(659, 0.2, 'sine'), 150);
+                        setTimeout(() => playTone(784, 0.3, 'sine'), 300);
+                    }, 100);
+                } else {
+                    musicIcon.textContent = '♫';
+                    musicToggle.classList.remove('playing');
+                }
+            });
+
+            // ── Cursor glow ──
+            document.addEventListener('mousemove', (e) => {
+                const x = e.clientX;
+                const y = e.clientY;
+                cursorGlow.style.left = x + 'px';
+                cursorGlow.style.top = y + 'px';
+                cursorGlow.classList.add('active');
+
+                // Sparkle trail (subtle)
+                if (Math.random() > 0.92) {
+                    createSparkle(x, y);
+                }
+            });
+
+            document.addEventListener('mouseleave', () => {
+                cursorGlow.classList.remove('active');
+            });
+
+            function createSparkle(x, y) {
+                const el = document.createElement('div');
+                el.className = 'sparkle';
+                const emojis = ['✦', '•', '✧', '·', '◦'];
+                el.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+                const size = 8 + Math.random() * 14;
+                el.style.fontSize = size + 'px';
+                el.style.left = x + 'px';
+                el.style.top = y + 'px';
+                const angle = Math.random() * Math.PI * 2;
+                const dist = 20 + Math.random() * 40;
+                el.style.setProperty('--tx', Math.cos(angle) * dist + 'px');
+                el.style.setProperty('--ty', Math.sin(angle) * dist - 20 + 'px');
+                el.style.color = ['#e8c4c8', '#f0d0d8', '#d4c5d9', '#f5ece6', '#c5d5c5'][Math.floor(Math.random() * 5)];
+                document.body.appendChild(el);
+                setTimeout(() => el.remove(), 1200);
+            }
+
+            // ── Scroll Reveal ──
             const revealObserver = new IntersectionObserver((entries) => {
                 for (const entry of entries) {
                     if (entry.isIntersecting) {
@@ -1344,14 +2291,90 @@
                     }
                 }
             }, {
-                threshold: 0.20,
-                rootMargin: '0px 0px -40px 0px'
+                threshold: 0.15,
+                rootMargin: '0px 0px -30px 0px'
             });
 
             if (messageCard) revealObserver.observe(messageCard);
             if (finalContent) revealObserver.observe(finalContent);
+            if (guestbookSection) revealObserver.observe(guestbookSection);
 
-            // ── Parallax on float items ──
+            // ── Guestbook ──
+            let messages = [];
+
+            function loadMessages() {
+                try {
+                    const data = localStorage.getItem('birthday_messages');
+                    if (data) messages = JSON.parse(data);
+                } catch (e) { messages = []; }
+                renderMessages();
+            }
+
+            function saveMessages() {
+                try {
+                    localStorage.setItem('birthday_messages', JSON.stringify(messages));
+                } catch (e) {}
+            }
+
+            function renderMessages() {
+                if (!gbMessages) return;
+                if (messages.length === 0) {
+                    gbMessages.innerHTML = '<div class="gb-empty">No wishes yet. Be the first! 🌸</div>';
+                    return;
+                }
+                let html = '';
+                for (const m of messages) {
+                    const time = new Date(m.time).toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+                    html += `
+                        <div class="gb-message">
+                            <div class="gb-name">${escapeHtml(m.name)}</div>
+                            <div class="gb-text">${escapeHtml(m.text)}</div>
+                            <div class="gb-time">${time}</div>
+                        </div>
+                    `;
+                }
+                gbMessages.innerHTML = html;
+                gbMessages.scrollTop = gbMessages.scrollHeight;
+            }
+
+            function escapeHtml(text) {
+                const div = document.createElement('div');
+                div.textContent = text;
+                return div.innerHTML;
+            }
+
+            function addMessage(name, text) {
+                if (!name.trim() || !text.trim()) return;
+                messages.push({ name: name.trim(), text: text.trim(), time: Date.now() });
+                // Keep last 50
+                if (messages.length > 50) messages = messages.slice(-50);
+                saveMessages();
+                renderMessages();
+            }
+
+            gbSubmit.addEventListener('click', () => {
+                const name = gbNameInput.value.trim() || 'Anonymous';
+                const text = gbWishInput.value.trim();
+                if (!text) {
+                    gbWishInput.focus();
+                    gbWishInput.style.borderColor = 'rgba(200,100,120,0.3)';
+                    setTimeout(() => { gbWishInput.style.borderColor = ''; }, 800);
+                    return;
+                }
+                addMessage(name, text);
+                gbWishInput.value = '';
+                gbNameInput.value = '';
+                launchConfetti(15);
+                if (isMusicPlaying) playTone(523, 0.1, 'sine');
+            });
+
+            gbWishInput.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter') gbSubmit.click();
+            });
+
+            loadMessages();
+
+            // ── Parallax ──
             const floatItems = document.querySelectorAll('.float-item');
             let mouseX = 0,
                 mouseY = 0;
@@ -1371,7 +2394,6 @@
                     const speed = 0.5 + (i % 3) * 0.2;
                     const dx = targetX * 18 * speed;
                     const dy = targetY * 10 * speed;
-                    // Only apply if not in final section (they have their own animation)
                     if (!el.closest('#final')) {
                         el.style.transform = `translate(${dx}px, ${dy}px)`;
                     }
@@ -1381,21 +2403,12 @@
             }
             animateParallax();
 
-            // ── Smooth scroll for indicator ──
-            document.querySelectorAll('.scroll-indicator').forEach((el) => {
-                el.addEventListener('click', function() {
-                    const target = document.querySelector(this.getAttribute('onclick')?.match(/'([^']+)'/)?.[1]) ||
-                        document.getElementById('gallery');
-                    if (target) target.scrollIntoView({ behavior: 'smooth' });
-                });
-            });
-
-            // ── Ensure all float items are visible ──
+            // ── Ensure float items are visible ──
             document.querySelectorAll('.float-item').forEach((el) => {
                 el.style.opacity = '1';
             });
 
-            // ── Resize confetti canvas ──
+            // ── Resize ──
             window.addEventListener('resize', () => {
                 const canvas = document.getElementById('confetti-canvas');
                 if (canvas) {
@@ -1403,6 +2416,16 @@
                     canvas.height = window.innerHeight;
                 }
             });
+
+            // ── Init: make sure body scrolls ──
+            document.body.style.overflow = 'hidden';
+
+            // ── Auto-launch confetti on load if name already set ──
+            setTimeout(() => {
+                if (overlay.classList.contains('hidden')) {
+                    launchConfetti(20);
+                }
+            }, 1200);
 
             console.log('🌸 A cinematic birthday celebration — made with love.');
         })();
